@@ -136,6 +136,7 @@ function shell() {
   dlg.className = 'atlas-player';
   dlg.addEventListener('click', (e) => { if (e.target === dlg || e.target.closest('.ap-close')) dlg.close(); });
   dlg.addEventListener('close', () => {
+    if (dlg.open) return; // close fires async: another note may already be open in this dialog
     const v = dlg.querySelector('video');
     if (v) { v.pause(); v.removeAttribute('src'); v.load(); }
     lastFocus?.focus?.();
