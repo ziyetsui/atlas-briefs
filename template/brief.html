@@ -625,7 +625,7 @@ document.addEventListener('click', (e) => {
     { id: 'competitors', t: '锁定竞品', d: `从素材库 ${p.pool.library.toLocaleString('zh-CN')} 条笔记里圈出 ${p.pool.brands} 组候选，按相关性 × 爆品度留下 ${competitors.length} 个。` },
     { id: 'hits', t: '竞品爆款', d: `每个竞品 3 种爆款形式，共 ${formats} 种，每种 3 个例子。` },
     { id: 'teardown', t: '爆款拆解', d: '账号是谁、流量从哪来、怎么变现、内容怎么搭。' },
-    { id: 'playbook', t: '规律与落地', d: `${laws.length} 条规律，每条 3 个例子，落到${p.name}上。` },
+    { id: 'playbook', t: '规律与落地', d: `${laws.length} 条规律，每条 3 个例子，落到${AtlasUI.nm(p.name)}上。` },
   ];
   document.getElementById('product-root').innerHTML = `<div class="cv">
     <p class="eyebrow">竞品爆款 Brief · ${p.brand}</p>
