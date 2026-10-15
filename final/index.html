@@ -731,9 +731,22 @@ function verdict() {
   return t;
 }
 
+function v1Summary() {
+  const S = window.ATLAS.product.selection;
+  const nm = (n) => n.replace(/（.*?）/g, '').split(' / ')[0];
+  return AtlasUI.summary([
+    { k: '池子', v: S.pool },
+    { k: '怎么筛', v: S.rule },
+    { k: '结果', v: `<b>入选 ${S.picked.length} 组</b>：${S.picked.map(nm).join('、')}
+        <div class="tags">${S.dropped.map((d) => `<span class="tag">${d.tag}：${d.names.map(nm).join('、')}</span>`).join('')}</div>` },
+    { k: '入选的共性', v: `<ul>${S.common.map((t) => `<li>${t}</li>`).join('')}</ul>` },
+  ], '竞品筛选逻辑');
+}
+
 function v1Render() {
   return `<div class="p1 v1">
     ${head(`相关性 × 爆品度：右上角的 ${PICKED.length} 个就是要对标的竞品`)}
+    ${v1Summary()}
     <div class="v1-body">
       <div>
         <figure class="v1-chart" style="margin:0">
@@ -1046,8 +1059,18 @@ v1Mount(stage);
       <dl class="stats"><div><dt>笔记</dt><dd>${st.notes}</dd></div><div><dt>账号</dt><dd>${st.accounts}</dd></div><div><dt>爆款</dt><dd>${st.hits}</dd></div><div><dt>爆款率</dt><dd>${st.hitRate}%</dd></div><div><dt>中位百分位</dt><dd>${st.medianPct}</dd></div></dl>
       <span class="obj">投放目标 ${c.objectives.map(([k, v]) => `<span class="chip">${k} ${v}</span>`).join('')}</span>`;
   }
+  function zsum() {
+    const c = comp(sel), z = c.zone;
+    return U.summary([
+      { k: '池子', v: `${c.name}的 <b class="num">${z.total}</b> 条笔记，来自 <span class="num">${c.stats.accounts}</span> 个账号` },
+      { k: '怎么筛', v: `榜内百分位 ≥ 80 算爆款（<span class="num">${z.hits}</span> 条）；可迁移度 ≥ 60 算${A.product.name}能照着做` },
+      { k: '结果', v: `右上角 <b class="num">${z.n}</b> 条<div class="tags">${z.byFormat.map(([k, v]) => `<span class="tag">${k} ${v}</span>`).join('')}</div>` },
+      { k: '共性', v: z.takeaway },
+    ], '爆款筛选逻辑');
+  }
   function v2Set(stage, fid) {
     qFilter = fid || null;
+    stage.querySelector('.zsum').innerHTML = zsum();
     stage.querySelector('.chead').innerHTML = chead();
     stage.querySelector('.legend').innerHTML = v2Legend();
     stage.querySelector('.panel').innerHTML = v2Panel();
@@ -1063,6 +1086,7 @@ v1Mount(stage);
       <div class="p2-wrap">
         <div class="bar">${seg('选择竞品')}</div>
         <div class="chead">${chead()}</div>
+        <div class="zsum">${zsum()}</div>
         <div class="grid">
           <div class="chart-card"><div class="legend" role="group" aria-label="按形式筛选">${v2Legend()}</div><div class="plot"></div>
             <p class="note">实心 = 爆款（榜内百分位 ≥ 80），空心 = 普通笔记；带外圈的是选出的代表笔记，可用 Tab 键聚焦。${A.product.dataNote}。</p></div>

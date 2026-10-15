@@ -255,3 +255,46 @@ img { display: block; max-width: 100%; }
 @media (hover: hover) and (pointer: fine) { .theme-btn:hover { background: var(--surface-2); color: var(--ink); } }
 .theme-btn:active { transform: scale(0.94); }
 .theme-switching *, .theme-switching *::before, .theme-switching *::after { transition: none !important; }
+
+/* ---------- structured summary strip (池子 → 怎么筛 → 结果 → 共性) ---------- */
+.sum {
+  list-style: none; margin: 28px 0 24px; padding: 0;
+  display: grid; grid-template-columns: 1fr 1.15fr 1.15fr 1.4fr;
+  border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-1); overflow: hidden;
+}
+.sum-step { position: relative; display: grid; align-content: start; gap: 8px; padding: 16px 18px 18px; min-width: 0; }
+.sum-step + .sum-step { box-shadow: inset 1px 0 0 var(--line); }
+.sum-step + .sum-step::before { /* chevron on the seam between steps */
+  content: ""; position: absolute; left: -5px; top: 21px; width: 8px; height: 8px;
+  border-top: 1px solid var(--line-strong); border-right: 1px solid var(--line-strong);
+  background: var(--surface); transform: rotate(45deg);
+}
+.sum-k { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--ink-3); letter-spacing: 0.02em; }
+.sum-n {
+  display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%;
+  font-size: 11px; background: var(--surface-2); color: var(--ink-2);
+}
+.sum-v { font-size: 13px; line-height: 1.65; color: var(--ink); text-wrap: pretty; }
+.sum-v b, .sum-v strong { font-weight: 600; }
+.sum-v .mut { color: var(--ink-3); }
+.sum-v ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.sum-v li { position: relative; padding-left: 12px; }
+.sum-v li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 4px; height: 4px; border-radius: 50%; background: var(--ink-3); }
+.sum-v .tags { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-top: 4px; }
+.sum-v .tag { padding: 1px 8px; border-radius: 999px; font-size: 12px; background: var(--surface-2); color: var(--ink-2); }
+.sum-key { background: color-mix(in oklch, var(--accent-soft) 55%, var(--surface)); }
+.sum-key .sum-n { background: var(--accent); color: #fff; }
+.sum-key .sum-k { color: var(--accent-ink); }
+.sum-key + .sum-step::before, .sum-step.sum-key::before { background: color-mix(in oklch, var(--accent-soft) 55%, var(--surface)); }
+@media (max-width: 860px) {
+  .sum { grid-template-columns: 1fr 1fr; }
+  .sum-step:nth-child(3) { box-shadow: inset 0 1px 0 var(--line); }
+  .sum-step:nth-child(4) { box-shadow: inset 1px 0 0 var(--line), inset 0 1px 0 var(--line); }
+  .sum-step:nth-child(3)::before { display: none; }
+}
+@media (max-width: 520px) {
+  .sum { grid-template-columns: 1fr; }
+  .sum-step + .sum-step, .sum-step:nth-child(4) { box-shadow: inset 0 1px 0 var(--line); }
+  .sum-step + .sum-step::before { display: block; left: 24px; top: -5px; transform: rotate(135deg); }
+  .sum-step:nth-child(3)::before { display: block; }
+}

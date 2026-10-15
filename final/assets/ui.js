@@ -106,6 +106,14 @@ function fmt(v) {
 
 
 
+// Structured "how we got here" strip above a quadrant chart: 池子 → 怎么筛 → 结果 → 共性.
+// rows: [{ k: '池子', v: html }, ...]; the last row is the takeaway and gets the accent rail.
+function summary(rows, label = '筛选逻辑') {
+  return `<ol class="sum" aria-label="${label}">${rows.map((r, i) => `<li class="sum-step${i === rows.length - 1 ? ' sum-key' : ''}">
+      <span class="sum-k"><span class="sum-n num">${i + 1}</span>${r.k}</span>
+      <div class="sum-v">${r.v}</div></li>`).join('')}</ol>`;
+}
+
 // Inline player for notes whose video exists in the library (most only have a cover — those keep 看原文).
 function playLink(n) {
   return n.video ? `<button type="button" class="play-link" data-video="${n.id}">▶ 播放 <span class="num">${dur(n.video.durationSec)}</span></button>` : '';
@@ -156,5 +164,5 @@ document.addEventListener('click', (e) => {
   openPlayer(n);
 }, true);
 
-window.AtlasUI = { topBar, cover, fmt, playLink };
+window.AtlasUI = { topBar, cover, fmt, playLink, summary };
 })();
