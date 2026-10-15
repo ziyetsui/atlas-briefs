@@ -1,6 +1,8 @@
 ## Atlas brief 模板 · 原型定稿（2026-10-15）
 
-在 `proto/` 里做了 5 页 × 4 个方向，用 picker 挑选。下面是定下来的模板，正式版在 `final/`。
+在 `proto/` 里做了 5 页 × 4 个方向，用 picker 挑选。下面是定下来的模板。
+
+> 2026-10-15 更新：后来合并成单页、改成多品牌模板（`template/brief.html` + `site/<slug>/`），制作流程见 `0003-brief-runbook.md`。下表的 `final/*.html` 是当时的分页文件名，已不存在。
 
 ### 页面结构
 
@@ -34,11 +36,11 @@
 
 ### 数据契约
 
-`final/assets/data.js` 的结构就是爬虫和 research 的输出格式：`product`、`pool`（候选品牌 + 子分数）、`competitors[].formats[].notes`、`teardowns[formatId]`（account / traffic{quant,qual} / money / structure / why）、`laws[]`、`scatter`。虚构的示例数据留在 `proto/shared/data.js`。
+`site/<slug>/data.js` 的结构就是爬虫和 research 的输出格式：`product`、`pool`（候选品牌 + 子分数）、`competitors[].formats[].notes`、`teardowns[formatId]`（account / traffic{quant,qual} / money / structure / why）、`laws[]`、`scatter`。虚构的示例数据留在 `proto/shared/data.js`。
 
 ### 第一份真实 brief：拍吧（2026-10-15）
 
-- 数据：线上素材库 `atlas-final…/atlas/ad-creative/library/` 的 13,749 条小红书笔记，导出在 `data/library/`（items.json + det.json）。重新生成数据：`python3 scripts/build_pepa.py data/library final/assets/data.js`。
+- 数据：线上素材库 `atlas-final…/atlas/ad-creative/library/` 的 13,749 条小红书笔记，导出在 `data/library/`（items.json + det.json）。重新生成数据：`python3 scripts/atlas_build.py pepa`（配置在 `briefs/pepa.py`）。
 - 素材库里没有和拍吧同类的「素人视频任务平台」，所以竞品按「抢同一批人（想用手机赚零花钱）、讲同一个故事（拍/发内容就能赚钱）」来圈：圈出 8 组候选，留下 超自然行动组（百万激励计划）、京东 · 夺金密令、副业接单赛道。
 - 数据边界：只有榜单百分位、排名和投放目标（应用下载 / 蒲公英合作 / 客资收集），**没有点赞数和粉丝数**；发布日期由笔记 ID 推算。相关性和可迁移度是判断分，爆品度是用榜单数据算出来的。
 - 页面改动：爆款象限横轴改为「榜内百分位」；拆解页定量 = 榜单记录（不再是流量来源占比和曲线），变现 = 步骤链（没有数字）。

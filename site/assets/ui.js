@@ -10,11 +10,14 @@ const SECTIONS = [
 ];
 
 // One-page brief: anchors to <section id>, scroll-spy marks the section in view.
-function topBar() {
+// `{ home: true }` renders the Atlas home bar: brand + theme toggle only, no section nav.
+function topBar({ home = false } = {}) {
   const el = document.createElement('header');
   el.className = 'atlas-top';
-  el.innerHTML = `
-    <a class="brand" href="#product">Atlas</a>
+  el.innerHTML = home
+    ? `<a class="brand" href="./">Atlas</a><span class="crumb" style="color:var(--ink-2)">竞品爆款 Brief</span><span style="flex:1"></span>`
+    : `
+    <a class="brand" href="../" title="所有 Brief">Atlas</a>
     <span class="crumb" style="color:var(--ink-3)">/</span>
     <span class="crumb" style="color:var(--ink-2)">${window.ATLAS.product.name} · 竞品爆款 Brief</span>
     <nav class="steps" aria-label="Brief 章节">
@@ -48,6 +51,7 @@ function topBar() {
   sys.addEventListener('change', paint);
   el.append(btn);
   paint();
+  if (home) return;
 
   const nav = el.querySelector('.steps');
   const links = [...nav.querySelectorAll('a')];
@@ -164,5 +168,14 @@ document.addEventListener('click', (e) => {
   openPlayer(n);
 }, true);
 
-window.AtlasUI = { topBar, cover, fmt, playLink, summary };
+// Product names can be Latin (Ancher) inside Chinese copy: pad the CJK–Latin seam with a space.
+// side: 'both' | 'left' | 'right' — use 'right' at the start of a label, 'left' at the end of a sentence.
+function nm(name, side = 'both') {
+  const latin = /[A-Za-z0-9]/;
+  const l = side !== 'right' && latin.test(name[0]) ? ' ' : '';
+  const r = side !== 'left' && latin.test(name[name.length - 1]) ? ' ' : '';
+  return l + name + r;
+}
+
+window.AtlasUI = { topBar, cover, fmt, playLink, summary, nm };
 })();

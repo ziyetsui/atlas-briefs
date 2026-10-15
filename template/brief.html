@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try { const t = localStorage.getItem('atlas-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch {}</script>
-<title>拍吧 Brief</title>
-<link rel="stylesheet" href="assets/base.css">
+<title>Atlas Brief</title>
+<link rel="stylesheet" href="../assets/base.css">
 <style>
 
   /* one-page brief frame */
@@ -518,7 +518,7 @@
   .ev-dots { display: flex; flex-wrap: wrap; gap: 3px; grid-column: 1 / -1; }
   .ev-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
 
-  /* 拍吧 mock badge */
+  /* product mock badge */
   .mock { position: relative; }
   .mock .cover { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--accent); }
   .mock-badge {
@@ -601,8 +601,9 @@
   <section id="playbook" aria-label="规律与落地"><div id="playbook-root"></div></section>
 </main>
 <footer class="brief-foot"><div><span id="foot-src"></span><a href="#product">回到顶部 ↑</a></div></footer>
-<script src="assets/data.js"></script>
-<script src="assets/ui.js"></script>
+<script src="./data.js"></script>
+<script src="../assets/ui.js"></script>
+<script>document.title = `${window.ATLAS.product.name} Brief`;</script>
 <script>
 // In-page cross-links: <a data-go="hits|teardown|playbook" data-c|data-f|data-law> → switch that section, then scroll to it.
 window.Brief = { h: {}, on(k, fn) { this.h[k] = fn; } };
@@ -660,7 +661,7 @@ function head(title) {
     <h2>${title}</h2>
     <p class="p1-src">池子：${P.source} · 素材库 ${P.library.toLocaleString('zh-CN')} 条 → ${P.brands} 组候选 / ${P.notes} 条笔记 · ${P.window}<br>${A.product.dataNote}</p>
     <dl class="p1-defs">
-      <div><dt>相关性</dt><dd>判断分 = 0.3 × 人群重合 + 0.4 × 动机重合 + 0.3 × 动作重合（和${A.product.name}比）</dd></div>
+      <div><dt>相关性</dt><dd>判断分 = 0.3 × 人群重合 + 0.4 × 动机重合 + 0.3 × 动作重合（和${AtlasUI.nm(A.product.name)}比）</dd></div>
       <div><dt>爆品度</dt><dd>榜单数据算出 = 0.5 × 榜内百分位中位数 + 0.3 × 爆款占比（≥ 80 百分位）+ 0.2 × 素材量</dd></div>
     </dl>
   </header>`;
@@ -888,7 +889,7 @@ v1Mount(stage);
   const setSel = (id) => { sel = id; };
   const SW = ['var(--s1)', 'var(--s2)', 'var(--s3)'];
 
-  const SHORT = { chaoziran: '超自然', duojin: '夺金密令', fuye: '副业接单' };
+  const shortName = (c) => c.short || c.name;
   const listShort = (l) => (l || '').split('·').slice(-2, -1).join('');
   const stats = (f) => `<dl class="stats">
       <div><dt>笔记数</dt><dd>${f.n}</dd></div>
@@ -909,7 +910,7 @@ v1Mount(stage);
       <p class="eyebrow">竞品爆款</p><h2>${h1}</h2><p class="lede">${lede}</p></header>`;
 
   const seg = (label) => `<div class="seg" role="group" aria-label="${label}"><span class="ind" aria-hidden="true"></span>
-      ${C.map((c) => `<button type="button" data-c="${c.id}" aria-pressed="${c.id === sel}"><span class="full">${c.name}</span><span class="short">${SHORT[c.id] || c.name}</span><small>${c.stats.hits}</small></button>`).join('')}</div>`;
+      ${C.map((c) => `<button type="button" data-c="${c.id}" aria-pressed="${c.id === sel}"><span class="full">${c.name}</span><span class="short">${shortName(c)}</span><small>${c.stats.hits}</small></button>`).join('')}</div>`;
 
   let segApi = null;
   function wireSeg(root, onChange) {
@@ -928,7 +929,7 @@ v1Mount(stage);
   }
 
   /* ---------------- V2 Quadrant ---------------- */
-  const HIT_T = 80, TR_T = 60;
+  const HIT_T = A.product.cut.hit ?? 80, TR_T = A.product.cut.transfer ?? 60;
   let qFilter = null; // format id or null
   const fIndex = (c, fid) => c.formats.findIndex((f) => f.id === fid);
   const inQ = (d) => d.pct >= HIT_T && d.transfer >= TR_T;
@@ -1063,7 +1064,7 @@ v1Mount(stage);
     const c = comp(sel), z = c.zone;
     return U.summary([
       { k: '池子', v: `${c.name}的 <b class="num">${z.total}</b> 条笔记，来自 <span class="num">${c.stats.accounts}</span> 个账号` },
-      { k: '怎么筛', v: `榜内百分位 ≥ 80 算爆款（<span class="num">${z.hits}</span> 条）；可迁移度 ≥ 60 算${A.product.name}能照着做` },
+      { k: '怎么筛', v: `榜内百分位 ≥ ${HIT_T} 算爆款（<span class="num">${z.hits}</span> 条）；可迁移度 ≥ ${TR_T} 算${AtlasUI.nm(A.product.name)}能照着做` },
       { k: '结果', v: `右上角 <b class="num">${z.n}</b> 条<div class="tags">${z.byFormat.map(([k, v]) => `<span class="tag">${k} ${v}</span>`).join('')}</div>` },
       { k: '共性', v: z.takeaway },
     ], '爆款筛选逻辑');
@@ -1082,7 +1083,7 @@ v1Mount(stage);
   }
   const V2 = {
     render: () => { const f0 = params.get('f'); qFilter = comp(sel).formats.some((f) => f.id === f0) ? f0 : null; return `<div class="v2">
-      ${head('哪些爆款值得抄：榜内百分位 × 可迁移度', `横轴是笔记在聚光 / 蒲公英榜单里的百分位（≥ 80 算爆款）；纵轴可迁移度是判断分：素人能不能拍、成本低不低、和「拍视频赚钱」的叙事是否一致。右上角是又火又好抄的，最值得${A.product.name}照着做。`)}
+      ${head('哪些爆款值得抄：榜内百分位 × 可迁移度', `横轴是笔记在聚光 / 蒲公英榜单里的百分位（≥ ${HIT_T} 算爆款）；纵轴可迁移度是判断分：${A.product.copy?.transferDef ?? `${AtlasUI.nm(A.product.name, 'right')}能不能低成本照着做、和${AtlasUI.nm(A.product.name)}的叙事是否一致`}。右上角是又火又好抄的，最值得${AtlasUI.nm(A.product.name)}照着做。`)}
       <div class="p2-wrap">
         <div class="bar">${seg('选择竞品')}</div>
         <div class="chead">${chead()}</div>
@@ -1116,9 +1117,9 @@ v1Mount(stage);
 (() => {
   const A = window.ATLAS;
   const { cover } = AtlasUI;
-  const DONE = ['cz-1', 'dj-1', 'fy-2'];
+  // fully torn-down formats, in competitor order (the rest carry `inherit: true`)
+  const DONE = A.competitors.flatMap((c) => c.formats.map((f) => f.id)).filter((id) => A.teardowns[id] && !A.teardowns[id].inherit);
   const POS = ['标题', '封面', '正文', '话题'];
-  const SHORT = { chaoziran: '超自然', duojin: '夺金密令', fuye: '副业' };
   const PRODUCT = A.product.name;
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const p0 = (v) => Math.round(v) + '%';
@@ -1147,7 +1148,7 @@ v1Mount(stage);
   // ---------- pieces ----------
   const switcher = () => `<div class="td-switch" role="group" aria-label="切换拆解">${DONE.map((id) => {
     const { c, f } = find(id);
-    return `<button type="button" data-f="${id}" aria-pressed="${id === fid}" aria-label="${esc(c.name)}：${esc(f.name)}"><span class="c"><span class="c-full">${esc(c.name)}</span><span class="c-short">${esc(SHORT[c.id] || c.name)}</span></span><span class="fn">${esc(f.name)}</span></button>`;
+    return `<button type="button" data-f="${id}" aria-pressed="${id === fid}" aria-label="${esc(c.name)}：${esc(f.name)}"><span class="c"><span class="c-full">${esc(c.name)}</span><span class="c-short">${esc(c.short || c.name)}</span></span><span class="fn">${esc(f.name)}</span></button>`;
   }).join('')}</div>`;
 
   const head = (x) => `<header class="td-head td-in">
@@ -1161,7 +1162,7 @@ v1Mount(stage);
   const steps = (s, inferred = []) => `<ol class="steps">${s.map((r) => `<li><span class="t">${esc(r.t)}</span><span>${esc(r.d)}${inferred.includes(r.t) ? '<span class="inf" title="没有拿到视频，根据标题和封面推断">推断</span>' : ''}</span></li>`).join('')}</ol>`;
   const whys = (w) => `<ol class="whys">${w.map((r) => `<li>${esc(r)}</li>`).join('')}</ol>`;
   const chain = (st) => `<ol class="chain">${st.map((r) => `<li><b>${esc(r.k)}</b><span>${esc(r.d)}</span></li>`).join('')}</ol>`;
-  const apply = (x) => `<a class="apply" href="#playbook" data-go="playbook" data-law="${x.law.id}"><span class="lbl">放到${esc(PRODUCT)}上</span><span>${esc(x.law.name)}：${esc(x.law.apply.title)}</span><span class="go">看落地 →</span></a>`;
+  const apply = (x) => `<a class="apply" href="#playbook" data-go="playbook" data-law="${x.law.id}"><span class="lbl">放到${esc(AtlasUI.nm(PRODUCT))}上</span><span>${esc(x.law.name)}：${esc(x.law.apply.title)}</span><span class="go">看落地 →</span></a>`;
 
   const noteCap = (n) => `<div class="cap">
     <b>${esc(n.title)}</b>
@@ -1220,7 +1221,7 @@ v1Mount(stage);
         ${cover(x.hero)}
         <div class="msg">
           <h2>这一条还没拆</h2>
-          <p class="td-sub">「${esc(x.f.name)}」已经进了爆款池，账号、流量和变现还没拆。先看已经拆完的 3 条：</p>
+          <p class="td-sub">「${esc(x.f.name)}」已经进了爆款池，账号、流量和变现还没拆。先看已经拆完的 ${DONE.length} 条：</p>
           <div class="stats num"><span>占比<b>${x.f.share}%</b></span><span>爆款数<b>${x.f.hits}</b></span><span>平均百分位<b>${p0(x.f.avgPct)}</b></span><span>爆款率<b>${x.f.hitRate}%</b></span></div>
           <ul class="done">${DONE.map((id) => { const o = find(id); return `<li><a href="#teardown" data-f="${id}">${esc(o.f.name)}<span>${esc(o.c.name)}</span></a></li>`; }).join('')}</ul>
         </div>
@@ -1279,12 +1280,8 @@ v1Mount(stage);
   const A = window.ATLAS, P = A.product, laws = A.laws;
   const { cover } = AtlasUI;
 
-  // 拍吧 mock covers (synthetic text covers until the real ones are shot), one per law
-  const MOCK = {
-    L1: { cover: '拍一条<br>¥0.96 到账', pal: 2, person: false, type: '图文' },
-    L2: { cover: '拍吧<br>接单日记', pal: 0, person: true, type: '图文' },
-    L3: { cover: 'i 人也能接<br>的视频单', pal: 1, person: true, type: '图文' },
-  };
+  // product mock cover per law (synthetic text cover until the real one is made): law.mock, else built from apply.title
+  const mockOf = (l, i) => l.mock || { cover: l.apply.title.replace(/[「」]/g, ''), pal: i % 3, person: false, type: '图文' };
   const compName = (id) => A.competitors.find((c) => c.id === id)?.name ?? '';
   const steps = (s) => s.split(/\s*(?:→|\+|，|；)\s*/).filter(Boolean);
   const tbc = /^待确认[：:]\s*/;
@@ -1293,7 +1290,7 @@ v1Mount(stage);
   const head = () => `
     <header class="p4-head rise">
       <p class="eyebrow">规律与落地</p>
-      <h2>${laws.length} 条规律，落到${P.name}</h2>
+      <h2>${laws.length} 条规律，落到${AtlasUI.nm(P.name, 'left')}</h2>
       <p><b>${P.name}</b>：${P.oneLine}。</p>
       <p>本轮目标：${goal}</p>
     </header>`;
@@ -1323,8 +1320,8 @@ v1Mount(stage);
     </figure>`;
   };
 
-  const mock = (l, cls = 'mock') => `<div class="${cls}" role="img" aria-label="拍吧版本封面，待制作">${cover(MOCK[l.id], { tag: false })}</div>`;
-  const badge = '<span class="mock-badge">拍吧版本 · 待制作</span>';
+  const mock = (l, cls = 'mock') => `<div class="${cls}" role="img" aria-label="${AtlasUI.nm(P.name, 'right')}版本封面，待制作">${cover(mockOf(l, laws.indexOf(l)), { tag: false })}</div>`;
+  const badge = `<span class="mock-badge">${AtlasUI.nm(P.name, 'right')}版本 · 待制作</span>`;
 
   /* ---------------- 映射 ---------------- */
   const v2Panel = (l) => `
@@ -1347,7 +1344,7 @@ v1Mount(stage);
           </div>`; }).join('')}
       </div>
       <div class="v2-pane">
-        <h3>${P.name}怎么做 ${badge}</h3>
+        <h3>${AtlasUI.nm(P.name, 'right')}怎么做 ${badge}</h3>
         <div class="v2-me">
           ${mock(l)}
           <div>
