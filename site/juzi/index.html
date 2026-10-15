@@ -115,6 +115,10 @@
     opacity: 0; transform: translateY(2px); transition: opacity 120ms ease-out, transform 120ms ease-out;
   }
   .p1-tip[data-on] { opacity: 1; transform: none; }
+  .p1-tip[data-pinned] { pointer-events: auto; }
+  .p1-tip .tip-go { display: inline-block; margin-top: 8px; color: var(--accent-ink); font-weight: 600; text-decoration: none; }
+  @media (hover: hover) and (pointer: fine) { .p1-tip .tip-go:hover { text-decoration: underline; text-underline-offset: 3px; } }
+  .p1-tip .tip-hint { margin-top: 6px; font-size: 11.5px; color: var(--ink-3); }
   .p1-tip b { color: var(--ink); font-weight: 650; font-size: 13.5px; }
   .p1-tip .row { display: flex; justify-content: space-between; gap: 16px; font-variant-numeric: tabular-nums; }
   .p1-tip .row strong { color: var(--ink); font-weight: 600; }
@@ -152,7 +156,7 @@
   .v1-chart { background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow-1); padding: 16px 12px 12px; }
   .v1-svg { display: block; width: 100%; overflow: visible; }
   .v1-svg text { font-family: var(--font-sans); }
-  .v1-pt { cursor: default; outline: none; }
+  .v1-pt { cursor: pointer; outline: none; }
   .v1-pt .mark { transition: stroke-width 120ms ease-out; transform-box: fill-box; transform-origin: center; }
   .v1-pt:focus-visible .mark, .v1-pt[data-on] .mark { stroke: var(--ink); stroke-width: 2; }
   .v1-pt .mark { animation: v1-pop 300ms var(--ease-out) both; animation-delay: var(--d, 0ms); }
@@ -692,6 +696,7 @@ function makeTip(stage) {
   tip.className = 'p1-tip';
   tip.setAttribute('role', 'tooltip');
   stage.append(tip);
+  let pinned = null;
   function fill(b) {
     tip.replaceChildren();
     const t = document.createElement('b'); t.textContent = b.name; tip.append(t);
@@ -704,9 +709,17 @@ function makeTip(stage) {
       r.append(a, c); tip.append(r);
     }
     const w = document.createElement('div'); w.className = 'why'; w.textContent = b.why; tip.append(w);
+    if (pinned && b.picked) {
+      const g = document.createElement('a'); g.className = 'tip-go'; g.href = '#hits'; g.dataset.go = 'hits'; g.dataset.c = b.id; g.textContent = '看爆款 →'; tip.append(g);
+    }
+    if (!pinned) { const h = document.createElement('div'); h.className = 'tip-hint'; h.textContent = '点一下固定'; tip.append(h); }
   }
   return {
-    show(b, x, y) {
+    get pinned() { return pinned; },
+    pin(b, x, y) { pinned = b; tip.setAttribute('data-pinned', ''); this.place(b, x, y); tip.querySelector('.tip-go')?.focus({ preventScroll: true }); },
+    unpin() { pinned = null; tip.removeAttribute('data-pinned'); this.hide(true); },
+    show(b, x, y) { if (!pinned) this.place(b, x, y); },
+    place(b, x, y) {
       fill(b);
       tip.setAttribute('data-on', '');
       const r = tip.getBoundingClientRect();
@@ -716,7 +729,8 @@ function makeTip(stage) {
       if (top + r.height > innerHeight - 12) top = y - r.height - 14;
       tip.style.left = left + 'px'; tip.style.top = top + 'px';
     },
-    hide() { tip.removeAttribute('data-on'); },
+    hide(force) { if (!pinned || force) tip.removeAttribute('data-on'); },
+    el: tip,
   };
 }
 
@@ -867,9 +881,17 @@ function v1Mount(stage) {
       g.addEventListener('pointerleave', () => { g.removeAttribute('data-on'); tip.hide(); });
       g.addEventListener('focus', () => { const r = g.getBoundingClientRect(); tip.show(b, r.right, r.top + r.height / 2); });
       g.addEventListener('blur', () => tip.hide());
+      // Click / tap / Enter pins the card (touch has no hover); the same bubble again, outside, or Esc closes it.
+      const toggle = (x, y) => { if (tip.pinned === b) tip.unpin(); else tip.pin(b, x, y); };
+      g.addEventListener('click', (e) => { e.stopPropagation(); toggle(e.clientX, e.clientY); });
+      g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); const r = g.getBoundingClientRect(); toggle(r.right, r.top + r.height / 2); } });
     });
   }
   draw(true);
+  document.addEventListener('click', (e) => { if (tip.pinned && !tip.el.contains(e.target)) tip.unpin(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && tip.pinned) tip.unpin(); });
+  tip.el.addEventListener('click', (e) => { if (e.target.closest('.tip-go')) setTimeout(() => tip.unpin(), 0); });
+  addEventListener('scroll', () => { if (tip.pinned) tip.unpin(); }, { passive: true });
   const ro = new ResizeObserver(() => draw(false));
   ro.observe(host);
   addEventListener('scroll', () => tip.hide(), { passive: true });
