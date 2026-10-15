@@ -109,7 +109,7 @@ def note(i, c, f):
     return {'id': i['id'], 'title': clean(i['title'])[:60], 'tags': re.findall(r'#([^#]*?)\[话题\]#', i['title']), 'img': i['cover'], 'aspect': i['coverAspect'], 'account': i['subtitle'],
             'type': i['facets']['fmt'], 'pct': pct(i), 'featured': i['facets']['tier'] == 'featured', 'url': i['url'],
             'list': best['list'] if best else '', 'rank': best['rank'] if best else None, 'total': best['total'] if best else None,
-            'objective': objective(best['list']) if best else '', 'date': date(i), 'competitor': c, 'format': f}
+            'objective': objective(best['list']) if best else '', 'date': date(i), 'video': i.get('video'), 'competitor': c, 'format': f}
 
 competitors, scatter, notes = [], {}, {}
 for c, fl in F.items():

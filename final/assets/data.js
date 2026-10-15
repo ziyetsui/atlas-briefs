@@ -234,6 +234,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "应用下载",
        "date": "2026-08-28",
+       "video": null,
        "competitor": "chaoziran",
        "format": "cz-1"
       },
@@ -259,6 +260,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "应用下载",
        "date": "2026-08-03",
+       "video": null,
        "competitor": "chaoziran",
        "format": "cz-1"
       },
@@ -278,6 +280,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "应用下载",
        "date": "2026-07-30",
+       "video": null,
        "competitor": "chaoziran",
        "format": "cz-1"
       }
@@ -313,6 +316,11 @@ window.ATLAS = {
        "total": 86,
        "objective": "应用下载",
        "date": "2026-03-19",
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/30c5082ff42f.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/503f2d10344c.webp",
+        "durationSec": 206
+       },
        "competitor": "chaoziran",
        "format": "cz-2"
       },
@@ -332,6 +340,11 @@ window.ATLAS = {
        "total": 100,
        "objective": "应用下载",
        "date": "2025-09-29",
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/dbe97f8af34c.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/2b3b15054168.webp",
+        "durationSec": 27
+       },
        "competitor": "chaoziran",
        "format": "cz-2"
       },
@@ -351,6 +364,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "应用下载",
        "date": "2026-07-31",
+       "video": null,
        "competitor": "chaoziran",
        "format": "cz-2"
       }
@@ -393,6 +407,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "应用下载",
        "date": "2025-11-16",
+       "video": null,
        "competitor": "chaoziran",
        "format": "cz-3"
       },
@@ -412,6 +427,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "应用下载",
        "date": "2026-04-30",
+       "video": null,
        "competitor": "chaoziran",
        "format": "cz-3"
       },
@@ -431,6 +447,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "应用下载",
        "date": "2026-03-09",
+       "video": null,
        "competitor": "chaoziran",
        "format": "cz-3"
       }
@@ -487,6 +504,7 @@ window.ATLAS = {
        "total": 102,
        "objective": "蒲公英合作",
        "date": "2026-09-02",
+       "video": null,
        "competitor": "duojin",
        "format": "dj-1"
       },
@@ -506,6 +524,7 @@ window.ATLAS = {
        "total": 102,
        "objective": "蒲公英合作",
        "date": "2026-09-02",
+       "video": null,
        "competitor": "duojin",
        "format": "dj-1"
       },
@@ -525,6 +544,7 @@ window.ATLAS = {
        "total": 102,
        "objective": "蒲公英合作",
        "date": "2026-09-04",
+       "video": null,
        "competitor": "duojin",
        "format": "dj-1"
       }
@@ -560,6 +580,7 @@ window.ATLAS = {
        "total": 102,
        "objective": "蒲公英合作",
        "date": "2026-09-08",
+       "video": null,
        "competitor": "duojin",
        "format": "dj-2"
       },
@@ -579,6 +600,7 @@ window.ATLAS = {
        "total": 102,
        "objective": "蒲公英合作",
        "date": "2026-09-07",
+       "video": null,
        "competitor": "duojin",
        "format": "dj-2"
       },
@@ -598,6 +620,7 @@ window.ATLAS = {
        "total": 102,
        "objective": "蒲公英合作",
        "date": "2026-09-03",
+       "video": null,
        "competitor": "duojin",
        "format": "dj-2"
       }
@@ -633,6 +656,7 @@ window.ATLAS = {
        "total": 102,
        "objective": "蒲公英合作",
        "date": "2026-09-02",
+       "video": null,
        "competitor": "duojin",
        "format": "dj-3"
       },
@@ -652,6 +676,7 @@ window.ATLAS = {
        "total": 102,
        "objective": "蒲公英合作",
        "date": "2026-09-02",
+       "video": null,
        "competitor": "duojin",
        "format": "dj-3"
       },
@@ -671,6 +696,7 @@ window.ATLAS = {
        "total": 102,
        "objective": "蒲公英合作",
        "date": "2026-09-02",
+       "video": null,
        "competitor": "duojin",
        "format": "dj-3"
       }
@@ -743,6 +769,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2026-07-23",
+       "video": null,
        "competitor": "fuye",
        "format": "fy-1"
       },
@@ -762,6 +789,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2025-08-18",
+       "video": null,
        "competitor": "fuye",
        "format": "fy-1"
       },
@@ -781,6 +809,11 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2024-11-01",
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/02b123fdcd60.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/deba0d267cc2.webp",
+        "durationSec": 12
+       },
        "competitor": "fuye",
        "format": "fy-1"
       }
@@ -816,6 +849,11 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2026-03-03",
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/382b7a3d4a7b.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/9b079254d2a8.webp",
+        "durationSec": 162
+       },
        "competitor": "fuye",
        "format": "fy-2"
       },
@@ -835,6 +873,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2026-08-06",
+       "video": null,
        "competitor": "fuye",
        "format": "fy-2"
       },
@@ -854,6 +893,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2026-07-15",
+       "video": null,
        "competitor": "fuye",
        "format": "fy-2"
       }
@@ -889,6 +929,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2026-07-21",
+       "video": null,
        "competitor": "fuye",
        "format": "fy-3"
       },
@@ -908,6 +949,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2026-01-05",
+       "video": null,
        "competitor": "fuye",
        "format": "fy-3"
       },
@@ -927,6 +969,7 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2025-02-03",
+       "video": null,
        "competitor": "fuye",
        "format": "fy-3"
       }
@@ -2775,6 +2818,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "应用下载",
    "date": "2026-08-28",
+   "video": null,
    "competitor": "chaoziran",
    "format": "cz-1"
   },
@@ -2800,6 +2844,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "应用下载",
    "date": "2026-08-03",
+   "video": null,
    "competitor": "chaoziran",
    "format": "cz-1"
   },
@@ -2819,6 +2864,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "应用下载",
    "date": "2026-07-30",
+   "video": null,
    "competitor": "chaoziran",
    "format": "cz-1"
   },
@@ -2838,6 +2884,11 @@ window.ATLAS = {
    "total": 86,
    "objective": "应用下载",
    "date": "2026-03-19",
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/30c5082ff42f.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/503f2d10344c.webp",
+    "durationSec": 206
+   },
    "competitor": "chaoziran",
    "format": "cz-2"
   },
@@ -2857,6 +2908,11 @@ window.ATLAS = {
    "total": 100,
    "objective": "应用下载",
    "date": "2025-09-29",
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/dbe97f8af34c.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/2b3b15054168.webp",
+    "durationSec": 27
+   },
    "competitor": "chaoziran",
    "format": "cz-2"
   },
@@ -2876,6 +2932,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "应用下载",
    "date": "2026-07-31",
+   "video": null,
    "competitor": "chaoziran",
    "format": "cz-2"
   },
@@ -2902,6 +2959,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "应用下载",
    "date": "2025-11-16",
+   "video": null,
    "competitor": "chaoziran",
    "format": "cz-3"
   },
@@ -2921,6 +2979,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "应用下载",
    "date": "2026-04-30",
+   "video": null,
    "competitor": "chaoziran",
    "format": "cz-3"
   },
@@ -2940,6 +2999,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "应用下载",
    "date": "2026-03-09",
+   "video": null,
    "competitor": "chaoziran",
    "format": "cz-3"
   },
@@ -2959,6 +3019,7 @@ window.ATLAS = {
    "total": 102,
    "objective": "蒲公英合作",
    "date": "2026-09-02",
+   "video": null,
    "competitor": "duojin",
    "format": "dj-1"
   },
@@ -2978,6 +3039,7 @@ window.ATLAS = {
    "total": 102,
    "objective": "蒲公英合作",
    "date": "2026-09-02",
+   "video": null,
    "competitor": "duojin",
    "format": "dj-1"
   },
@@ -2997,6 +3059,7 @@ window.ATLAS = {
    "total": 102,
    "objective": "蒲公英合作",
    "date": "2026-09-04",
+   "video": null,
    "competitor": "duojin",
    "format": "dj-1"
   },
@@ -3016,6 +3079,7 @@ window.ATLAS = {
    "total": 102,
    "objective": "蒲公英合作",
    "date": "2026-09-08",
+   "video": null,
    "competitor": "duojin",
    "format": "dj-2"
   },
@@ -3035,6 +3099,7 @@ window.ATLAS = {
    "total": 102,
    "objective": "蒲公英合作",
    "date": "2026-09-07",
+   "video": null,
    "competitor": "duojin",
    "format": "dj-2"
   },
@@ -3054,6 +3119,7 @@ window.ATLAS = {
    "total": 102,
    "objective": "蒲公英合作",
    "date": "2026-09-03",
+   "video": null,
    "competitor": "duojin",
    "format": "dj-2"
   },
@@ -3073,6 +3139,7 @@ window.ATLAS = {
    "total": 102,
    "objective": "蒲公英合作",
    "date": "2026-09-02",
+   "video": null,
    "competitor": "duojin",
    "format": "dj-3"
   },
@@ -3092,6 +3159,7 @@ window.ATLAS = {
    "total": 102,
    "objective": "蒲公英合作",
    "date": "2026-09-02",
+   "video": null,
    "competitor": "duojin",
    "format": "dj-3"
   },
@@ -3111,6 +3179,7 @@ window.ATLAS = {
    "total": 102,
    "objective": "蒲公英合作",
    "date": "2026-09-02",
+   "video": null,
    "competitor": "duojin",
    "format": "dj-3"
   },
@@ -3130,6 +3199,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2026-07-23",
+   "video": null,
    "competitor": "fuye",
    "format": "fy-1"
   },
@@ -3149,6 +3219,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2025-08-18",
+   "video": null,
    "competitor": "fuye",
    "format": "fy-1"
   },
@@ -3168,6 +3239,11 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2024-11-01",
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/02b123fdcd60.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/deba0d267cc2.webp",
+    "durationSec": 12
+   },
    "competitor": "fuye",
    "format": "fy-1"
   },
@@ -3187,6 +3263,11 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2026-03-03",
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/382b7a3d4a7b.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/9b079254d2a8.webp",
+    "durationSec": 162
+   },
    "competitor": "fuye",
    "format": "fy-2"
   },
@@ -3206,6 +3287,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2026-08-06",
+   "video": null,
    "competitor": "fuye",
    "format": "fy-2"
   },
@@ -3225,6 +3307,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2026-07-15",
+   "video": null,
    "competitor": "fuye",
    "format": "fy-2"
   },
@@ -3244,6 +3327,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2026-07-21",
+   "video": null,
    "competitor": "fuye",
    "format": "fy-3"
   },
@@ -3263,6 +3347,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2026-01-05",
+   "video": null,
    "competitor": "fuye",
    "format": "fy-3"
   },
@@ -3282,6 +3367,7 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2025-02-03",
+   "video": null,
    "competitor": "fuye",
    "format": "fy-3"
   },
@@ -3301,6 +3387,7 @@ window.ATLAS = {
    "total": 102,
    "objective": "蒲公英合作",
    "date": "2026-09-02",
+   "video": null,
    "competitor": "duojin",
    "format": "dj-1"
   }

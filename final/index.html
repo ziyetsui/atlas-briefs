@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try { const t = localStorage.getItem('atlas-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch {}</script>
 <title>拍吧 Brief</title>
 <link rel="stylesheet" href="assets/base.css">
 <style>
@@ -216,7 +217,8 @@
   .nc-m .acct { overflow: hidden; text-overflow: ellipsis; min-width: 0; color: var(--ink-2); }
   .nc-l { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 11px; color: var(--ink-3); }
   .chip { display: inline-flex; align-items: center; height: 20px; padding: 0 7px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); font-size: 11px; white-space: nowrap; }
-  .nc-a { display: flex; gap: 12px; font-size: 12px; }
+  .nc-a { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 12px; }
+  .nc-a .play-link { align-self: flex-start; }
   .nc-a a { color: var(--accent-ink); text-decoration: none; font-weight: 500; padding: 4px 0; }
   .nc-a a.ext { color: var(--ink-2); }
   @media (hover: hover) and (pointer: fine) { .nc-a a:hover { text-decoration: underline; text-underline-offset: 3px; } }
@@ -563,7 +565,7 @@
   .v2-row-cov { display: block; border-radius: 8px; transition: transform 160ms var(--ease-out); }
   .v2-row-cov:active { transform: scale(0.97); }
   .v2-row .cover { border-radius: 8px; }
-  .v2-row-l { display: flex; gap: 14px; margin-top: 4px; font-size: 12px; }
+  .v2-row-l { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 4px; font-size: 12px; }
   .v2-row-l a { color: var(--ink-2); padding: 2px 0; transition: color 150ms ease; }
   @media (hover: hover) and (pointer: fine) { .v2-row-l a:hover { color: var(--ink); } .v2-row-t:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-strong); } }
   .v2-row .cover-text { font-size: 9px; left: 8%; right: 8%; }
@@ -870,12 +872,12 @@ v1Mount(stage);
       <div><dt>平均百分位</dt><dd>${f.avgPct}</dd></div></dl>`;
 
   const nc = (n, fid, i = 0) => `<article class="nc enter" style="--i:${i}">
-      <a href="#teardown" data-go="teardown" data-f="${fid}" class="cv" aria-label="看拆解：${n.title}">${U.cover(n)}</a>
+      <a href="#teardown" data-go="teardown" data-f="${fid}" class="cv" aria-label="看拆解：${n.title}">${U.cover(n, { play: false })}</a>
       <div style="display:grid;gap:6px">
         <p class="nc-t">${n.title}</p>
         <p class="nc-m"><span class="acct">${n.account}</span><span>${n.date}</span></p>
         <p class="nc-l"><span class="chip">${n.objective}</span><span class="num" title="${n.list}">榜内 ${Math.round(n.pct)}% · ${listShort(n.list)} 第 ${n.rank}/${n.total}</span></p>
-        <p class="nc-a"><a href="#teardown" data-go="teardown" data-f="${fid}">看拆解 →</a><a class="ext" href="${n.url}" target="_blank" rel="noopener">看原文 ↗</a></p>
+        <p class="nc-a">${U.playLink(n)}<a href="#teardown" data-go="teardown" data-f="${fid}">看拆解 →</a><a class="ext" href="${n.url}" target="_blank" rel="noopener">看原文 ↗</a></p>
       </div></article>`;
 
   const head = (h1, lede) => `<header class="p2-wrap p2-head">
@@ -1135,7 +1137,7 @@ v1Mount(stage);
   const sibs = (x) => {
     const rest = x.f.notes.filter((n) => n.id !== x.hero.id).slice(0, 2);
     if (!rest.length) return '';
-    return `<div class="sibs-h">同形式的另外 ${rest.length} 条</div><div class="sibs">${rest.map((n) => `<a href="${esc(n.url)}" target="_blank" rel="noopener" title="${esc(n.title)}">${cover(n)}<span>${esc(n.title)}</span></a>`).join('')}</div>`;
+    return `<div class="sibs-h">同形式的另外 ${rest.length} 条</div><div class="sibs">${rest.map((n) => `<a href="${esc(n.url)}" target="_blank" rel="noopener" title="${esc(n.title)}">${cover(n, { play: false })}<span>${esc(n.title)}</span></a>`).join('')}</div>`;
   };
 
   const MAG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></svg>';
@@ -1299,11 +1301,11 @@ v1Mount(stage);
         <h3>竞品怎么做 <span class="num">${l.examples.length} 个例子</span></h3>
         ${l.examples.map((id) => { const n = A.notes[id]; return `
           <div class="v2-row">
-            <a class="v2-row-cov" href="#teardown" data-go="teardown" data-f="${n.format}" tabindex="-1" aria-hidden="true">${cover(n, { tag: false })}</a>
+            <a class="v2-row-cov" href="#teardown" data-go="teardown" data-f="${n.format}" tabindex="-1" aria-hidden="true">${cover(n, { tag: false, play: false })}</a>
             <span>
               <a class="v2-row-t" href="#teardown" data-go="teardown" data-f="${n.format}">${n.title}</a>
               <span class="v2-row-m">${n.account} · ${compName(n.competitor)} · ${n.type}</span>
-              <span class="v2-row-l"><a href="#teardown" data-go="teardown" data-f="${n.format}">看拆解</a><a href="${n.url}" target="_blank" rel="noopener">看原文 ↗</a></span>
+              <span class="v2-row-l">${AtlasUI.playLink(n)}<a href="#teardown" data-go="teardown" data-f="${n.format}">看拆解</a><a href="${n.url}" target="_blank" rel="noopener">看原文 ↗</a></span>
             </span>
             <span class="v2-row-n">榜内 ${Math.round(n.pct)}%<small>${n.objective}</small></span>
           </div>`; }).join('')}
