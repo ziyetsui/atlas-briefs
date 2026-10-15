@@ -1,3 +1,11 @@
 .DS_Store
 # Raw library export (32MB). Re-export from the Atlas ad-creative library to rebuild data.js.
 data/library/
+# 聚光内容广场 pulls and the library built from them (specs/0004); media is re-hosted on R2
+data/library-jg/
+data/fetch/jg/
+data/fetch/jg-media/
+# Fetched originals (on R2 now) and signed 小红书 links / logs — local only
+data/fetch/media/
+data/fetch/signed.json
+data/fetch/*.log

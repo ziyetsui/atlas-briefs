@@ -782,7 +782,8 @@ function v1Mount(stage) {
     const small = W < 520;
     const H = Math.round(Math.min(560, Math.max(340, W * 0.7)));
     const pad = { l: small ? 30 : 40, r: small ? 10 : 16, t: 30, b: 34 };
-    const X0 = 40, X1 = 90, Y0 = 20, Y1 = 90;
+    // widen to 100 when a candidate scores past 90 (e.g. a direct same-category group), so no bubble falls off the chart
+    const X0 = 40, X1 = Math.max(90, ...POOL.map((b) => Math.ceil(b.relevance / 10) * 10)), Y0 = 20, Y1 = Math.max(90, ...POOL.map((b) => Math.ceil(b.heat / 10) * 10));
     const x = (v) => pad.l + ((v - X0) / (X1 - X0)) * (W - pad.l - pad.r);
     const y = (v) => pad.t + ((Y1 - v) / (Y1 - Y0)) * (H - pad.t - pad.b);
     const rScale = small ? 0.75 : 1;
@@ -1174,7 +1175,7 @@ v1Mount(stage);
   const sibs = (x) => {
     const rest = x.f.notes.filter((n) => n.id !== x.hero.id).slice(0, 2);
     if (!rest.length) return '';
-    return `<div class="sibs-h">同形式的另外 ${rest.length} 条</div><div class="sibs">${rest.map((n) => `<a href="${esc(n.url)}" target="_blank" rel="noopener" title="${esc(n.title)}">${cover(n, { play: false })}<span>${esc(n.title)}</span></a>`).join('')}</div>`;
+    return `<div class="sibs-h">同形式的另外 ${rest.length} 条</div><div class="sibs">${rest.map((n) => `<a href="${esc(n.url)}" target="_blank" rel="noopener" title="${esc(n.title)}"${n.video || n.images?.length ? ` data-view="${n.id}"` : ''}>${cover(n, { play: false })}<span>${esc(n.title)}</span></a>`).join('')}</div>`;
   };
 
   const MAG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></svg>';

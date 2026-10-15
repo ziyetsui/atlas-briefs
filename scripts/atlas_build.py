@@ -31,8 +31,8 @@ def lists(i):
             return [{'list': r[0], 'rank': int(r[1]), 'total': int(r[2]), 'metric': r[5], 'window': int(r[6])} for r in s['rows']]
     return []
 
-def date(i):  # 小红书 note ids start with a hex unix timestamp
-    return datetime.datetime.fromtimestamp(int(i['id'][:8], 16)).strftime('%Y-%m-%d')
+def date(i):  # real publish date when the library has it (聚光 pulls); else 小红书 note ids start with a hex unix timestamp
+    return i.get('date') or datetime.datetime.fromtimestamp(int(i['id'][:8], 16)).strftime('%Y-%m-%d')
 
 def clean(t):  # first line, without #话题# tags
     t = re.sub(r'#[^#]*?\[话题\]#', '', t.split('\n')[0]).strip(' ：:')
@@ -50,8 +50,19 @@ def best_list(i):
     L = lists(i)
     return min(L, key=lambda r: r['rank'] / r['total']) if L else None
 
+# Media fetched from 小红书 for brief notes (scripts/fetch_xhs.py): video / images / body / likes …
+MEDIA_PATH = os.path.join(ROOT, 'data/fetch/media.json')
+MEDIA = json.load(open(MEDIA_PATH)) if os.path.exists(MEDIA_PATH) else {}
+# Per-brief media re-hosted on R2 (specs/0004 §4): site/<slug>/media.json
+BRIEF_MEDIA_PATH = os.path.join(ROOT, 'site', args.slug, 'media.json')
+if os.path.exists(BRIEF_MEDIA_PATH): MEDIA = {**MEDIA, **json.load(open(BRIEF_MEDIA_PATH))}
+
 def note(i, c, f):
     b = best_list(i)
+    extra = {k: v for k, v in i.get('extra', {}).items() if not k.startswith('src')}  # real numbers from 聚光 pulls
+    return {**_note(i, c, f, b), **extra, **MEDIA.get(i['id'], {})}
+
+def _note(i, c, f, b):
     return {'id': i['id'], 'title': clean(i['title'])[:60], 'tags': re.findall(r'#([^#]*?)\[话题\]#', i['title']), 'img': i['cover'], 'aspect': i['coverAspect'], 'account': i['subtitle'],
             'type': i['facets']['fmt'], 'pct': pct(i), 'featured': i['facets']['tier'] == 'featured', 'url': i['url'],
             'list': b['list'] if b else '', 'rank': b['rank'] if b else None, 'total': b['total'] if b else None,
@@ -145,10 +156,11 @@ for L in B.LAWS:
 
 # ---------- product + structured summaries ----------
 product = dict(B.PRODUCT)
-product['pool'] = {'source': 'Atlas 素材库 · 小红书聚光 / 蒲公英 / 热门榜单',
+SRC = getattr(B, 'SOURCE', {})  # a brief built from another library (e.g. 聚光内容广场, specs/0004) describes it here
+product['pool'] = {'source': SRC.get('name', 'Atlas 素材库 · 小红书聚光 / 蒲公英 / 热门榜单'),
                    'window': f"{min(date(i) for L in members.values() for i in L)} → {max(date(i) for L in members.values() for i in L)}",
                    'brands': len(pool), 'notes': sum(p['notes'] for p in pool), 'library': len(items)}
-product['dataNote'] = '数据来自榜单记录：有榜内百分位和排名，没有点赞数和粉丝数；发布日期由笔记 ID 推算'
+product['dataNote'] = SRC.get('note', '数据来自榜单记录：有榜内百分位和排名，没有点赞数和粉丝数；发布日期由笔记 ID 推算')
 product['cut'] = {'relevance': B.CUT['relevance'], 'heat': B.CUT['heat'], 'hit': HIT, 'transfer': TRANSFER}
 dropped = {}
 for p in pool:

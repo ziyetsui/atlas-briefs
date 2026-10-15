@@ -79,14 +79,31 @@ const attr = (t) => String(t || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;
 const dur = (s) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
 
 // `play: false` when the cover sits inside a link — pair it with playLink(n) next to the other actions.
+function fmt(v) {
+  if (v >= 10000) return (v / 10000).toFixed(v >= 100000 ? 0 : 1).replace(/\.0$/, '') + '万';
+  return v.toLocaleString('zh-CN');
+}
+
+// Structured "how we got here" strip above a quadrant chart: 池子 → 怎么筛 → 结果 → 共性.
+// rows: [{ k: '池子', v: html }, ...]; the last row is the takeaway and gets the accent rail.
+function summary(rows, label = '筛选逻辑') {
+  return `<ol class="sum" aria-label="${label}">${rows.map((r, i) => `<li class="sum-step${i === rows.length - 1 ? ' sum-key' : ''}">
+      <span class="sum-k"><span class="sum-n num">${i + 1}</span>${r.k}</span>
+      <div class="sum-v">${r.v}</div></li>`).join('')}</ol>`;
+}
+
+// Is there anything to open in the page? video file, or the post's images.
+const viewable = (n) => !!(n.video || (n.images && n.images.length));
+const viewLabel = (n) => n.video ? dur(n.video.durationSec) : `${n.images.length} 图`;
+
 function cover(n, { tag = true, play = true } = {}) {
   if (n.img) {
     const label = n.pct != null ? `榜内 ${Math.round(n.pct)}%` : '';
-    const v = n.video;
-    const badge = v
+    const isV = !!n.video;
+    const badge = viewable(n)
       ? (play
-        ? `<button type="button" class="cover-playbtn" data-video="${n.id}" aria-label="播放视频（${dur(v.durationSec)}）：${attr(n.title)}"><span class="pb-dot" aria-hidden="true">▶</span><span class="pb-dur num">${dur(v.durationSec)}</span></button>`
-        : `<span class="cover-play cover-play-live" aria-label="可播放视频">▶</span>`)
+        ? `<button type="button" class="cover-playbtn" data-view="${n.id}" aria-label="${isV ? '播放视频' : '看图文'}（${viewLabel(n)}）：${attr(n.title)}"><span class="pb-dot${isV ? '' : ' pb-dot-img'}" aria-hidden="true">${isV ? '▶' : GALLERY_ICON}</span><span class="pb-dur num">${viewLabel(n)}</span></button>`
+        : `<span class="cover-play cover-play-live" aria-label="${isV ? '可播放视频' : '可看图文'}">${isV ? '▶' : GALLERY_ICON}</span>`)
       : (n.type === '视频' ? '<span class="cover-play" aria-label="视频">▶</span>' : '');
     return `<div class="cover-wrap"><div class="cover cover-photo">
       <img src="${n.img}" alt="${attr(n.title)}" loading="lazy" decoding="async">
@@ -102,70 +119,83 @@ function cover(n, { tag = true, play = true } = {}) {
     ${tag ? `<span class="cover-tag num">♥ ${fmt(n.likes)}</span>` : ''}
   </div></div>`;
 }
+const GALLERY_ICON = '<svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="2"/><path d="m2.5 11 3.5-3.5 3 3 2-2 2.5 2.5"/></svg>';
 
-function fmt(v) {
-  if (v >= 10000) return (v / 10000).toFixed(v >= 100000 ? 0 : 1).replace(/\.0$/, '') + '万';
-  return v.toLocaleString('zh-CN');
-}
-
-
-
-// Structured "how we got here" strip above a quadrant chart: 池子 → 怎么筛 → 结果 → 共性.
-// rows: [{ k: '池子', v: html }, ...]; the last row is the takeaway and gets the accent rail.
-function summary(rows, label = '筛选逻辑') {
-  return `<ol class="sum" aria-label="${label}">${rows.map((r, i) => `<li class="sum-step${i === rows.length - 1 ? ' sum-key' : ''}">
-      <span class="sum-k"><span class="sum-n num">${i + 1}</span>${r.k}</span>
-      <div class="sum-v">${r.v}</div></li>`).join('')}</ol>`;
-}
-
-// Inline player for notes whose video exists in the library (most only have a cover — those keep 看原文).
+// Inline open link for rows where the cover itself sits inside another link.
 function playLink(n) {
-  return n.video ? `<button type="button" class="play-link" data-video="${n.id}">▶ 播放 <span class="num">${dur(n.video.durationSec)}</span></button>` : '';
+  if (!viewable(n)) return '';
+  return `<button type="button" class="play-link" data-view="${n.id}">${n.video ? '▶ 播放' : '看图文'} <span class="num">${viewLabel(n)}</span></button>`;
 }
+
+const stats = (n) => [['赞', n.likes], ['藏', n.collects], ['评', n.comments]].filter(([, v]) => v != null).map(([k, v]) => `${k} <span class="num">${fmt(v)}</span>`).join(' · ');
 
 let dlg = null, lastFocus = null;
-function openPlayer(n) {
-  if (!dlg) {
-    dlg = document.createElement('dialog');
-    dlg.className = 'atlas-player';
-    dlg.addEventListener('click', (e) => { if (e.target === dlg || e.target.closest('.ap-close')) dlg.close(); });
-    dlg.addEventListener('close', () => {
-      const v = dlg.querySelector('video');
-      if (v) { v.pause(); v.removeAttribute('src'); v.load(); }
-      lastFocus?.focus?.();
-    });
-    document.body.append(dlg);
-  }
-  lastFocus = document.activeElement;
-  dlg.setAttribute('aria-label', `视频：${n.title}`);
-  dlg.innerHTML = `<div class="ap-box">
-      <video src="${n.video.src}" poster="${n.video.poster || n.img}" controls playsinline autoplay preload="metadata"></video>
-      <div class="ap-bar">
-        <div class="ap-meta"><p class="ap-t">${attr(n.title)}</p><p class="ap-m">${attr(n.account)} · <span class="num">${dur(n.video.durationSec)}</span></p></div>
-        <a class="ap-ext" href="${n.url}" target="_blank" rel="noopener">看原文 ↗</a>
-        <button type="button" class="ap-close" aria-label="关闭视频">✕</button>
-      </div>
-    </div>`;
-  // Fit the dialog to the video's own aspect ratio (most are vertical) so there are no side bars.
-  const v = dlg.querySelector('video'), box = dlg.querySelector('.ap-box');
-  const fit = (ar) => {
-    const maxW = Math.min(innerWidth * 0.92, 980), maxH = innerHeight * 0.86 - 64;
-    box.style.width = Math.max(Math.min(maxW, maxH * ar), Math.min(maxW, 320)) + 'px';
-  };
-  fit(n.aspect || 0.5625);
-  v.addEventListener('loadedmetadata', () => v.videoWidth && fit(v.videoWidth / v.videoHeight), { once: true });
-  dlg.showModal();
-  dlg.querySelector('.ap-close').focus({ preventScroll: true });
+function shell() {
+  if (dlg) return dlg;
+  dlg = document.createElement('dialog');
+  dlg.className = 'atlas-player';
+  dlg.addEventListener('click', (e) => { if (e.target === dlg || e.target.closest('.ap-close')) dlg.close(); });
+  dlg.addEventListener('close', () => {
+    const v = dlg.querySelector('video');
+    if (v) { v.pause(); v.removeAttribute('src'); v.load(); }
+    lastFocus?.focus?.();
+  });
+  document.body.append(dlg);
+  return dlg;
 }
 
-// Capture phase so a play control wins over any card / section click handler around it.
+// One viewer for both: a video plays; an image post becomes a swipeable gallery. Body text sits under either.
+function openViewer(n) {
+  shell();
+  lastFocus = document.activeElement;
+  const isV = !!n.video;
+  dlg.setAttribute('aria-label', `${isV ? '视频' : '图文'}：${n.title}`);
+  const media = isV
+    ? `<video src="${n.video.src}" poster="${n.video.poster || n.img}" controls playsinline autoplay preload="metadata"></video>`
+    : `<div class="ag">
+        <div class="ag-track" tabindex="0" aria-label="图片，左右滑动或用方向键翻页">${n.images.map((im, i) => `<figure class="ag-slide"><img src="${im.src}" alt="第 ${i + 1} 张，共 ${n.images.length} 张" ${i > 1 ? 'loading="lazy"' : ''} decoding="async" width="${im.w}" height="${im.h}"></figure>`).join('')}</div>
+        ${n.images.length > 1 ? `<button type="button" class="ag-nav ag-prev" aria-label="上一张">‹</button><button type="button" class="ag-nav ag-next" aria-label="下一张">›</button><span class="ag-count num" aria-live="polite">1 / ${n.images.length}</span>` : ''}
+      </div>`;
+  dlg.innerHTML = `<div class="ap-box">
+      ${media}
+      <div class="ap-bar">
+        <div class="ap-meta"><p class="ap-t">${attr(n.title)}</p><p class="ap-m">${attr(n.account)}${isV ? ` · <span class="num">${dur(n.video.durationSec)}</span>` : ''}${stats(n) ? ` · ${stats(n)}` : ''}</p></div>
+        <a class="ap-ext" href="${n.url}" target="_blank" rel="noopener">看原文 ↗</a>
+        <button type="button" class="ap-close" aria-label="关闭">✕</button>
+      </div>
+      ${n.body ? `<div class="ap-body">${attr(n.body).replace(/\n/g, '<br>')}</div>` : ''}
+    </div>`;
+  const box = dlg.querySelector('.ap-box');
+  // Fit the dialog to the media's own aspect ratio so there are no side bars.
+  const fit = (ar) => {
+    const maxW = Math.min(innerWidth * 0.92, 980), maxH = innerHeight * (n.body ? 0.72 : 0.86) - 64;
+    box.style.width = Math.max(Math.min(maxW, maxH * ar), Math.min(maxW, 340)) + 'px';
+  };
+  if (isV) {
+    const v = dlg.querySelector('video');
+    fit(n.aspect || 0.5625);
+    v.addEventListener('loadedmetadata', () => v.videoWidth && fit(v.videoWidth / v.videoHeight), { once: true });
+  } else {
+    fit(n.images[0].w / n.images[0].h);
+    const track = dlg.querySelector('.ag-track'), count = dlg.querySelector('.ag-count');
+    const go = (d) => track.scrollBy({ left: d * track.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    dlg.querySelector('.ag-prev')?.addEventListener('click', () => go(-1));
+    dlg.querySelector('.ag-next')?.addEventListener('click', () => go(1));
+    track.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') { e.preventDefault(); go(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); } });
+    track.addEventListener('scroll', () => { if (count) count.textContent = `${Math.round(track.scrollLeft / track.clientWidth) + 1} / ${n.images.length}`; }, { passive: true });
+  }
+  dlg.showModal();
+  (dlg.querySelector('.ag-track') || dlg.querySelector('.ap-close')).focus({ preventScroll: true });
+}
+
+// Capture phase so an open control wins over any card / section click handler around it.
 document.addEventListener('click', (e) => {
-  const b = e.target.closest('[data-video]');
+  const b = e.target.closest('[data-view],[data-video]');
   if (!b) return;
-  const n = window.ATLAS.notes[b.dataset.video];
-  if (!n?.video) return;
+  const n = window.ATLAS.notes[b.dataset.view || b.dataset.video];
+  if (!n || !viewable(n)) return;
   e.preventDefault(); e.stopPropagation();
-  openPlayer(n);
+  openViewer(n);
 }, true);
 
 // Product names can be Latin (Ancher) inside Chinese copy: pad the CJK–Latin seam with a space.

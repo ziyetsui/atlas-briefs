@@ -305,9 +305,17 @@ window.ATLAS = {
        "total": 101,
        "objective": "自然热门",
        "date": "2026-09-29",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6abb5e4a000000001203c981/6abb5e4a000000001203c981_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6abb5e4a000000001203c981/6abb5e4a000000001203c981_2.jpg",
+        "durationSec": 83
+       },
        "competitor": "aiflow",
-       "format": "af-1"
+       "format": "af-1",
+       "body": "#AI新手村 #AI创作 #AI进化生活howto #AI视频 #AI生成 #万物皆可发布会 #AI搞事业howto",
+       "likes": 762,
+       "collects": 547,
+       "comments": 22
       },
       {
        "id": "6a882d4a0000000028023fd9",
@@ -325,9 +333,17 @@ window.ATLAS = {
        "total": 100,
        "objective": "产品种草",
        "date": "2026-08-21",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a882d4a0000000028023fd9/6a882d4a0000000028023fd9_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a882d4a0000000028023fd9/6a882d4a0000000028023fd9_2.jpg",
+        "durationSec": 297
+       },
        "competitor": "aiflow",
-       "format": "af-1"
+       "format": "af-1",
+       "body": "最近牛来的二创视频几乎谁做谁爆❗️方法大公开 按照我这个工作流，就可以入门这种AIGC短剧的二创制作了，涵盖人物视图制作、电影桥段解析生成提示词、以及全能参考、素材引用、视频生成等内容教学。 各种经典电影桥段、热梗，用AI翻拍，在各个平台上流量都会非常爆 快去试一下吧~ #AIGC #ai #seedance #seedance25 #tapnow #AI工具 #牛来 #AI短剧 #AI视频 #howto解锁创意剪辑 @科技薯",
+       "likes": 3642,
+       "collects": 2130,
+       "comments": 82
       },
       {
        "id": "6a8fff8000000000050287aa",
@@ -345,9 +361,17 @@ window.ATLAS = {
        "total": 100,
        "objective": "产品种草",
        "date": "2026-08-27",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fff8000000000050287aa/6a8fff8000000000050287aa_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fff8000000000050287aa/6a8fff8000000000050287aa_2.jpg",
+        "durationSec": 74
+       },
        "competitor": "aiflow",
-       "format": "af-1"
+       "format": "af-1",
+       "body": "看到评论和后台经常有宝宝发问是怎么做的，就想尝试做做看教程！如果还想看到教程内容的话请务必评论告诉我！ #howto用好AI #AI视频 #aigc #爆款复刻 #ai教程 #提示词 #审美积累 #黑道千金",
+       "likes": 2713,
+       "collects": 458,
+       "comments": 27
       }
      ]
     },
@@ -381,9 +405,17 @@ window.ATLAS = {
        "total": 100,
        "objective": "产品种草",
        "date": "2026-08-30",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a93d33b0000000020031999/6a93d33b0000000020031999_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a93d33b0000000020031999/6a93d33b0000000020031999_2.jpg",
+        "durationSec": 209
+       },
        "competitor": "aiflow",
-       "format": "af-2"
+       "format": "af-2",
+       "body": "#给千问找个班上 #千问用法分享 #AI工作台 #AI工作台搭建 #AI做工作台 #千问 #千问AI生图 #AI生图 #skill分享 #创作者必备",
+       "likes": 2305,
+       "collects": 2087,
+       "comments": 31
       },
       {
        "id": "6a9f8966000000002803b58c",
@@ -401,9 +433,17 @@ window.ATLAS = {
        "total": 102,
        "objective": "自然热门",
        "date": "2026-09-08",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9f8966000000002803b58c/6a9f8966000000002803b58c_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9f8966000000002803b58c/6a9f8966000000002803b58c_2.jpg",
+        "durationSec": 161
+       },
        "competitor": "aiflow",
-       "format": "af-2"
+       "format": "af-2",
+       "body": "之前那篇帖子收到了很多朋友的喜欢！也有朋友过来报喜说涨了1K+的粉丝！ 同时私信里也一直有粉丝来问：我的账号到底可以怎么用AI辅助创作呢？🤔 所以今天就是一期教程2.0！！把我的AI使用思路（更加底层的逻辑）分享出来～ 有问题可以在评论区问我，看到都会回复滴！ #自媒体干货 #百度搭子 #秒哒 #AI进化生活howto #WeeklyPick #自媒体方向 #AI新手村#爆款选题 #自媒体运营 #AI新手村#真干活用搭子",
+       "likes": 3414,
+       "collects": 3628,
+       "comments": 124
       },
       {
        "id": "6aa3f7cd0000000025036ac2",
@@ -421,9 +461,17 @@ window.ATLAS = {
        "total": 100,
        "objective": "产品种草",
        "date": "2026-09-11",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6aa3f7cd0000000025036ac2/6aa3f7cd0000000025036ac2_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6aa3f7cd0000000025036ac2/6aa3f7cd0000000025036ac2_2.jpg",
+        "durationSec": 258
+       },
        "competitor": "aiflow",
-       "format": "af-2"
+       "format": "af-2",
+       "body": "需要这个工作台（插件/流程打包）的朋友请举手letmeknow🙋🏻‍♀️🙋🏻‍♀️ 有什么问题欢迎一起探讨哦 #谁AI上班 #我的AI办公搭子 #AI进化生活howto #howtoAI #vibecoding #效率神器 #工作台 #办公提效",
+       "likes": 1958,
+       "collects": 2128,
+       "comments": 189
       }
      ]
     },
@@ -459,7 +507,43 @@ window.ATLAS = {
        "date": "2026-08-27",
        "video": null,
        "competitor": "aiflow",
-       "format": "af-3"
+       "format": "af-3",
+       "body": "谁懂啊！每次探店之前pr都会给一大堆的bf，拍图片要好看啊，有吸引力啊，要豹纹啊！ 特别是首图要有创意啊！！！ 探店博主无力吐槽，只能挖空脑子，各种修图软件一个个用过来。费时费力不说，修出来的图片也不一定好看吸睛！ 🌟终于发现用千问来ai生成图片的好方法了，真的解放双手！ 只要提供原图并输入指令，就能得到独一无二的创意首图！ 👉好经验自然要分享给大家！ 选择工作助理，技能选符合自己需求的，我要ai生成图片，就选了“小红书公众号封面制作”，然后上传图片，对话框输入文字或者语音指令，点发送即可。它会根据收到的指令信息进行处理，完成后会把图片发上来。如果对生成的图片不满意可以再发送指令进行更改。 🌟具体指令分享： 1、帮我生成3:4竖图图片，把图中奶茶1比1弄成飞溅在空中效果，细小水珠飞溅，真实人像，局清实拍，慢动作美食动态高清单反质感，皮肤真实细腻，画面通透柔和，慢动作动态，轻微食材晃动，生活化氛围感，美食旅拍风格，原比例。背景不变。 2、两杯饮料不要变，帮我生成一张3:4的竖图，要求背景是深色原木桌、背景是浅色墙布，桌上有一本杂志、新鲜桃子，新鲜枚珑蜜瓜，整体ins 风，画面真实，适当留白。 对于不会复杂修图、但又想让图片更有创意的探店博主来说，ai生成图片真的可以减少很多前期制作时间。 有视觉冲击力的首图肯定更吸引人观看，自然流量也会上来！ #ai生成图片 #创意首图#氛围感首图#封面设计#封面灵感#小红书封面设计教程#自媒体运营#探店博主笔记创意首图#千问ai",
+       "likes": 796,
+       "collects": 395,
+       "comments": 97,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fc7440000000029035f44/6a8fc7440000000029035f44_1.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fc7440000000029035f44/6a8fc7440000000029035f44_2.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fc7440000000029035f44/6a8fc7440000000029035f44_3.jpg",
+         "w": 768,
+         "h": 1024
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fc7440000000029035f44/6a8fc7440000000029035f44_4.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fc7440000000029035f44/6a8fc7440000000029035f44_5.jpg",
+         "w": 896,
+         "h": 1184
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fc7440000000029035f44/6a8fc7440000000029035f44_6.jpg",
+         "w": 1080,
+         "h": 1440
+        }
+       ]
       },
       {
        "id": "6a8d658e0000000028008cbf",
@@ -479,7 +563,48 @@ window.ATLAS = {
        "date": "2026-08-25",
        "video": null,
        "competitor": "aiflow",
-       "format": "af-3"
+       "format": "af-3",
+       "body": "自媒体让我知道，感知力是很值钱的，高敏感的人应该去创造，而不是转为内耗，你的敏感是你的悟性，不会拍图一开始可以先用ai生成图片呀。重要的是先开始，先完成再完美！！ PS：感觉我们就像空调，启动的时候耗能是最高的。 图片的场景是图文博主最需要的，以前做图文的博主需要有自己的拍摄场地，还要自己拍图，还要提升审美和构图，对于小白来说太不友好了； 特别是产品展示图，品牌方要求很高需要很好的构图技巧，现在用ai工具就能省去拍图这一大部分时间，详情请看P5（原图）、P6（ai生成图片）效果对比。 我发现千问就有一个很好用的ai生成图片功能，你只需要导入你自己拍的照片，然后输入你想要的效果关键词，就可以直接生成图片，高级感氛围感网感都能实现。 分享两个常用的ai指令👇 生成一张有网感的图片，场景是桌面，画面元素保留，再通过添加家里的高级感沙发地毯桌子落地灯啥的烘托高级感，照片偏冷暖调都有，，要求真实有质感，看起来不像AI生成的，图片3:4竖版比例，有高级感，温馨感，桌子上有书，水果盘。 生成一张有网感的图片，场景是在桌面上，图片中的元素保留，再通过添加其他家居场景达到家的温馨感，照片偏暖调 自媒体只有一件事情重要：持续交卷能力； 最后，用ai生成图片给我的感觉就是新风口！！ 自媒体永远不会饱和，请大家勇敢去做吧！！ #ai生成图片 #自媒体 #图文创作 #高效 #千问ai",
+       "likes": 555,
+       "collects": 191,
+       "comments": 9,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_1.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_2.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_3.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_4.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_5.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_6.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_7.jpg",
+         "w": 960,
+         "h": 1280
+        }
+       ]
       },
       {
        "id": "6a96ad86000000000b002f74",
@@ -499,7 +624,53 @@ window.ATLAS = {
        "date": "2026-09-01",
        "video": null,
        "competitor": "aiflow",
-       "format": "af-3"
+       "format": "af-3",
+       "body": "很多姐妹问我，做旅游博主真的能养活自己吗？我想说：至少出去玩的酒店、门票、差旅有人承担，并且还有人带，体验感很好♥️ 但是想起号光靠坚持并不一定行，大家都知道，封面🖼️对于笔记流量的重要性： 60%甚至90% 的人都是因为封面点进来的，尤其是旅游博主，要么你的首图风景特别好看，要么你的首图能传递重要信息，还有人可能单纯觉得封面好看而粉你‼️一个好看的封面图对于小红书起号真的太太太关键了！ 之前玩回来会花很多时间修照片，这次新疆行因为时间紧张，就学着用它生成图片做首图，没想到的是，小眼睛👀蹭蹭涨，点击率很满意！既省时间，还比自己修的好，口令也简单！ 分享一下我做ai生成图片封面的❸个步骤： app准备：千问 点击下方-工作助理 选择技能-归藏小红书公众号封面 发送图片和指令 当时拍的赛里木湖因为阴天，整体颜色比较暗。 下面是我写指令的思路⬇ ①主体保留：保留第一张照片的湖泊、山体和原始构图，不改变主体位置。 ②整体提亮：提高曝光、阴影和局部对比度，改善阴天画面的灰暗感，但避免过曝。 ③天空与湖水调蓝：将灰冷、浅淡的颜色调整为晴天赛里木湖风格的高透蓝，湖水偏青蓝，保持自然层次。 ④增强水面质感：提高湖面高光、纹理和细节，让水面出现细碎反光。 ⑤增加动态感：强化水面横向波纹、流动方向和局部明暗变化，避免画面过于平静。 ⑥加入闪烁效果：在湖面添加自然的“布灵布灵”碎光，像阳光照在活动水面上的反射，不能做成明显的人工特效。 这个指令思路对于阴天拍水面、湖泊都是通用的，大家可以参考。 以后做封面图、金句卡、海报，用ai生成图片的方式都不用自己绞尽脑汁，新手姐妹可以试试！ #ai生成图片 #做图神器 #自媒体干货分享 #修图技巧 #自媒体工具 #AI做图 #千问ai",
+       "likes": 5,
+       "collects": 2,
+       "comments": 1,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_1.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_2.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_3.jpg",
+         "w": 1080,
+         "h": 1428
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_4.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_5.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_6.jpg",
+         "w": 960,
+         "h": 1280
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_7.jpg",
+         "w": 768,
+         "h": 1024
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_8.jpg",
+         "w": 1080,
+         "h": 1440
+        }
+       ]
       }
      ]
     }
@@ -713,7 +884,68 @@ window.ATLAS = {
        "date": "2026-07-28",
        "video": null,
        "competitor": "qianwen",
-       "format": "qw-2"
+       "format": "qw-2",
+       "body": "男生拍照一时爽，修图火葬场😭 要么滤镜太假像蜡像馆，要么肤色暗沉像挖煤归来…… 直到我挖到千问AI这个宝藏，直接开启“男神修图外挂”模式！ 🔥亲测超神指令（抄作业版）： “模仿佳能G12闪光灯质感，人物透亮不假白，背景偏暗带故事感，自然饱和度拉满但绝不油腻，4K高清锐化安排！” 千问AI直接秒懂什么叫“绝美氛围感”—— 皮肤自然天生好底子，光影层次分明，连发丝都在发光✨背景暗调自带氛围感，随手一拍变落日大片，直男看了都追着问教程！ 💡男生修图痛点全击破： ❌乱加滤镜→✅光影重构干净高级 ❌肤色脏黄→✅通透冷白皮一键get ❌废片无救→✅闪光灯特效拯救阴天废片 从此告别“直男自拍灾难”，千问AI就是你的私人修图师🧑‍💻 氛围感帅哥照？3秒搞定！ #男生修图教程 #清冷少年感 #AI神仙滤镜 #直男拍照逆袭 #千问AI真香现场 #修图技巧分享 #氛围感调色 #拯救废片大作战",
+       "likes": 213,
+       "collects": 157,
+       "comments": 2,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_1.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_10.jpg",
+         "w": 1080,
+         "h": 1385
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_11.jpg",
+         "w": 904,
+         "h": 1160
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_2.jpg",
+         "w": 1080,
+         "h": 1439
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_3.jpg",
+         "w": 887,
+         "h": 1182
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_4.jpg",
+         "w": 887,
+         "h": 1182
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_5.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_6.jpg",
+         "w": 1080,
+         "h": 1350
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_7.jpg",
+         "w": 1080,
+         "h": 1439
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_8.jpg",
+         "w": 887,
+         "h": 1182
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_9.jpg",
+         "w": 1080,
+         "h": 1350
+        }
+       ]
       }
      ]
     },
@@ -754,9 +986,16 @@ window.ATLAS = {
        "total": 102,
        "objective": "蒲公英合作",
        "date": "2026-09-06",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9d1bc5000000002a006859/6a9d1bc5000000002a006859_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9d1bc5000000002a006859/6a9d1bc5000000002a006859_2.jpg",
+        "durationSec": 35
+       },
        "competitor": "qianwen",
-       "format": "qw-3"
+       "format": "qw-3",
+       "body": "杭州你又背着大家偷偷进化了？！#杭州 #老年大学 #老年人学AI #千问办公 #终身学习 #打破年龄偏见",
+       "collects": 477,
+       "comments": 12
       },
       {
        "id": "6ab3f2ed000000001303d291",
@@ -776,7 +1015,58 @@ window.ATLAS = {
        "date": "2026-09-23",
        "video": null,
        "competitor": "qianwen",
-       "format": "qw-3"
+       "format": "qw-3",
+       "body": "经常用 AI 办公的打工人，大概率都被这3个恶心过： 桌面上散落着好几个报价单、纪要和截图，每次都要一个个打包传到网页上； 好不容易等它跑到 80% 突然报错作废，积分却照扣不误； 月底看账单，花在哪了全凭猜…… 今天拿这个工具搞定周报，我全程把过程和账本摊开算： 📁 1. 文件夹就在桌面，不用死命往网页传 打开左上角直接切【通用模式】。它直接读你电脑本地的文件夹，不用反复上传下载。 拖进去只说一句人话： 👉 “整理成一份今晚能直接发的周报。” 🙋 2. 必须由我审批！治好越权恐惧症 很多人怕 AI 乱改本地文件，这点它做得极度舒适： 每一步涉及读取、修改本地文件，都会跳出弹窗问我：“要不要继续？” 我点了【同意】它才动。全程看得见，不瞎跑，更不会在后台暗戳戳作妖。 📄 3. 结尾是一份能直接交差的文件，不是聊天记录 跑完之后，在本地桌面直接生成了一份排版整齐、数据提取完整的正式文档。 双击能直接打开，改两个字就能发微信或邮件交差，不是一段干瘪的网页对话，也不是让人干等的进度条。 🧾 4. 清晰报账： 这次整理周报一共花了大概 1021秒，消耗了 36个 Credits。 中途如果觉得它跑偏了，随时能手动点停止，不会无限吞分。 💡 划重点：日常写周报、理表格这种办公活，模型建议直接选 qwen3.8-flash，速度飞快，扣分也极省！ 🎁 打工人怎么薅到 600 Credits？（价值约40💰）： 不要一上来就充钱，先领试用： 复制我的专属邀请码：4JMC7S 去页面输入确认，下载登录先拿 300 试用，加邀请码再送 300，一共 600 Credits。 如果这个月想开 Pro，首月 Credits 直接翻倍（9月30日截止）。 平时做轻量任务直接切「经济」档，日常不扣分，加上错峰折扣，打工人拿来日常交差完全不心疼。 🔗 邀请码我打在👇了 #Qoder #AI办公 #AI隐私 #数据安全 #职场打工人 #办公效率神器",
+       "likes": 1321,
+       "collects": 1010,
+       "comments": 61,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_1.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_2.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_3.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_4.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_5.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_6.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_7.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_8.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_9.jpg",
+         "w": 1080,
+         "h": 1440
+        }
+       ]
       },
       {
        "id": "6aa263ed000000001202593e",
@@ -920,9 +1210,17 @@ window.ATLAS = {
        "total": 102,
        "objective": "自然热门",
        "date": "2026-07-23",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a622b22000000000f01c4de/6a622b22000000000f01c4de_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a622b22000000000f01c4de/6a622b22000000000f01c4de_2.jpg",
+        "durationSec": 105
+       },
        "competitor": "pptweb",
-       "format": "pw-1"
+       "format": "pw-1",
+       "body": "#howto用好AI #AI工具 #设计网站 #ppt #PPT实用技巧 #效率神器 #vibecoding #howto实现一万种vibecoding #PPT制作 #这个网站真好用",
+       "likes": 183,
+       "collects": 236,
+       "comments": 19
       }
      ]
     },
@@ -1040,9 +1338,17 @@ window.ATLAS = {
        "total": 100,
        "objective": "产品种草",
        "date": "2026-08-28",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9148cb000000002a03f62a/6a9148cb000000002a03f62a_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9148cb000000002a03f62a/6a9148cb000000002a03f62a_2.jpg",
+        "durationSec": 114
+       },
        "competitor": "pptweb",
-       "format": "pw-3"
+       "format": "pw-3",
+       "body": "Frutiger Aero 最吸引我的地方，不是简单的复古滤镜，而是它代表了一种千禧年式的数字乌托邦想象，科技不再冰冷，玻璃、水光、气泡、植物和界面可以温柔地共存。 于是我想把这种感觉做成一座花园。 「流光花园」是一个治愈系网页漫游空间，你可以选择两条路：一条走进室内花园，一条走向室外游乐场。游乐场像一个可以停下来的地方，这里可以拍下照片保存记忆，或者选择重新开始下一次漫游。 我在TapNow完成了整个创作流程：从brainstorm到场景图再到3D空间和vibe coding交互网页，在聊天的过程中就完成了设计。 #3D设计 #网页设计 #交互设计 #千禧风 #ai教程#tapnow #TapTV #creativeos",
+       "likes": 1278,
+       "collects": 936,
+       "comments": 9
       },
       {
        "id": "6a8d85e3000000002902a3de",
@@ -1062,7 +1368,28 @@ window.ATLAS = {
        "date": "2026-08-25",
        "video": null,
        "competitor": "pptweb",
-       "format": "pw-3"
+       "format": "pw-3",
+       "body": "作为我家小胖鹦鹉的重度依赖患者： 突发奇想给它做个电子形象 ㅤ 于是我在秒哒里试着描述了一下： “做一个上传宠物图片生成桌宠的应用， 可以互动、喂食、清洁，还有状态成长。” ㅤ 没想到真的做出来了😭 上传一张鹦鹉照片，它就变成了我的第一只赛博宠物 它会显示饱腹度、清洁度、心情和体力 还能通过互动慢慢成长 ㅤ 以前觉得做一个网页的门槛很高 但有了秒哒才发现： 一个突发奇想的小需求，也可以真的变成一个属于自己的应用 有谁懂这种“把脑洞做出来”的快乐🦜 ㅤ #秒哒 #桌宠 #电子宠物 #AI应用 #赛博生活 #秒哒AI #howto用好AI",
+       "likes": 197,
+       "collects": 112,
+       "comments": 12,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d85e3000000002902a3de/6a8d85e3000000002902a3de_1.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d85e3000000002902a3de/6a8d85e3000000002902a3de_2.jpg",
+         "w": 1080,
+         "h": 1440
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d85e3000000002902a3de/6a8d85e3000000002902a3de_3.jpg",
+         "w": 1080,
+         "h": 1440
+        }
+       ]
       },
       {
        "id": "6a5bc1ab0000000001000ab7",
@@ -1080,9 +1407,17 @@ window.ATLAS = {
        "total": 102,
        "objective": "自然热门",
        "date": "2026-07-19",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a5bc1ab0000000001000ab7/6a5bc1ab0000000001000ab7_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a5bc1ab0000000001000ab7/6a5bc1ab0000000001000ab7_2.jpg",
+        "durationSec": 630
+       },
        "competitor": "pptweb",
-       "format": "pw-3"
+       "format": "pw-3",
+       "body": "#howto用好AI #AI新手村 #vibecoding #网站设计",
+       "likes": 65,
+       "collects": 56,
+       "comments": 1
       }
      ]
     }
@@ -3265,9 +3600,17 @@ window.ATLAS = {
    "total": 101,
    "objective": "自然热门",
    "date": "2026-09-29",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6abb5e4a000000001203c981/6abb5e4a000000001203c981_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6abb5e4a000000001203c981/6abb5e4a000000001203c981_2.jpg",
+    "durationSec": 83
+   },
    "competitor": "aiflow",
-   "format": "af-1"
+   "format": "af-1",
+   "body": "#AI新手村 #AI创作 #AI进化生活howto #AI视频 #AI生成 #万物皆可发布会 #AI搞事业howto",
+   "likes": 762,
+   "collects": 547,
+   "comments": 22
   },
   "6a882d4a0000000028023fd9": {
    "id": "6a882d4a0000000028023fd9",
@@ -3285,9 +3628,17 @@ window.ATLAS = {
    "total": 100,
    "objective": "产品种草",
    "date": "2026-08-21",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a882d4a0000000028023fd9/6a882d4a0000000028023fd9_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a882d4a0000000028023fd9/6a882d4a0000000028023fd9_2.jpg",
+    "durationSec": 297
+   },
    "competitor": "aiflow",
-   "format": "af-1"
+   "format": "af-1",
+   "body": "最近牛来的二创视频几乎谁做谁爆❗️方法大公开 按照我这个工作流，就可以入门这种AIGC短剧的二创制作了，涵盖人物视图制作、电影桥段解析生成提示词、以及全能参考、素材引用、视频生成等内容教学。 各种经典电影桥段、热梗，用AI翻拍，在各个平台上流量都会非常爆 快去试一下吧~ #AIGC #ai #seedance #seedance25 #tapnow #AI工具 #牛来 #AI短剧 #AI视频 #howto解锁创意剪辑 @科技薯",
+   "likes": 3642,
+   "collects": 2130,
+   "comments": 82
   },
   "6a8fff8000000000050287aa": {
    "id": "6a8fff8000000000050287aa",
@@ -3305,9 +3656,17 @@ window.ATLAS = {
    "total": 100,
    "objective": "产品种草",
    "date": "2026-08-27",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fff8000000000050287aa/6a8fff8000000000050287aa_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fff8000000000050287aa/6a8fff8000000000050287aa_2.jpg",
+    "durationSec": 74
+   },
    "competitor": "aiflow",
-   "format": "af-1"
+   "format": "af-1",
+   "body": "看到评论和后台经常有宝宝发问是怎么做的，就想尝试做做看教程！如果还想看到教程内容的话请务必评论告诉我！ #howto用好AI #AI视频 #aigc #爆款复刻 #ai教程 #提示词 #审美积累 #黑道千金",
+   "likes": 2713,
+   "collects": 458,
+   "comments": 27
   },
   "6a93d33b0000000020031999": {
    "id": "6a93d33b0000000020031999",
@@ -3325,9 +3684,17 @@ window.ATLAS = {
    "total": 100,
    "objective": "产品种草",
    "date": "2026-08-30",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a93d33b0000000020031999/6a93d33b0000000020031999_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a93d33b0000000020031999/6a93d33b0000000020031999_2.jpg",
+    "durationSec": 209
+   },
    "competitor": "aiflow",
-   "format": "af-2"
+   "format": "af-2",
+   "body": "#给千问找个班上 #千问用法分享 #AI工作台 #AI工作台搭建 #AI做工作台 #千问 #千问AI生图 #AI生图 #skill分享 #创作者必备",
+   "likes": 2305,
+   "collects": 2087,
+   "comments": 31
   },
   "6a9f8966000000002803b58c": {
    "id": "6a9f8966000000002803b58c",
@@ -3345,9 +3712,17 @@ window.ATLAS = {
    "total": 102,
    "objective": "自然热门",
    "date": "2026-09-08",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9f8966000000002803b58c/6a9f8966000000002803b58c_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9f8966000000002803b58c/6a9f8966000000002803b58c_2.jpg",
+    "durationSec": 161
+   },
    "competitor": "aiflow",
-   "format": "af-2"
+   "format": "af-2",
+   "body": "之前那篇帖子收到了很多朋友的喜欢！也有朋友过来报喜说涨了1K+的粉丝！ 同时私信里也一直有粉丝来问：我的账号到底可以怎么用AI辅助创作呢？🤔 所以今天就是一期教程2.0！！把我的AI使用思路（更加底层的逻辑）分享出来～ 有问题可以在评论区问我，看到都会回复滴！ #自媒体干货 #百度搭子 #秒哒 #AI进化生活howto #WeeklyPick #自媒体方向 #AI新手村#爆款选题 #自媒体运营 #AI新手村#真干活用搭子",
+   "likes": 3414,
+   "collects": 3628,
+   "comments": 124
   },
   "6aa3f7cd0000000025036ac2": {
    "id": "6aa3f7cd0000000025036ac2",
@@ -3365,9 +3740,17 @@ window.ATLAS = {
    "total": 100,
    "objective": "产品种草",
    "date": "2026-09-11",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6aa3f7cd0000000025036ac2/6aa3f7cd0000000025036ac2_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6aa3f7cd0000000025036ac2/6aa3f7cd0000000025036ac2_2.jpg",
+    "durationSec": 258
+   },
    "competitor": "aiflow",
-   "format": "af-2"
+   "format": "af-2",
+   "body": "需要这个工作台（插件/流程打包）的朋友请举手letmeknow🙋🏻‍♀️🙋🏻‍♀️ 有什么问题欢迎一起探讨哦 #谁AI上班 #我的AI办公搭子 #AI进化生活howto #howtoAI #vibecoding #效率神器 #工作台 #办公提效",
+   "likes": 1958,
+   "collects": 2128,
+   "comments": 189
   },
   "6a8fc7440000000029035f44": {
    "id": "6a8fc7440000000029035f44",
@@ -3387,7 +3770,43 @@ window.ATLAS = {
    "date": "2026-08-27",
    "video": null,
    "competitor": "aiflow",
-   "format": "af-3"
+   "format": "af-3",
+   "body": "谁懂啊！每次探店之前pr都会给一大堆的bf，拍图片要好看啊，有吸引力啊，要豹纹啊！ 特别是首图要有创意啊！！！ 探店博主无力吐槽，只能挖空脑子，各种修图软件一个个用过来。费时费力不说，修出来的图片也不一定好看吸睛！ 🌟终于发现用千问来ai生成图片的好方法了，真的解放双手！ 只要提供原图并输入指令，就能得到独一无二的创意首图！ 👉好经验自然要分享给大家！ 选择工作助理，技能选符合自己需求的，我要ai生成图片，就选了“小红书公众号封面制作”，然后上传图片，对话框输入文字或者语音指令，点发送即可。它会根据收到的指令信息进行处理，完成后会把图片发上来。如果对生成的图片不满意可以再发送指令进行更改。 🌟具体指令分享： 1、帮我生成3:4竖图图片，把图中奶茶1比1弄成飞溅在空中效果，细小水珠飞溅，真实人像，局清实拍，慢动作美食动态高清单反质感，皮肤真实细腻，画面通透柔和，慢动作动态，轻微食材晃动，生活化氛围感，美食旅拍风格，原比例。背景不变。 2、两杯饮料不要变，帮我生成一张3:4的竖图，要求背景是深色原木桌、背景是浅色墙布，桌上有一本杂志、新鲜桃子，新鲜枚珑蜜瓜，整体ins 风，画面真实，适当留白。 对于不会复杂修图、但又想让图片更有创意的探店博主来说，ai生成图片真的可以减少很多前期制作时间。 有视觉冲击力的首图肯定更吸引人观看，自然流量也会上来！ #ai生成图片 #创意首图#氛围感首图#封面设计#封面灵感#小红书封面设计教程#自媒体运营#探店博主笔记创意首图#千问ai",
+   "likes": 796,
+   "collects": 395,
+   "comments": 97,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fc7440000000029035f44/6a8fc7440000000029035f44_1.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fc7440000000029035f44/6a8fc7440000000029035f44_2.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fc7440000000029035f44/6a8fc7440000000029035f44_3.jpg",
+     "w": 768,
+     "h": 1024
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fc7440000000029035f44/6a8fc7440000000029035f44_4.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fc7440000000029035f44/6a8fc7440000000029035f44_5.jpg",
+     "w": 896,
+     "h": 1184
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8fc7440000000029035f44/6a8fc7440000000029035f44_6.jpg",
+     "w": 1080,
+     "h": 1440
+    }
+   ]
   },
   "6a8d658e0000000028008cbf": {
    "id": "6a8d658e0000000028008cbf",
@@ -3407,7 +3826,48 @@ window.ATLAS = {
    "date": "2026-08-25",
    "video": null,
    "competitor": "aiflow",
-   "format": "af-3"
+   "format": "af-3",
+   "body": "自媒体让我知道，感知力是很值钱的，高敏感的人应该去创造，而不是转为内耗，你的敏感是你的悟性，不会拍图一开始可以先用ai生成图片呀。重要的是先开始，先完成再完美！！ PS：感觉我们就像空调，启动的时候耗能是最高的。 图片的场景是图文博主最需要的，以前做图文的博主需要有自己的拍摄场地，还要自己拍图，还要提升审美和构图，对于小白来说太不友好了； 特别是产品展示图，品牌方要求很高需要很好的构图技巧，现在用ai工具就能省去拍图这一大部分时间，详情请看P5（原图）、P6（ai生成图片）效果对比。 我发现千问就有一个很好用的ai生成图片功能，你只需要导入你自己拍的照片，然后输入你想要的效果关键词，就可以直接生成图片，高级感氛围感网感都能实现。 分享两个常用的ai指令👇 生成一张有网感的图片，场景是桌面，画面元素保留，再通过添加家里的高级感沙发地毯桌子落地灯啥的烘托高级感，照片偏冷暖调都有，，要求真实有质感，看起来不像AI生成的，图片3:4竖版比例，有高级感，温馨感，桌子上有书，水果盘。 生成一张有网感的图片，场景是在桌面上，图片中的元素保留，再通过添加其他家居场景达到家的温馨感，照片偏暖调 自媒体只有一件事情重要：持续交卷能力； 最后，用ai生成图片给我的感觉就是新风口！！ 自媒体永远不会饱和，请大家勇敢去做吧！！ #ai生成图片 #自媒体 #图文创作 #高效 #千问ai",
+   "likes": 555,
+   "collects": 191,
+   "comments": 9,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_1.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_2.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_3.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_4.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_5.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_6.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d658e0000000028008cbf/6a8d658e0000000028008cbf_7.jpg",
+     "w": 960,
+     "h": 1280
+    }
+   ]
   },
   "6a96ad86000000000b002f74": {
    "id": "6a96ad86000000000b002f74",
@@ -3427,7 +3887,53 @@ window.ATLAS = {
    "date": "2026-09-01",
    "video": null,
    "competitor": "aiflow",
-   "format": "af-3"
+   "format": "af-3",
+   "body": "很多姐妹问我，做旅游博主真的能养活自己吗？我想说：至少出去玩的酒店、门票、差旅有人承担，并且还有人带，体验感很好♥️ 但是想起号光靠坚持并不一定行，大家都知道，封面🖼️对于笔记流量的重要性： 60%甚至90% 的人都是因为封面点进来的，尤其是旅游博主，要么你的首图风景特别好看，要么你的首图能传递重要信息，还有人可能单纯觉得封面好看而粉你‼️一个好看的封面图对于小红书起号真的太太太关键了！ 之前玩回来会花很多时间修照片，这次新疆行因为时间紧张，就学着用它生成图片做首图，没想到的是，小眼睛👀蹭蹭涨，点击率很满意！既省时间，还比自己修的好，口令也简单！ 分享一下我做ai生成图片封面的❸个步骤： app准备：千问 点击下方-工作助理 选择技能-归藏小红书公众号封面 发送图片和指令 当时拍的赛里木湖因为阴天，整体颜色比较暗。 下面是我写指令的思路⬇ ①主体保留：保留第一张照片的湖泊、山体和原始构图，不改变主体位置。 ②整体提亮：提高曝光、阴影和局部对比度，改善阴天画面的灰暗感，但避免过曝。 ③天空与湖水调蓝：将灰冷、浅淡的颜色调整为晴天赛里木湖风格的高透蓝，湖水偏青蓝，保持自然层次。 ④增强水面质感：提高湖面高光、纹理和细节，让水面出现细碎反光。 ⑤增加动态感：强化水面横向波纹、流动方向和局部明暗变化，避免画面过于平静。 ⑥加入闪烁效果：在湖面添加自然的“布灵布灵”碎光，像阳光照在活动水面上的反射，不能做成明显的人工特效。 这个指令思路对于阴天拍水面、湖泊都是通用的，大家可以参考。 以后做封面图、金句卡、海报，用ai生成图片的方式都不用自己绞尽脑汁，新手姐妹可以试试！ #ai生成图片 #做图神器 #自媒体干货分享 #修图技巧 #自媒体工具 #AI做图 #千问ai",
+   "likes": 5,
+   "collects": 2,
+   "comments": 1,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_1.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_2.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_3.jpg",
+     "w": 1080,
+     "h": 1428
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_4.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_5.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_6.jpg",
+     "w": 960,
+     "h": 1280
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_7.jpg",
+     "w": 768,
+     "h": 1024
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a96ad86000000000b002f74/6a96ad86000000000b002f74_8.jpg",
+     "w": 1080,
+     "h": 1440
+    }
+   ]
   },
   "69dde04c000000002202545b": {
    "id": "69dde04c000000002202545b",
@@ -3555,7 +4061,68 @@ window.ATLAS = {
    "date": "2026-07-28",
    "video": null,
    "competitor": "qianwen",
-   "format": "qw-2"
+   "format": "qw-2",
+   "body": "男生拍照一时爽，修图火葬场😭 要么滤镜太假像蜡像馆，要么肤色暗沉像挖煤归来…… 直到我挖到千问AI这个宝藏，直接开启“男神修图外挂”模式！ 🔥亲测超神指令（抄作业版）： “模仿佳能G12闪光灯质感，人物透亮不假白，背景偏暗带故事感，自然饱和度拉满但绝不油腻，4K高清锐化安排！” 千问AI直接秒懂什么叫“绝美氛围感”—— 皮肤自然天生好底子，光影层次分明，连发丝都在发光✨背景暗调自带氛围感，随手一拍变落日大片，直男看了都追着问教程！ 💡男生修图痛点全击破： ❌乱加滤镜→✅光影重构干净高级 ❌肤色脏黄→✅通透冷白皮一键get ❌废片无救→✅闪光灯特效拯救阴天废片 从此告别“直男自拍灾难”，千问AI就是你的私人修图师🧑‍💻 氛围感帅哥照？3秒搞定！ #男生修图教程 #清冷少年感 #AI神仙滤镜 #直男拍照逆袭 #千问AI真香现场 #修图技巧分享 #氛围感调色 #拯救废片大作战",
+   "likes": 213,
+   "collects": 157,
+   "comments": 2,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_1.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_10.jpg",
+     "w": 1080,
+     "h": 1385
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_11.jpg",
+     "w": 904,
+     "h": 1160
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_2.jpg",
+     "w": 1080,
+     "h": 1439
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_3.jpg",
+     "w": 887,
+     "h": 1182
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_4.jpg",
+     "w": 887,
+     "h": 1182
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_5.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_6.jpg",
+     "w": 1080,
+     "h": 1350
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_7.jpg",
+     "w": 1080,
+     "h": 1439
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_8.jpg",
+     "w": 887,
+     "h": 1182
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a680118000000000402a5de/6a680118000000000402a5de_9.jpg",
+     "w": 1080,
+     "h": 1350
+    }
+   ]
   },
   "6a9d1bc5000000002a006859": {
    "id": "6a9d1bc5000000002a006859",
@@ -3580,9 +4147,16 @@ window.ATLAS = {
    "total": 102,
    "objective": "蒲公英合作",
    "date": "2026-09-06",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9d1bc5000000002a006859/6a9d1bc5000000002a006859_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9d1bc5000000002a006859/6a9d1bc5000000002a006859_2.jpg",
+    "durationSec": 35
+   },
    "competitor": "qianwen",
-   "format": "qw-3"
+   "format": "qw-3",
+   "body": "杭州你又背着大家偷偷进化了？！#杭州 #老年大学 #老年人学AI #千问办公 #终身学习 #打破年龄偏见",
+   "collects": 477,
+   "comments": 12
   },
   "6ab3f2ed000000001303d291": {
    "id": "6ab3f2ed000000001303d291",
@@ -3602,7 +4176,58 @@ window.ATLAS = {
    "date": "2026-09-23",
    "video": null,
    "competitor": "qianwen",
-   "format": "qw-3"
+   "format": "qw-3",
+   "body": "经常用 AI 办公的打工人，大概率都被这3个恶心过： 桌面上散落着好几个报价单、纪要和截图，每次都要一个个打包传到网页上； 好不容易等它跑到 80% 突然报错作废，积分却照扣不误； 月底看账单，花在哪了全凭猜…… 今天拿这个工具搞定周报，我全程把过程和账本摊开算： 📁 1. 文件夹就在桌面，不用死命往网页传 打开左上角直接切【通用模式】。它直接读你电脑本地的文件夹，不用反复上传下载。 拖进去只说一句人话： 👉 “整理成一份今晚能直接发的周报。” 🙋 2. 必须由我审批！治好越权恐惧症 很多人怕 AI 乱改本地文件，这点它做得极度舒适： 每一步涉及读取、修改本地文件，都会跳出弹窗问我：“要不要继续？” 我点了【同意】它才动。全程看得见，不瞎跑，更不会在后台暗戳戳作妖。 📄 3. 结尾是一份能直接交差的文件，不是聊天记录 跑完之后，在本地桌面直接生成了一份排版整齐、数据提取完整的正式文档。 双击能直接打开，改两个字就能发微信或邮件交差，不是一段干瘪的网页对话，也不是让人干等的进度条。 🧾 4. 清晰报账： 这次整理周报一共花了大概 1021秒，消耗了 36个 Credits。 中途如果觉得它跑偏了，随时能手动点停止，不会无限吞分。 💡 划重点：日常写周报、理表格这种办公活，模型建议直接选 qwen3.8-flash，速度飞快，扣分也极省！ 🎁 打工人怎么薅到 600 Credits？（价值约40💰）： 不要一上来就充钱，先领试用： 复制我的专属邀请码：4JMC7S 去页面输入确认，下载登录先拿 300 试用，加邀请码再送 300，一共 600 Credits。 如果这个月想开 Pro，首月 Credits 直接翻倍（9月30日截止）。 平时做轻量任务直接切「经济」档，日常不扣分，加上错峰折扣，打工人拿来日常交差完全不心疼。 🔗 邀请码我打在👇了 #Qoder #AI办公 #AI隐私 #数据安全 #职场打工人 #办公效率神器",
+   "likes": 1321,
+   "collects": 1010,
+   "comments": 61,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_1.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_2.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_3.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_4.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_5.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_6.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_7.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_8.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6ab3f2ed000000001303d291/6ab3f2ed000000001303d291_9.jpg",
+     "w": 1080,
+     "h": 1440
+    }
+   ]
   },
   "6aa263ed000000001202593e": {
    "id": "6aa263ed000000001202593e",
@@ -3684,9 +4309,17 @@ window.ATLAS = {
    "total": 102,
    "objective": "自然热门",
    "date": "2026-07-23",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a622b22000000000f01c4de/6a622b22000000000f01c4de_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a622b22000000000f01c4de/6a622b22000000000f01c4de_2.jpg",
+    "durationSec": 105
+   },
    "competitor": "pptweb",
-   "format": "pw-1"
+   "format": "pw-1",
+   "body": "#howto用好AI #AI工具 #设计网站 #ppt #PPT实用技巧 #效率神器 #vibecoding #howto实现一万种vibecoding #PPT制作 #这个网站真好用",
+   "likes": 183,
+   "collects": 236,
+   "comments": 19
   },
   "69f20db80000000035029aa0": {
    "id": "69f20db80000000035029aa0",
@@ -3772,9 +4405,17 @@ window.ATLAS = {
    "total": 100,
    "objective": "产品种草",
    "date": "2026-08-28",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9148cb000000002a03f62a/6a9148cb000000002a03f62a_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9148cb000000002a03f62a/6a9148cb000000002a03f62a_2.jpg",
+    "durationSec": 114
+   },
    "competitor": "pptweb",
-   "format": "pw-3"
+   "format": "pw-3",
+   "body": "Frutiger Aero 最吸引我的地方，不是简单的复古滤镜，而是它代表了一种千禧年式的数字乌托邦想象，科技不再冰冷，玻璃、水光、气泡、植物和界面可以温柔地共存。 于是我想把这种感觉做成一座花园。 「流光花园」是一个治愈系网页漫游空间，你可以选择两条路：一条走进室内花园，一条走向室外游乐场。游乐场像一个可以停下来的地方，这里可以拍下照片保存记忆，或者选择重新开始下一次漫游。 我在TapNow完成了整个创作流程：从brainstorm到场景图再到3D空间和vibe coding交互网页，在聊天的过程中就完成了设计。 #3D设计 #网页设计 #交互设计 #千禧风 #ai教程#tapnow #TapTV #creativeos",
+   "likes": 1278,
+   "collects": 936,
+   "comments": 9
   },
   "6a8d85e3000000002902a3de": {
    "id": "6a8d85e3000000002902a3de",
@@ -3794,7 +4435,28 @@ window.ATLAS = {
    "date": "2026-08-25",
    "video": null,
    "competitor": "pptweb",
-   "format": "pw-3"
+   "format": "pw-3",
+   "body": "作为我家小胖鹦鹉的重度依赖患者： 突发奇想给它做个电子形象 ㅤ 于是我在秒哒里试着描述了一下： “做一个上传宠物图片生成桌宠的应用， 可以互动、喂食、清洁，还有状态成长。” ㅤ 没想到真的做出来了😭 上传一张鹦鹉照片，它就变成了我的第一只赛博宠物 它会显示饱腹度、清洁度、心情和体力 还能通过互动慢慢成长 ㅤ 以前觉得做一个网页的门槛很高 但有了秒哒才发现： 一个突发奇想的小需求，也可以真的变成一个属于自己的应用 有谁懂这种“把脑洞做出来”的快乐🦜 ㅤ #秒哒 #桌宠 #电子宠物 #AI应用 #赛博生活 #秒哒AI #howto用好AI",
+   "likes": 197,
+   "collects": 112,
+   "comments": 12,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d85e3000000002902a3de/6a8d85e3000000002902a3de_1.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d85e3000000002902a3de/6a8d85e3000000002902a3de_2.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a8d85e3000000002902a3de/6a8d85e3000000002902a3de_3.jpg",
+     "w": 1080,
+     "h": 1440
+    }
+   ]
   },
   "6a5bc1ab0000000001000ab7": {
    "id": "6a5bc1ab0000000001000ab7",
@@ -3812,9 +4474,17 @@ window.ATLAS = {
    "total": 102,
    "objective": "自然热门",
    "date": "2026-07-19",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a5bc1ab0000000001000ab7/6a5bc1ab0000000001000ab7_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a5bc1ab0000000001000ab7/6a5bc1ab0000000001000ab7_2.jpg",
+    "durationSec": 630
+   },
    "competitor": "pptweb",
-   "format": "pw-3"
+   "format": "pw-3",
+   "body": "#howto用好AI #AI新手村 #vibecoding #网站设计",
+   "likes": 65,
+   "collects": 56,
+   "comments": 1
   },
   "6aae2af2000000002b002974": {
    "id": "6aae2af2000000002b002974",
@@ -3832,9 +4502,17 @@ window.ATLAS = {
    "total": 102,
    "objective": "自然热门",
    "date": "2026-09-19",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6aae2af2000000002b002974/6aae2af2000000002b002974_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6aae2af2000000002b002974/6aae2af2000000002b002974_2.jpg",
+    "durationSec": 105
+   },
    "competitor": "aiflow",
-   "format": "af-1"
+   "format": "af-1",
+   "body": "一条40W的卡点变装视频，普通人也能暴力复刻！ 以前我以为变装视频要化妆拍摄做特效，手搓太费劲。 现在我把爆款结构做成了Skill放进梦老师，不用写一句提示词，上传自己的人像+服装素材，AI自动生成同款变装视频，3分钟搞定～ 中秋国庆马上到，还做了3D地图旅行打卡换装Skill，上传人像+打卡照片，直接夯爆朋友圈最炸的旅行视频～ 用AI低成本测爆款，一个好创意能批量出10条20条，让数据告诉你哪个方向值得放大。把爆款拆成能重复调用的内容能力，甚至还能卖，这才是普通人吃AI红利的方式💰 学习素材来源@陶阿狗君 #AI视频 #AIGC #国庆打卡 #AI工具 #爆款视频 #一站式AI创作工作台#工作里的AI时刻 #科技数码生活手账",
+   "likes": 2243,
+   "collects": 1177,
+   "comments": 41
   }
  }
 };

@@ -1,0 +1,1235 @@
+[
+ {
+  "name": "zc-mjgg-read-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zc-mjgg-read-7",
+  "body": {
+   "bizType": 2,
+   "nd": "7",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zc-mjgg-eng-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zc-mjgg-eng-7",
+  "body": {
+   "bizType": 2,
+   "nd": "7",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zc-mjgg-ctr-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zc-mjgg-ctr-7",
+  "body": {
+   "bizType": 2,
+   "nd": "7",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zc-mjgg-er-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zc-mjgg-er-7",
+  "body": {
+   "bizType": 2,
+   "nd": "7",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zc-mjgg-gp-read-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#果脯蜜饯"
+  }
+ },
+ {
+  "name": "zc-mjgg-gp-eng-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#果脯蜜饯"
+  }
+ },
+ {
+  "name": "zc-mjgg-gp-ctr-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#果脯蜜饯"
+  }
+ },
+ {
+  "name": "zc-mjgg-gp-er-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#果脯蜜饯"
+  }
+ },
+ {
+  "name": "zc-mjgg-sc-read-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蔬菜果干"
+  }
+ },
+ {
+  "name": "zc-mjgg-sc-eng-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蔬菜果干"
+  }
+ },
+ {
+  "name": "zc-mjgg-sc-ctr-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蔬菜果干"
+  }
+ },
+ {
+  "name": "zc-mjgg-sc-er-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蔬菜果干"
+  }
+ },
+ {
+  "name": "zc-mjgg-lh-read-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蜜饯果干礼盒"
+  }
+ },
+ {
+  "name": "zc-mjgg-lh-eng-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蜜饯果干礼盒"
+  }
+ },
+ {
+  "name": "zc-mjgg-lh-ctr-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蜜饯果干礼盒"
+  }
+ },
+ {
+  "name": "zc-mjgg-lh-er-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蜜饯果干礼盒"
+  }
+ },
+ {
+  "name": "zc-xxls-read-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食"
+  }
+ },
+ {
+  "name": "zc-xxls-eng-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食"
+  }
+ },
+ {
+  "name": "zc-xxls-ctr-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "食品饮料#休闲零食"
+  }
+ },
+ {
+  "name": "zc-xxls-er-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食"
+  }
+ },
+ {
+  "name": "zc-my-mjgg-read-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "母婴#母婴辅零食#零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zc-my-mjgg-eng-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "母婴#母婴辅零食#零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zc-my-mjgg-ctr-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "母婴#母婴辅零食#零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zc-my-mjgg-er-30",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "母婴#母婴辅零食#零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-read-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-read-7",
+  "body": {
+   "bizType": 7,
+   "nd": "7",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-eng-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-eng-7",
+  "body": {
+   "bizType": 7,
+   "nd": "7",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-ctr-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-ctr-7",
+  "body": {
+   "bizType": 7,
+   "nd": "7",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-er-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-er-7",
+  "body": {
+   "bizType": 7,
+   "nd": "7",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-gp-read-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#果脯蜜饯"
+  }
+ },
+ {
+  "name": "zczd-mjgg-gp-eng-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#果脯蜜饯"
+  }
+ },
+ {
+  "name": "zczd-mjgg-gp-ctr-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#果脯蜜饯"
+  }
+ },
+ {
+  "name": "zczd-mjgg-gp-er-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#果脯蜜饯"
+  }
+ },
+ {
+  "name": "zczd-mjgg-sc-read-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蔬菜果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-sc-eng-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蔬菜果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-sc-ctr-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蔬菜果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-sc-er-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蔬菜果干"
+  }
+ },
+ {
+  "name": "zczd-mjgg-lh-read-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蜜饯果干礼盒"
+  }
+ },
+ {
+  "name": "zczd-mjgg-lh-eng-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蜜饯果干礼盒"
+  }
+ },
+ {
+  "name": "zczd-mjgg-lh-ctr-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蜜饯果干礼盒"
+  }
+ },
+ {
+  "name": "zczd-mjgg-lh-er-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#蜜饯果干礼盒"
+  }
+ },
+ {
+  "name": "zczd-xxls-read-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食"
+  }
+ },
+ {
+  "name": "zczd-xxls-eng-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食"
+  }
+ },
+ {
+  "name": "zczd-xxls-ctr-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "食品饮料#休闲零食"
+  }
+ },
+ {
+  "name": "zczd-xxls-er-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食"
+  }
+ },
+ {
+  "name": "zczd-my-mjgg-read-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "母婴#母婴辅零食#零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zczd-my-mjgg-eng-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "母婴#母婴辅零食#零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zczd-my-mjgg-ctr-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_ctr",
+   "spuIndustry": "母婴#母婴辅零食#零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "zczd-my-mjgg-er-30",
+  "body": {
+   "bizType": 7,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "母婴#母婴辅零食#零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "pgy-mjgg-read-30",
+  "body": {
+   "bizType": 4,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "pgy-mjgg-eng-30",
+  "body": {
+   "bizType": 4,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "pgy-mjgg-grr-30",
+  "body": {
+   "bizType": 4,
+   "nd": "30",
+   "orderBy": "premium_good_read_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "pgy-mjgg-er-30",
+  "body": {
+   "bizType": 4,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "pgy-xxls-read-30",
+  "body": {
+   "bizType": 4,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食"
+  }
+ },
+ {
+  "name": "pgy-xxls-eng-30",
+  "body": {
+   "bizType": 4,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食"
+  }
+ },
+ {
+  "name": "pgy-xxls-grr-30",
+  "body": {
+   "bizType": 4,
+   "nd": "30",
+   "orderBy": "premium_good_read_rate",
+   "spuIndustry": "食品饮料#休闲零食"
+  }
+ },
+ {
+  "name": "pgy-xxls-er-30",
+  "body": {
+   "bizType": 4,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食"
+  }
+ },
+ {
+  "name": "pgy-mjgg-gp-read-30",
+  "body": {
+   "bizType": 4,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#果脯蜜饯"
+  }
+ },
+ {
+  "name": "pgy-mjgg-gp-eng-30",
+  "body": {
+   "bizType": 4,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#果脯蜜饯"
+  }
+ },
+ {
+  "name": "pgy-mjgg-gp-grr-30",
+  "body": {
+   "bizType": 4,
+   "nd": "30",
+   "orderBy": "premium_good_read_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#果脯蜜饯"
+  }
+ },
+ {
+  "name": "pgy-mjgg-gp-er-30",
+  "body": {
+   "bizType": 4,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "spuIndustry": "食品饮料#休闲零食#蜜饯果干#果脯蜜饯"
+  }
+ },
+ {
+  "name": "hot-mjgg-read-30",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "noteContentCategory": "所属行业#食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "ec-mjgg-read-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "eCommerceIndustry": "零食/坚果/特产#蜜饯/枣类/梅/果干/冻干"
+  }
+ },
+ {
+  "name": "hot-mjgg-eng-30",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "noteContentCategory": "所属行业#食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "ec-mjgg-eng-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_engage_num",
+   "eCommerceIndustry": "零食/坚果/特产#蜜饯/枣类/梅/果干/冻干"
+  }
+ },
+ {
+  "name": "hot-mjgg-grr-30",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_good_read_rate",
+   "noteContentCategory": "所属行业#食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "ec-mjgg-grr-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_good_read_rate",
+   "eCommerceIndustry": "零食/坚果/特产#蜜饯/枣类/梅/果干/冻干"
+  }
+ },
+ {
+  "name": "hot-mjgg-er-30",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "noteContentCategory": "所属行业#食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "ec-mjgg-er-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_engage_rate",
+   "eCommerceIndustry": "零食/坚果/特产#蜜饯/枣类/梅/果干/冻干"
+  }
+ },
+ {
+  "name": "hot-mjgg-like-30",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_like_num",
+   "noteContentCategory": "所属行业#食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "ec-mjgg-like-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_like_num",
+   "eCommerceIndustry": "零食/坚果/特产#蜜饯/枣类/梅/果干/冻干"
+  }
+ },
+ {
+  "name": "hot-mjgg-fav-30",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_fav_num",
+   "noteContentCategory": "所属行业#食品饮料#休闲零食#蜜饯果干"
+  }
+ },
+ {
+  "name": "ec-mjgg-fav-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_fav_num",
+   "eCommerceIndustry": "零食/坚果/特产#蜜饯/枣类/梅/果干/冻干"
+  }
+ },
+ {
+  "name": "ec-mjgg-gmv-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_ecm_dgmv",
+   "eCommerceIndustry": "零食/坚果/特产#蜜饯/枣类/梅/果干/冻干"
+  }
+ },
+ {
+  "name": "ec-ls-gmv-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_ecm_dgmv",
+   "eCommerceIndustry": "零食/坚果/特产"
+  }
+ },
+ {
+  "name": "ec-mjgg-ord-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_ecm_order_pv",
+   "eCommerceIndustry": "零食/坚果/特产#蜜饯/枣类/梅/果干/冻干"
+  }
+ },
+ {
+  "name": "ec-ls-ord-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_ecm_order_pv",
+   "eCommerceIndustry": "零食/坚果/特产"
+  }
+ },
+ {
+  "name": "ec-mjgg-cvr-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_ecm_order_rate",
+   "eCommerceIndustry": "零食/坚果/特产#蜜饯/枣类/梅/果干/冻干"
+  }
+ },
+ {
+  "name": "ec-ls-cvr-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_ecm_order_rate",
+   "eCommerceIndustry": "零食/坚果/特产"
+  }
+ },
+ {
+  "name": "ec-金桔类制品-read-30",
+  "body": {
+   "bizType": 6,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "eCommerceIndustry": "零食/坚果/特产#蜜饯/枣类/梅/果干/冻干#金桔类制品"
+  }
+ },
+ {
+  "name": "kw00-zc-果干",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "果干"
+  }
+ },
+ {
+  "name": "kw00-hot-果干",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "果干"
+  }
+ },
+ {
+  "name": "kw01-zc-橘子",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "橘子"
+  }
+ },
+ {
+  "name": "kw01-hot-橘子",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "橘子"
+  }
+ },
+ {
+  "name": "kw02-zc-柑橘",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "柑橘"
+  }
+ },
+ {
+  "name": "kw02-hot-柑橘",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "柑橘"
+  }
+ },
+ {
+  "name": "kw03-zc-橘子干",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "橘子干"
+  }
+ },
+ {
+  "name": "kw03-hot-橘子干",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "橘子干"
+  }
+ },
+ {
+  "name": "kw04-zc-桔子",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "桔子"
+  }
+ },
+ {
+  "name": "kw04-hot-桔子",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "桔子"
+  }
+ },
+ {
+  "name": "kw05-zc-陈皮",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "陈皮"
+  }
+ },
+ {
+  "name": "kw05-hot-陈皮",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "陈皮"
+  }
+ },
+ {
+  "name": "kw06-zc-蜜饯",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "蜜饯"
+  }
+ },
+ {
+  "name": "kw06-hot-蜜饯",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "蜜饯"
+  }
+ },
+ {
+  "name": "kw07-zc-果脯",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "果脯"
+  }
+ },
+ {
+  "name": "kw07-hot-果脯",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "果脯"
+  }
+ },
+ {
+  "name": "kw08-zc-水果干",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "水果干"
+  }
+ },
+ {
+  "name": "kw08-hot-水果干",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "水果干"
+  }
+ },
+ {
+  "name": "kw09-zc-冻干水果",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "冻干水果"
+  }
+ },
+ {
+  "name": "kw09-hot-冻干水果",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "冻干水果"
+  }
+ },
+ {
+  "name": "kw10-zc-芒果干",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "芒果干"
+  }
+ },
+ {
+  "name": "kw10-hot-芒果干",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "芒果干"
+  }
+ },
+ {
+  "name": "kw11-zc-零食",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "零食"
+  }
+ },
+ {
+  "name": "kw11-hot-零食",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "零食"
+  }
+ },
+ {
+  "name": "kw12-zc-解馋零食",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "解馋零食"
+  }
+ },
+ {
+  "name": "kw12-hot-解馋零食",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "解馋零食"
+  }
+ },
+ {
+  "name": "kw13-zc-低卡零食",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "低卡零食"
+  }
+ },
+ {
+  "name": "kw13-hot-低卡零食",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "低卡零食"
+  }
+ },
+ {
+  "name": "kw14-zc-办公室零食",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "办公室零食"
+  }
+ },
+ {
+  "name": "kw14-hot-办公室零食",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "办公室零食"
+  }
+ },
+ {
+  "name": "kw15-zc-追剧零食",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "追剧零食"
+  }
+ },
+ {
+  "name": "kw15-hot-追剧零食",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "追剧零食"
+  }
+ },
+ {
+  "name": "kw16-zc-健康零食",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "健康零食"
+  }
+ },
+ {
+  "name": "kw16-hot-健康零食",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "健康零食"
+  }
+ },
+ {
+  "name": "kw17-zc-小零食推荐",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "小零食推荐"
+  }
+ },
+ {
+  "name": "kw17-hot-小零食推荐",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "小零食推荐"
+  }
+ },
+ {
+  "name": "kw18-zc-砂糖橘",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "砂糖橘"
+  }
+ },
+ {
+  "name": "kw18-hot-砂糖橘",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "砂糖橘"
+  }
+ },
+ {
+  "name": "kw19-zc-蜜橘",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "蜜橘"
+  }
+ },
+ {
+  "name": "kw19-hot-蜜橘",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "蜜橘"
+  }
+ },
+ {
+  "name": "kw20-zc-湖南特产",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "湖南特产"
+  }
+ },
+ {
+  "name": "kw20-hot-湖南特产",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "湖南特产"
+  }
+ },
+ {
+  "name": "kw21-zc-孕期零食",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "孕期零食"
+  }
+ },
+ {
+  "name": "kw21-hot-孕期零食",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "孕期零食"
+  }
+ },
+ {
+  "name": "kw22-zc-儿童零食",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "儿童零食"
+  }
+ },
+ {
+  "name": "kw22-hot-儿童零食",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "儿童零食"
+  }
+ },
+ {
+  "name": "kw23-zc-嘴馋",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "嘴馋"
+  }
+ },
+ {
+  "name": "kw23-hot-嘴馋",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "嘴馋"
+  }
+ },
+ {
+  "name": "kw24-zc-维C",
+  "body": {
+   "bizType": 2,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "维C"
+  }
+ },
+ {
+  "name": "kw24-hot-维C",
+  "body": {
+   "bizType": 1,
+   "nd": "30",
+   "orderBy": "premium_read_num",
+   "searchWord": "维C"
+  }
+ }
+]

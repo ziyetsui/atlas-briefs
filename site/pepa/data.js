@@ -322,9 +322,15 @@ window.ATLAS = {
        "total": 100,
        "objective": "应用下载",
        "date": "2026-07-30",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a6ae01c000000000f02b0d4/6a6ae01c000000000f02b0d4_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a6ae01c000000000f02b0d4/6a6ae01c000000000f02b0d4_2.jpg",
+        "durationSec": 22
+       },
        "competitor": "chaoziran",
-       "format": "cz-1"
+       "format": "cz-1",
+       "body": "#二次元生活存档 #超自然行动组 #摸金就玩超自然 #好视频扶持计划 #超自然鬼吹灯联动",
+       "collects": 3934
       }
      ]
     },
@@ -406,9 +412,17 @@ window.ATLAS = {
        "total": 100,
        "objective": "应用下载",
        "date": "2026-07-31",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a6c6ee70000000032021db6/6a6c6ee70000000032021db6_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a6c6ee70000000032021db6/6a6c6ee70000000032021db6_2.jpg",
+        "durationSec": 21
+       },
        "competitor": "chaoziran",
-       "format": "cz-2"
+       "format": "cz-2",
+       "body": "#超自然行动组 #超自然百万激励计划 #超自然二创厨子 #超自然暑假欢乐集结 #寻找超自然摸金搭子 #摸金就玩超自然 #还好是超自然不然就火了 #超自然小剧场",
+       "likes": 5509,
+       "collects": 1224,
+       "comments": 150
       }
      ]
     },
@@ -469,9 +483,17 @@ window.ATLAS = {
        "total": 100,
        "objective": "应用下载",
        "date": "2026-04-30",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/69f2f596000000001b021280/69f2f596000000001b021280_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/69f2f596000000001b021280/69f2f596000000001b021280_2.jpg",
+        "durationSec": 27
+       },
        "competitor": "chaoziran",
-       "format": "cz-3"
+       "format": "cz-3",
+       "body": "小满新皮肤，大金几率翻倍，各种福利等你拿！ #超自然行动组 #恐怖游戏超自然行动组 #还好是超自然不然就火了 #头像 #恐怖游戏#闺蜜们都在玩超自然 #陪伴不过超自然",
+       "likes": 2547,
+       "collects": 901,
+       "comments": 396
       },
       {
        "id": "69ae7cc4000000001a037e40",
@@ -489,9 +511,16 @@ window.ATLAS = {
        "total": 100,
        "objective": "应用下载",
        "date": "2026-03-09",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/69ae7cc4000000001a037e40/69ae7cc4000000001a037e40_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/69ae7cc4000000001a037e40/69ae7cc4000000001a037e40_2.jpg",
+        "durationSec": 18
+       },
        "competitor": "chaoziran",
-       "format": "cz-3"
+       "format": "cz-3",
+       "body": "#超自然行动组 #同学一起超自然吗 #超自然百万激励计划",
+       "collects": 3694,
+       "comments": 628
       }
      ]
     }
@@ -565,7 +594,33 @@ window.ATLAS = {
        "date": "2026-09-02",
        "video": null,
        "competitor": "duojin",
-       "format": "dj-1"
+       "format": "dj-1",
+       "body": "拒绝复杂套路，每天几分钟答题，就能瓜分海量红包福利。 「夺金密令」每日答题挑战全新上线，题目简单有趣，新手零门槛入门。固定每晚0点开奖，福利稳定放送。 想要提高中奖概率，坚持做每日任务、找好友助力，就能叠加答题机会~ 开学季省钱必冲，闲置时间利用起来，轻松实现零花钱自由！ 直接🐳东搜索「夺金密令」，人人都能参与！ #京东福利 #夺金密令 #省钱 #薅羊毛 #省钱小技巧 #省钱攻略 #学生党 #薅羊毛的快乐 #京东校园 #京东隐藏福利",
+       "likes": 29,
+       "collects": 0,
+       "comments": 5,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f3c20000000012036ce2/6a97f3c20000000012036ce2_1.jpg",
+         "w": 921,
+         "h": 1221
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f3c20000000012036ce2/6a97f3c20000000012036ce2_2.jpg",
+         "w": 918,
+         "h": 1224
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f3c20000000012036ce2/6a97f3c20000000012036ce2_3.jpg",
+         "w": 1080,
+         "h": 1443
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f3c20000000012036ce2/6a97f3c20000000012036ce2_4.jpg",
+         "w": 414,
+         "h": 573
+        }
+       ]
       },
       {
        "id": "6a97efbb000000002902cfc5",
@@ -585,7 +640,33 @@ window.ATLAS = {
        "date": "2026-09-02",
        "video": null,
        "competitor": "duojin",
-       "format": "dj-1"
+       "format": "dj-1",
+       "body": "很多人都不知道的日常薅羊毛渠道，无套路、纯免费。 「夺金密令」每日趣味答题挑战，开动脑力轻松闯关，每晚零点准时瓜分百万红包。题目难度适中，新手也能快速上手。 坚持做每日任务，简单邀请好友助力，就能叠加答题次数，大幅提升中奖概率，🧧拿到手软。 开学季想要轻松回血、省钱的宝子，一定不要错过这个活动。 🐳东🔍「夺金密令」，即刻开启答题薅福利之旅！ #京东福利 #夺金密令 #省钱 #薅羊毛 #京东校园 #省钱攻略 #学生党 #薅羊毛的快乐 #被年轻人的省钱方式破防了 #学生党好物推荐",
+       "likes": 33,
+       "collects": 0,
+       "comments": 6,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97efbb000000002902cfc5/6a97efbb000000002902cfc5_1.jpg",
+         "w": 930,
+         "h": 1232
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97efbb000000002902cfc5/6a97efbb000000002902cfc5_2.jpg",
+         "w": 918,
+         "h": 1224
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97efbb000000002902cfc5/6a97efbb000000002902cfc5_3.jpg",
+         "w": 915,
+         "h": 1227
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97efbb000000002902cfc5/6a97efbb000000002902cfc5_4.jpg",
+         "w": 918,
+         "h": 1224
+        }
+       ]
       },
       {
        "id": "6a9a9bcb0000000028034e5c",
@@ -641,7 +722,33 @@ window.ATLAS = {
        "date": "2026-09-08",
        "video": null,
        "competitor": "duojin",
-       "format": "dj-2"
+       "format": "dj-2",
+       "body": "哈喽宝子们~ 今天给大家出一期🐳东夺金密令超简单攻略 ✨三步走，红包到手🧧 1️⃣上🐳东🔍【夺金密令】进入活动页面 2️⃣每天总共三题，前两题为看图猜数字 （考验眼力和脑洞🧠） 后一题为随机猜数字，闭眼蒙都行 3️⃣只要猜对前2位数字，就可拿到无门槛红包 如果3位数字全部猜中，红包奖励加码！ 📢这个活动已经出好几天喇 我一直没发 （懒癌发作😝） 从今天开始会给大家分析当天的答案哦 可以先码住哈宝子们 ⏰每晚00:00准时开奖 完成开学季任务还可以解锁更多答题机会 次数多了，中奖率up up！ 而且点外卖、购物都可直接抵扣 还可以叠加使用哦~🙌 宝子们冲鸭 #京东校园 #省钱攻略 #学生党好物推荐 #夺金密令 #薅羊毛 #不薅白不薅 #多种支付方式 #优惠",
+       "likes": 17,
+       "collects": 10,
+       "comments": 10,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9f787a000000002502faf6/6a9f787a000000002502faf6_1.jpg",
+         "w": 1080,
+         "h": 1421
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9f787a000000002502faf6/6a9f787a000000002502faf6_2.jpg",
+         "w": 1080,
+         "h": 1242
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9f787a000000002502faf6/6a9f787a000000002502faf6_3.jpg",
+         "w": 1080,
+         "h": 1231
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9f787a000000002502faf6/6a9f787a000000002502faf6_4.jpg",
+         "w": 1080,
+         "h": 1253
+        }
+       ]
       },
       {
        "id": "6a9e81d80000000025036682",
@@ -661,7 +768,33 @@ window.ATLAS = {
        "date": "2026-09-07",
        "video": null,
        "competitor": "duojin",
-       "format": "dj-2"
+       "format": "dj-2",
+       "body": "今天的题目有点意思😏 答案我放这，脑洞请看图 86X 想拿🧧的，去🐳东🔍[夺金密令]提交数字 每晚0点开奖，中前俩数字，红包秒到手 中三个数字，🎁加倍！😄😄 做小任务还可以拿到额外的答题机会，提高中🎁几率 玩了这么多次，好像已经找到感觉了 有兴趣的可以看看之前的答案解析 玩多了你也会变解题大神👍 #夺金密令 #京东校园 #省钱攻略 #学生党好物推荐 #看图猜数字 #京东福利 #京东红包 #脑筋急转弯 #薅羊毛 #能省一点是一点",
+       "likes": 10,
+       "collects": 1,
+       "comments": 1,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9e81d80000000025036682/6a9e81d80000000025036682_1.jpg",
+         "w": 1080,
+         "h": 1443
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9e81d80000000025036682/6a9e81d80000000025036682_2.jpg",
+         "w": 1080,
+         "h": 1443
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9e81d80000000025036682/6a9e81d80000000025036682_3.jpg",
+         "w": 1080,
+         "h": 1443
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9e81d80000000025036682/6a9e81d80000000025036682_4.jpg",
+         "w": 1080,
+         "h": 1443
+        }
+       ]
       },
       {
        "id": "6a99335e0000000028034037",
@@ -717,7 +850,48 @@ window.ATLAS = {
        "date": "2026-09-02",
        "video": null,
        "competitor": "duojin",
-       "format": "dj-3"
+       "format": "dj-3",
+       "body": "玩了快小半个月，前面两道基本都能拿捏住，就压轴那道数字题每次全靠碰运气！ 把我攒的近期答案和解析全部整理出来了，蹲一波大佬挖掘内在规律！ 8.28：68 8.29：98 8.30：82 8.31：10 9.01：34 出题逻辑真的脑洞大开，一个人瞎琢磨实在挠头😮‍💨 欢迎各路解题大神评论区分享解题思路！想稳稳拿下红包！ 还没玩过的宝子看这里👉🐳东搜「夺金密令」就能进入答题 做完日常任务还能多拿答题次数，提升猜对几率，坐等薅福利回血💰 #京东校园 #夺金密令 #京东答题 #薅羊毛攻略 #学生党省钱 #好运锦鲤 #开学回血",
+       "likes": 25,
+       "collects": 2,
+       "comments": 2,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_1.jpg",
+         "w": 924,
+         "h": 1218
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_2.jpg",
+         "w": 921,
+         "h": 1226
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_3.jpg",
+         "w": 918,
+         "h": 1227
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_4.jpg",
+         "w": 917,
+         "h": 1224
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_5.jpg",
+         "w": 921,
+         "h": 1224
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_6.jpg",
+         "w": 918,
+         "h": 1224
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_7.jpg",
+         "w": 917,
+         "h": 1224
+        }
+       ]
       },
       {
        "id": "6a97ec6f000000002901000c",
@@ -737,7 +911,43 @@ window.ATLAS = {
        "date": "2026-09-02",
        "video": null,
        "competitor": "duojin",
-       "format": "dj-3"
+       "format": "dj-3",
+       "body": "连续玩了大半个月，前两道题基本稳对，唯独最后一道数字题纯靠瞎蒙！ 整理了近期完整答案合集，蹲个大神一起找规律！ 8.28：68 8.29：98 8.30：82 8.31：10 9.01：34 往期汇总：607、067、829、972、913 9.02最新题：23？ 求大佬给个高概率数字！！ 每次思路都完全意想不到，单人解谜真的太难了😭 求求各位解题大神在评论区留攻略！孩子想稳稳薅红包！ 不会玩的宝子指路👉🐳东搜「夺金密令」直达答题页面 做日常任务还能叠加答题机会，大幅提高猜中概率！坐等躺赢回血✨ #京东校园 #夺金密令 #京东答题 #薅羊毛攻略 #学生党省钱 #好运锦鲤 #开学回血",
+       "likes": 28,
+       "collects": 0,
+       "comments": 7,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ec6f000000002901000c/6a97ec6f000000002901000c_1.jpg",
+         "w": 912,
+         "h": 1223
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ec6f000000002901000c/6a97ec6f000000002901000c_2.jpg",
+         "w": 917,
+         "h": 1224
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ec6f000000002901000c/6a97ec6f000000002901000c_3.jpg",
+         "w": 915,
+         "h": 1224
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ec6f000000002901000c/6a97ec6f000000002901000c_4.jpg",
+         "w": 918,
+         "h": 1227
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ec6f000000002901000c/6a97ec6f000000002901000c_5.jpg",
+         "w": 1080,
+         "h": 1443
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ec6f000000002901000c/6a97ec6f000000002901000c_6.jpg",
+         "w": 912,
+         "h": 1221
+        }
+       ]
       },
       {
        "id": "6a97f0100000000029010e98",
@@ -757,7 +967,43 @@ window.ATLAS = {
        "date": "2026-09-02",
        "video": null,
        "competitor": "duojin",
-       "format": "dj-3"
+       "format": "dj-3",
+       "body": "连续打卡好多天，稳定对两道，第三题永远随缘！ 明明复盘了超多往期答案，还是摸不透出题规律 更新往期答案汇总，全网蹲解题大神带飞！ 📝答案汇总 8.28：682 8.29：984 8.30：825 8.31：107 9.01：347 往期汇总：607、067、829、972、913 今日待解：24？ 有没有高概率数字推荐！！ 真的很需要每日更新的解题攻略！评论区求大佬常驻😭 不会玩的宝子抓紧冲！🐳东🔍夺金密令，零门槛参与 做任务叠加答题机会，告别纯盲猜，提高中奖率！ 坐等一波躺中红包，好运锦鲤附体✨ #好运锦鲤 #京东校园薅羊毛 #夺金密令每日答案 #大学生兼职 #零成本搞钱 #省钱小技巧 #夺金密令 #京东校园",
+       "likes": 29,
+       "collects": 0,
+       "comments": 1,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f0100000000029010e98/6a97f0100000000029010e98_1.jpg",
+         "w": 927,
+         "h": 1227
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f0100000000029010e98/6a97f0100000000029010e98_2.jpg",
+         "w": 921,
+         "h": 1227
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f0100000000029010e98/6a97f0100000000029010e98_3.jpg",
+         "w": 918,
+         "h": 1230
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f0100000000029010e98/6a97f0100000000029010e98_4.jpg",
+         "w": 924,
+         "h": 1229
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f0100000000029010e98/6a97f0100000000029010e98_5.jpg",
+         "w": 1080,
+         "h": 1443
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f0100000000029010e98/6a97f0100000000029010e98_6.jpg",
+         "w": 924,
+         "h": 1230
+        }
+       ]
       }
      ]
     }
@@ -871,7 +1117,18 @@ window.ATLAS = {
        "date": "2025-08-18",
        "video": null,
        "competitor": "fuye",
-       "format": "fy-1"
+       "format": "fy-1",
+       "body": "你是不是也遇到过这些问题： ❌ 剪辑太耗时间，自己搞不定节奏感？ ❌ 想要高级感但不会调色、不会加特xiao？ ❌ 脚本写好了，却不知道怎么拍/剪？ . ✨ 别急！我来帮你搞定一切！ 服务过众多品牌/博主/短视频团队， 擅长从脚本策划 → 视频拍摄建议 → 剪辑包装 → 成片交付全流程制作。 . 我能为你做什么？ 短视频剪辑/产品宣传/品牌推广片/Vlog 定制调色 & 后期包装 & 节奏优化 动态字幕/转场/特xiao/调色/配音 脚本创意+分镜建议（让你的视频更有故事感） . ✅ 7×24h在线响应，沟通不卡壳 ✅ 1对1定制方案，不套模板 ✅ 高xiao出片，不拖沓，准时交付 需要剪辑的宝子别再犹豫啦~ 点我获取定制方案+专业报价 #视频剪辑接单 #剪辑接单 #视频剪辑 #代剪视频 #AE代做 #特效制作 #活动快剪 #ai视频生成 #ai视频制作 #ai视频剪辑",
+       "likes": 373,
+       "collects": 273,
+       "comments": 1039,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/68a2c5bb000000001d029ed4/68a2c5bb000000001d029ed4_1.jpg",
+         "w": 1080,
+         "h": 1440
+        }
+       ]
       },
       {
        "id": "67249d5f000000001a01dc23",
@@ -953,9 +1210,17 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2026-08-06",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a737be4000000000502b000/6a737be4000000000502b000_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a737be4000000000502b000/6a737be4000000000502b000_2.jpg",
+        "durationSec": 192
+       },
        "competitor": "fuye",
-       "format": "fy-2"
+       "format": "fy-2",
+       "body": "#海娜师吴因念 #设计师 #海娜手绘 #设计师 #副业 #商业思维 #提升自己 #自由职业",
+       "likes": 444,
+       "collects": 162,
+       "comments": 47
       },
       {
        "id": "6a575eb10000000007027900",
@@ -973,9 +1238,17 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2026-07-15",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a575eb10000000007027900/6a575eb10000000007027900_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a575eb10000000007027900/6a575eb10000000007027900_2.jpg",
+        "durationSec": 82
+       },
        "competitor": "fuye",
-       "format": "fy-2"
+       "format": "fy-2",
+       "body": "想多增加一份收入，但又不知道从哪里开始？ 可以了解一下陪诊师 简单来说，就是协助有需要的人群完成医院就诊过程中的相关服务，比如陪同就诊、协助沟通、了解挂号取药流程等。 这个方向更适合时间灵活、做事细心、有耐心、善于沟通的人群。 如果你目前有空余时间，想多了解一个副业方向，可以先咨询看看自己是否适合。 学习基础条件参考 年龄：年满 18–60 周岁，身心健康，具备基础沟通能力 学历：高中 / 中专及以上学历，无医学专业相关限制 素养：品行端正，有责任心，能适应医院场景服务#陪诊 #陪诊师 #陪诊师证怎么考",
+       "likes": 48,
+       "collects": 36,
+       "comments": 49
       }
      ]
     },
@@ -1009,9 +1282,17 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2026-07-21",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a5f1f450000000009036577/6a5f1f450000000009036577_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a5f1f450000000009036577/6a5f1f450000000009036577_2.jpg",
+        "durationSec": 73
+       },
        "competitor": "fuye",
-       "format": "fy-3"
+       "format": "fy-3",
+       "body": "烘焙行业正在洗牌，蛋糕店倒闭潮下，只有技术过硬的人才能留下来。别再观望了，系统学习烘焙技术才是出路。杭州青柠烘焙培训，从基础到创业，面包、吐司、甜品、西点全覆盖，零基础也能快速上手。趁现在，把技术学扎实，未来才不慌。 #烘焙培训 #杭州青柠烘焙培训学校 #舟山岱山烘焙面包培训学校推荐 #正阳零基础学烘焙 ##烘焙创业 #吐司 #烘焙教程 #甜品培训 #西点培训 #杭州烘焙培训",
+       "likes": 213,
+       "collects": 110,
+       "comments": 36
       },
       {
        "id": "695b8b2c000000001a035554",
@@ -1031,7 +1312,93 @@ window.ATLAS = {
        "date": "2026-01-05",
        "video": null,
        "competitor": "fuye",
-       "format": "fy-3"
+       "format": "fy-3",
+       "body": "4天从0到1掌握： ✔️ 水油皮万能公式：手揉+机揉两种方法，省时又省力，起酥成功率100% ✔️ 21款高销量酥点：热门款+节日限定款全涵盖，不愁没客源 ✔️ 15款私房配方免费送！都是经过市场验证的爆款，直接用就能卖高价 ✔️ 附加技能拉满：包装教程+拍摄技巧，朋友圈/小红书发图就吸单 理论+实操结合，老师全程指导，哪怕是厨房小白也能快速上手～ 学完就能接单变现，节日订单提前囤！想做中式酥点生意的姐妹别犹豫，错过等一年✨ 感兴趣评论区留言扣1~#糖王周毅 #中式点心 #中式糕点 #茶果子 #茶点 #中式酥点",
+       "likes": 248,
+       "collects": 207,
+       "comments": 215,
+       "images": [
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_1.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_10.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_11.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_12.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_13.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_14.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_15.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_16.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_2.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_3.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_4.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_5.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_6.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_7.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_8.jpg",
+         "w": 1080,
+         "h": 1080
+        },
+        {
+         "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_9.jpg",
+         "w": 1080,
+         "h": 1080
+        }
+       ]
       },
       {
        "id": "67a05680000000001800724e",
@@ -1049,9 +1416,17 @@ window.ATLAS = {
        "total": 100,
        "objective": "客资收集",
        "date": "2025-02-03",
-       "video": null,
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/67a05680000000001800724e/67a05680000000001800724e_1.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/67a05680000000001800724e/67a05680000000001800724e_2.jpg",
+        "durationSec": 130
+       },
        "competitor": "fuye",
-       "format": "fy-3"
+       "format": "fy-3",
+       "body": "#女性创业 #副业 #宝妈创业 #手工创业 #手工皂 #手工皂课程 #手工皂系统创业课程 #零基础手工皂冷制皂课程 #深圳手工皂课程 #天然手工冷制皂",
+       "likes": 1000,
+       "collects": 824,
+       "comments": 458
       }
      ]
     }
@@ -2982,9 +3357,15 @@ window.ATLAS = {
    "total": 100,
    "objective": "应用下载",
    "date": "2026-07-30",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a6ae01c000000000f02b0d4/6a6ae01c000000000f02b0d4_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a6ae01c000000000f02b0d4/6a6ae01c000000000f02b0d4_2.jpg",
+    "durationSec": 22
+   },
    "competitor": "chaoziran",
-   "format": "cz-1"
+   "format": "cz-1",
+   "body": "#二次元生活存档 #超自然行动组 #摸金就玩超自然 #好视频扶持计划 #超自然鬼吹灯联动",
+   "collects": 3934
   },
   "69bbc73e0000000023013694": {
    "id": "69bbc73e0000000023013694",
@@ -3050,9 +3431,17 @@ window.ATLAS = {
    "total": 100,
    "objective": "应用下载",
    "date": "2026-07-31",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a6c6ee70000000032021db6/6a6c6ee70000000032021db6_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a6c6ee70000000032021db6/6a6c6ee70000000032021db6_2.jpg",
+    "durationSec": 21
+   },
    "competitor": "chaoziran",
-   "format": "cz-2"
+   "format": "cz-2",
+   "body": "#超自然行动组 #超自然百万激励计划 #超自然二创厨子 #超自然暑假欢乐集结 #寻找超自然摸金搭子 #摸金就玩超自然 #还好是超自然不然就火了 #超自然小剧场",
+   "likes": 5509,
+   "collects": 1224,
+   "comments": 150
   },
   "69192de80000000005002499": {
    "id": "69192de80000000005002499",
@@ -3097,9 +3486,17 @@ window.ATLAS = {
    "total": 100,
    "objective": "应用下载",
    "date": "2026-04-30",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/69f2f596000000001b021280/69f2f596000000001b021280_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/69f2f596000000001b021280/69f2f596000000001b021280_2.jpg",
+    "durationSec": 27
+   },
    "competitor": "chaoziran",
-   "format": "cz-3"
+   "format": "cz-3",
+   "body": "小满新皮肤，大金几率翻倍，各种福利等你拿！ #超自然行动组 #恐怖游戏超自然行动组 #还好是超自然不然就火了 #头像 #恐怖游戏#闺蜜们都在玩超自然 #陪伴不过超自然",
+   "likes": 2547,
+   "collects": 901,
+   "comments": 396
   },
   "69ae7cc4000000001a037e40": {
    "id": "69ae7cc4000000001a037e40",
@@ -3117,9 +3514,16 @@ window.ATLAS = {
    "total": 100,
    "objective": "应用下载",
    "date": "2026-03-09",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/69ae7cc4000000001a037e40/69ae7cc4000000001a037e40_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/69ae7cc4000000001a037e40/69ae7cc4000000001a037e40_2.jpg",
+    "durationSec": 18
+   },
    "competitor": "chaoziran",
-   "format": "cz-3"
+   "format": "cz-3",
+   "body": "#超自然行动组 #同学一起超自然吗 #超自然百万激励计划",
+   "collects": 3694,
+   "comments": 628
   },
   "6a97f3c20000000012036ce2": {
    "id": "6a97f3c20000000012036ce2",
@@ -3139,7 +3543,33 @@ window.ATLAS = {
    "date": "2026-09-02",
    "video": null,
    "competitor": "duojin",
-   "format": "dj-1"
+   "format": "dj-1",
+   "body": "拒绝复杂套路，每天几分钟答题，就能瓜分海量红包福利。 「夺金密令」每日答题挑战全新上线，题目简单有趣，新手零门槛入门。固定每晚0点开奖，福利稳定放送。 想要提高中奖概率，坚持做每日任务、找好友助力，就能叠加答题机会~ 开学季省钱必冲，闲置时间利用起来，轻松实现零花钱自由！ 直接🐳东搜索「夺金密令」，人人都能参与！ #京东福利 #夺金密令 #省钱 #薅羊毛 #省钱小技巧 #省钱攻略 #学生党 #薅羊毛的快乐 #京东校园 #京东隐藏福利",
+   "likes": 29,
+   "collects": 0,
+   "comments": 5,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f3c20000000012036ce2/6a97f3c20000000012036ce2_1.jpg",
+     "w": 921,
+     "h": 1221
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f3c20000000012036ce2/6a97f3c20000000012036ce2_2.jpg",
+     "w": 918,
+     "h": 1224
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f3c20000000012036ce2/6a97f3c20000000012036ce2_3.jpg",
+     "w": 1080,
+     "h": 1443
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f3c20000000012036ce2/6a97f3c20000000012036ce2_4.jpg",
+     "w": 414,
+     "h": 573
+    }
+   ]
   },
   "6a97efbb000000002902cfc5": {
    "id": "6a97efbb000000002902cfc5",
@@ -3159,7 +3589,33 @@ window.ATLAS = {
    "date": "2026-09-02",
    "video": null,
    "competitor": "duojin",
-   "format": "dj-1"
+   "format": "dj-1",
+   "body": "很多人都不知道的日常薅羊毛渠道，无套路、纯免费。 「夺金密令」每日趣味答题挑战，开动脑力轻松闯关，每晚零点准时瓜分百万红包。题目难度适中，新手也能快速上手。 坚持做每日任务，简单邀请好友助力，就能叠加答题次数，大幅提升中奖概率，🧧拿到手软。 开学季想要轻松回血、省钱的宝子，一定不要错过这个活动。 🐳东🔍「夺金密令」，即刻开启答题薅福利之旅！ #京东福利 #夺金密令 #省钱 #薅羊毛 #京东校园 #省钱攻略 #学生党 #薅羊毛的快乐 #被年轻人的省钱方式破防了 #学生党好物推荐",
+   "likes": 33,
+   "collects": 0,
+   "comments": 6,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97efbb000000002902cfc5/6a97efbb000000002902cfc5_1.jpg",
+     "w": 930,
+     "h": 1232
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97efbb000000002902cfc5/6a97efbb000000002902cfc5_2.jpg",
+     "w": 918,
+     "h": 1224
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97efbb000000002902cfc5/6a97efbb000000002902cfc5_3.jpg",
+     "w": 915,
+     "h": 1227
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97efbb000000002902cfc5/6a97efbb000000002902cfc5_4.jpg",
+     "w": 918,
+     "h": 1224
+    }
+   ]
   },
   "6a9a9bcb0000000028034e5c": {
    "id": "6a9a9bcb0000000028034e5c",
@@ -3199,7 +3655,33 @@ window.ATLAS = {
    "date": "2026-09-08",
    "video": null,
    "competitor": "duojin",
-   "format": "dj-2"
+   "format": "dj-2",
+   "body": "哈喽宝子们~ 今天给大家出一期🐳东夺金密令超简单攻略 ✨三步走，红包到手🧧 1️⃣上🐳东🔍【夺金密令】进入活动页面 2️⃣每天总共三题，前两题为看图猜数字 （考验眼力和脑洞🧠） 后一题为随机猜数字，闭眼蒙都行 3️⃣只要猜对前2位数字，就可拿到无门槛红包 如果3位数字全部猜中，红包奖励加码！ 📢这个活动已经出好几天喇 我一直没发 （懒癌发作😝） 从今天开始会给大家分析当天的答案哦 可以先码住哈宝子们 ⏰每晚00:00准时开奖 完成开学季任务还可以解锁更多答题机会 次数多了，中奖率up up！ 而且点外卖、购物都可直接抵扣 还可以叠加使用哦~🙌 宝子们冲鸭 #京东校园 #省钱攻略 #学生党好物推荐 #夺金密令 #薅羊毛 #不薅白不薅 #多种支付方式 #优惠",
+   "likes": 17,
+   "collects": 10,
+   "comments": 10,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9f787a000000002502faf6/6a9f787a000000002502faf6_1.jpg",
+     "w": 1080,
+     "h": 1421
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9f787a000000002502faf6/6a9f787a000000002502faf6_2.jpg",
+     "w": 1080,
+     "h": 1242
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9f787a000000002502faf6/6a9f787a000000002502faf6_3.jpg",
+     "w": 1080,
+     "h": 1231
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9f787a000000002502faf6/6a9f787a000000002502faf6_4.jpg",
+     "w": 1080,
+     "h": 1253
+    }
+   ]
   },
   "6a9e81d80000000025036682": {
    "id": "6a9e81d80000000025036682",
@@ -3219,7 +3701,33 @@ window.ATLAS = {
    "date": "2026-09-07",
    "video": null,
    "competitor": "duojin",
-   "format": "dj-2"
+   "format": "dj-2",
+   "body": "今天的题目有点意思😏 答案我放这，脑洞请看图 86X 想拿🧧的，去🐳东🔍[夺金密令]提交数字 每晚0点开奖，中前俩数字，红包秒到手 中三个数字，🎁加倍！😄😄 做小任务还可以拿到额外的答题机会，提高中🎁几率 玩了这么多次，好像已经找到感觉了 有兴趣的可以看看之前的答案解析 玩多了你也会变解题大神👍 #夺金密令 #京东校园 #省钱攻略 #学生党好物推荐 #看图猜数字 #京东福利 #京东红包 #脑筋急转弯 #薅羊毛 #能省一点是一点",
+   "likes": 10,
+   "collects": 1,
+   "comments": 1,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9e81d80000000025036682/6a9e81d80000000025036682_1.jpg",
+     "w": 1080,
+     "h": 1443
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9e81d80000000025036682/6a9e81d80000000025036682_2.jpg",
+     "w": 1080,
+     "h": 1443
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9e81d80000000025036682/6a9e81d80000000025036682_3.jpg",
+     "w": 1080,
+     "h": 1443
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a9e81d80000000025036682/6a9e81d80000000025036682_4.jpg",
+     "w": 1080,
+     "h": 1443
+    }
+   ]
   },
   "6a99335e0000000028034037": {
    "id": "6a99335e0000000028034037",
@@ -3259,7 +3767,48 @@ window.ATLAS = {
    "date": "2026-09-02",
    "video": null,
    "competitor": "duojin",
-   "format": "dj-3"
+   "format": "dj-3",
+   "body": "玩了快小半个月，前面两道基本都能拿捏住，就压轴那道数字题每次全靠碰运气！ 把我攒的近期答案和解析全部整理出来了，蹲一波大佬挖掘内在规律！ 8.28：68 8.29：98 8.30：82 8.31：10 9.01：34 出题逻辑真的脑洞大开，一个人瞎琢磨实在挠头😮‍💨 欢迎各路解题大神评论区分享解题思路！想稳稳拿下红包！ 还没玩过的宝子看这里👉🐳东搜「夺金密令」就能进入答题 做完日常任务还能多拿答题次数，提升猜对几率，坐等薅福利回血💰 #京东校园 #夺金密令 #京东答题 #薅羊毛攻略 #学生党省钱 #好运锦鲤 #开学回血",
+   "likes": 25,
+   "collects": 2,
+   "comments": 2,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_1.jpg",
+     "w": 924,
+     "h": 1218
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_2.jpg",
+     "w": 921,
+     "h": 1226
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_3.jpg",
+     "w": 918,
+     "h": 1227
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_4.jpg",
+     "w": 917,
+     "h": 1224
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_5.jpg",
+     "w": 921,
+     "h": 1224
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_6.jpg",
+     "w": 918,
+     "h": 1224
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f605000000001203cf16/6a97f605000000001203cf16_7.jpg",
+     "w": 917,
+     "h": 1224
+    }
+   ]
   },
   "6a97ec6f000000002901000c": {
    "id": "6a97ec6f000000002901000c",
@@ -3279,7 +3828,43 @@ window.ATLAS = {
    "date": "2026-09-02",
    "video": null,
    "competitor": "duojin",
-   "format": "dj-3"
+   "format": "dj-3",
+   "body": "连续玩了大半个月，前两道题基本稳对，唯独最后一道数字题纯靠瞎蒙！ 整理了近期完整答案合集，蹲个大神一起找规律！ 8.28：68 8.29：98 8.30：82 8.31：10 9.01：34 往期汇总：607、067、829、972、913 9.02最新题：23？ 求大佬给个高概率数字！！ 每次思路都完全意想不到，单人解谜真的太难了😭 求求各位解题大神在评论区留攻略！孩子想稳稳薅红包！ 不会玩的宝子指路👉🐳东搜「夺金密令」直达答题页面 做日常任务还能叠加答题机会，大幅提高猜中概率！坐等躺赢回血✨ #京东校园 #夺金密令 #京东答题 #薅羊毛攻略 #学生党省钱 #好运锦鲤 #开学回血",
+   "likes": 28,
+   "collects": 0,
+   "comments": 7,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ec6f000000002901000c/6a97ec6f000000002901000c_1.jpg",
+     "w": 912,
+     "h": 1223
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ec6f000000002901000c/6a97ec6f000000002901000c_2.jpg",
+     "w": 917,
+     "h": 1224
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ec6f000000002901000c/6a97ec6f000000002901000c_3.jpg",
+     "w": 915,
+     "h": 1224
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ec6f000000002901000c/6a97ec6f000000002901000c_4.jpg",
+     "w": 918,
+     "h": 1227
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ec6f000000002901000c/6a97ec6f000000002901000c_5.jpg",
+     "w": 1080,
+     "h": 1443
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ec6f000000002901000c/6a97ec6f000000002901000c_6.jpg",
+     "w": 912,
+     "h": 1221
+    }
+   ]
   },
   "6a97f0100000000029010e98": {
    "id": "6a97f0100000000029010e98",
@@ -3299,7 +3884,43 @@ window.ATLAS = {
    "date": "2026-09-02",
    "video": null,
    "competitor": "duojin",
-   "format": "dj-3"
+   "format": "dj-3",
+   "body": "连续打卡好多天，稳定对两道，第三题永远随缘！ 明明复盘了超多往期答案，还是摸不透出题规律 更新往期答案汇总，全网蹲解题大神带飞！ 📝答案汇总 8.28：682 8.29：984 8.30：825 8.31：107 9.01：347 往期汇总：607、067、829、972、913 今日待解：24？ 有没有高概率数字推荐！！ 真的很需要每日更新的解题攻略！评论区求大佬常驻😭 不会玩的宝子抓紧冲！🐳东🔍夺金密令，零门槛参与 做任务叠加答题机会，告别纯盲猜，提高中奖率！ 坐等一波躺中红包，好运锦鲤附体✨ #好运锦鲤 #京东校园薅羊毛 #夺金密令每日答案 #大学生兼职 #零成本搞钱 #省钱小技巧 #夺金密令 #京东校园",
+   "likes": 29,
+   "collects": 0,
+   "comments": 1,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f0100000000029010e98/6a97f0100000000029010e98_1.jpg",
+     "w": 927,
+     "h": 1227
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f0100000000029010e98/6a97f0100000000029010e98_2.jpg",
+     "w": 921,
+     "h": 1227
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f0100000000029010e98/6a97f0100000000029010e98_3.jpg",
+     "w": 918,
+     "h": 1230
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f0100000000029010e98/6a97f0100000000029010e98_4.jpg",
+     "w": 924,
+     "h": 1229
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f0100000000029010e98/6a97f0100000000029010e98_5.jpg",
+     "w": 1080,
+     "h": 1443
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97f0100000000029010e98/6a97f0100000000029010e98_6.jpg",
+     "w": 924,
+     "h": 1230
+    }
+   ]
   },
   "6a61ea90000000000e037726": {
    "id": "6a61ea90000000000e037726",
@@ -3339,7 +3960,18 @@ window.ATLAS = {
    "date": "2025-08-18",
    "video": null,
    "competitor": "fuye",
-   "format": "fy-1"
+   "format": "fy-1",
+   "body": "你是不是也遇到过这些问题： ❌ 剪辑太耗时间，自己搞不定节奏感？ ❌ 想要高级感但不会调色、不会加特xiao？ ❌ 脚本写好了，却不知道怎么拍/剪？ . ✨ 别急！我来帮你搞定一切！ 服务过众多品牌/博主/短视频团队， 擅长从脚本策划 → 视频拍摄建议 → 剪辑包装 → 成片交付全流程制作。 . 我能为你做什么？ 短视频剪辑/产品宣传/品牌推广片/Vlog 定制调色 & 后期包装 & 节奏优化 动态字幕/转场/特xiao/调色/配音 脚本创意+分镜建议（让你的视频更有故事感） . ✅ 7×24h在线响应，沟通不卡壳 ✅ 1对1定制方案，不套模板 ✅ 高xiao出片，不拖沓，准时交付 需要剪辑的宝子别再犹豫啦~ 点我获取定制方案+专业报价 #视频剪辑接单 #剪辑接单 #视频剪辑 #代剪视频 #AE代做 #特效制作 #活动快剪 #ai视频生成 #ai视频制作 #ai视频剪辑",
+   "likes": 373,
+   "collects": 273,
+   "comments": 1039,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/68a2c5bb000000001d029ed4/68a2c5bb000000001d029ed4_1.jpg",
+     "w": 1080,
+     "h": 1440
+    }
+   ]
   },
   "67249d5f000000001a01dc23": {
    "id": "67249d5f000000001a01dc23",
@@ -3405,9 +4037,17 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2026-08-06",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a737be4000000000502b000/6a737be4000000000502b000_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a737be4000000000502b000/6a737be4000000000502b000_2.jpg",
+    "durationSec": 192
+   },
    "competitor": "fuye",
-   "format": "fy-2"
+   "format": "fy-2",
+   "body": "#海娜师吴因念 #设计师 #海娜手绘 #设计师 #副业 #商业思维 #提升自己 #自由职业",
+   "likes": 444,
+   "collects": 162,
+   "comments": 47
   },
   "6a575eb10000000007027900": {
    "id": "6a575eb10000000007027900",
@@ -3425,9 +4065,17 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2026-07-15",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a575eb10000000007027900/6a575eb10000000007027900_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a575eb10000000007027900/6a575eb10000000007027900_2.jpg",
+    "durationSec": 82
+   },
    "competitor": "fuye",
-   "format": "fy-2"
+   "format": "fy-2",
+   "body": "想多增加一份收入，但又不知道从哪里开始？ 可以了解一下陪诊师 简单来说，就是协助有需要的人群完成医院就诊过程中的相关服务，比如陪同就诊、协助沟通、了解挂号取药流程等。 这个方向更适合时间灵活、做事细心、有耐心、善于沟通的人群。 如果你目前有空余时间，想多了解一个副业方向，可以先咨询看看自己是否适合。 学习基础条件参考 年龄：年满 18–60 周岁，身心健康，具备基础沟通能力 学历：高中 / 中专及以上学历，无医学专业相关限制 素养：品行端正，有责任心，能适应医院场景服务#陪诊 #陪诊师 #陪诊师证怎么考",
+   "likes": 48,
+   "collects": 36,
+   "comments": 49
   },
   "6a5f1f450000000009036577": {
    "id": "6a5f1f450000000009036577",
@@ -3445,9 +4093,17 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2026-07-21",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a5f1f450000000009036577/6a5f1f450000000009036577_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a5f1f450000000009036577/6a5f1f450000000009036577_2.jpg",
+    "durationSec": 73
+   },
    "competitor": "fuye",
-   "format": "fy-3"
+   "format": "fy-3",
+   "body": "烘焙行业正在洗牌，蛋糕店倒闭潮下，只有技术过硬的人才能留下来。别再观望了，系统学习烘焙技术才是出路。杭州青柠烘焙培训，从基础到创业，面包、吐司、甜品、西点全覆盖，零基础也能快速上手。趁现在，把技术学扎实，未来才不慌。 #烘焙培训 #杭州青柠烘焙培训学校 #舟山岱山烘焙面包培训学校推荐 #正阳零基础学烘焙 ##烘焙创业 #吐司 #烘焙教程 #甜品培训 #西点培训 #杭州烘焙培训",
+   "likes": 213,
+   "collects": 110,
+   "comments": 36
   },
   "695b8b2c000000001a035554": {
    "id": "695b8b2c000000001a035554",
@@ -3467,7 +4123,93 @@ window.ATLAS = {
    "date": "2026-01-05",
    "video": null,
    "competitor": "fuye",
-   "format": "fy-3"
+   "format": "fy-3",
+   "body": "4天从0到1掌握： ✔️ 水油皮万能公式：手揉+机揉两种方法，省时又省力，起酥成功率100% ✔️ 21款高销量酥点：热门款+节日限定款全涵盖，不愁没客源 ✔️ 15款私房配方免费送！都是经过市场验证的爆款，直接用就能卖高价 ✔️ 附加技能拉满：包装教程+拍摄技巧，朋友圈/小红书发图就吸单 理论+实操结合，老师全程指导，哪怕是厨房小白也能快速上手～ 学完就能接单变现，节日订单提前囤！想做中式酥点生意的姐妹别犹豫，错过等一年✨ 感兴趣评论区留言扣1~#糖王周毅 #中式点心 #中式糕点 #茶果子 #茶点 #中式酥点",
+   "likes": 248,
+   "collects": 207,
+   "comments": 215,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_1.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_10.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_11.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_12.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_13.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_14.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_15.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_16.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_2.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_3.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_4.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_5.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_6.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_7.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_8.jpg",
+     "w": 1080,
+     "h": 1080
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/695b8b2c000000001a035554/695b8b2c000000001a035554_9.jpg",
+     "w": 1080,
+     "h": 1080
+    }
+   ]
   },
   "67a05680000000001800724e": {
    "id": "67a05680000000001800724e",
@@ -3485,9 +4227,17 @@ window.ATLAS = {
    "total": 100,
    "objective": "客资收集",
    "date": "2025-02-03",
-   "video": null,
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/67a05680000000001800724e/67a05680000000001800724e_1.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/67a05680000000001800724e/67a05680000000001800724e_2.jpg",
+    "durationSec": 130
+   },
    "competitor": "fuye",
-   "format": "fy-3"
+   "format": "fy-3",
+   "body": "#女性创业 #副业 #宝妈创业 #手工创业 #手工皂 #手工皂课程 #手工皂系统创业课程 #零基础手工皂冷制皂课程 #深圳手工皂课程 #天然手工冷制皂",
+   "likes": 1000,
+   "collects": 824,
+   "comments": 458
   },
   "6a97ee65000000002900f894": {
    "id": "6a97ee65000000002900f894",
@@ -3507,7 +4257,43 @@ window.ATLAS = {
    "date": "2026-09-02",
    "video": null,
    "competitor": "duojin",
-   "format": "dj-1"
+   "format": "dj-1",
+   "body": "不用花钱、不用蹲点，每天花两分钟答题就能领红包 唯一难点就是每日数字脑筋急转弯，思路太刁钻了！ 更新最新题库答案+往期合集，帮大家省去复盘时间👇 8.28：68 8.29：98 8.30：82 8.31：10 9.01：34 往期汇总：607、067、829、972、913 9.02待解题目：28？ 概率数字在线蹲靠谱答案！ 亲测做任务可以增加答题次数，比纯瞎猜命中率高超多💪 长期玩真的能攒下不少零花钱，开学回血妥妥的！ 有没有每日蹲题搭子！去🐳东🔍“夺金密令” 以后更新一起交流解题思路～ #学生党好物推荐 #省钱攻略 #大学生搞钱日常 #京东夺金密令 #免费薅红包 #校园薅羊毛 #夺金密令",
+   "likes": 26,
+   "collects": 0,
+   "comments": 0,
+   "images": [
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ee65000000002900f894/6a97ee65000000002900f894_1.jpg",
+     "w": 918,
+     "h": 1224
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ee65000000002900f894/6a97ee65000000002900f894_2.jpg",
+     "w": 915,
+     "h": 1227
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ee65000000002900f894/6a97ee65000000002900f894_3.jpg",
+     "w": 914,
+     "h": 1224
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ee65000000002900f894/6a97ee65000000002900f894_4.jpg",
+     "w": 914,
+     "h": 1224
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ee65000000002900f894/6a97ee65000000002900f894_5.jpg",
+     "w": 1080,
+     "h": 1443
+    },
+    {
+     "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/briefs/media/6a97ee65000000002900f894/6a97ee65000000002900f894_6.jpg",
+     "w": 918,
+     "h": 1221
+    }
+   ]
   }
  }
 };
