@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>竞品爆款 · Atlas</title>
+<link rel="stylesheet" href="shared/base.css">
+<style>
+  /* ---------- page-shared bits ---------- */
+  .p2 { --gut: 24px; }
+  .p2-wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--gut); }
+  .p2-head { padding-top: 48px; padding-bottom: 28px; display: grid; gap: 10px; }
+  .p2-head h1 { font-size: clamp(24px, 2.4vw + 12px, 34px); font-weight: 650; letter-spacing: -0.02em; line-height: 1.2; }
+  .p2-head .lede { color: var(--ink-2); max-width: 60ch; }
+  @media (max-width: 720px) { .p2 { --gut: 16px; } .p2-head { padding-top: 32px; } }
+
+  button, a { touch-action: manipulation; }
+
+  /* segmented control with sliding indicator */
+  .seg { position: relative; display: inline-flex; padding: 3px; gap: 0; border-radius: 999px; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); max-width: 100%; overflow-x: auto; scrollbar-width: none; isolation: isolate; }
+  .seg button { position: relative; z-index: 1; height: 38px; padding: 0 16px; border: 0; border-radius: 999px; background: none; color: var(--ink-2); font-size: 14px; font-weight: 500; white-space: nowrap; cursor: pointer; transition: color 150ms ease; }
+  .seg button[aria-pressed="true"] { color: var(--ink); }
+  .seg button:active { transform: scale(0.97); }
+  .seg button small { color: var(--ink-3); font-size: 12px; margin-left: 6px; font-variant-numeric: tabular-nums; }
+  .seg .ind { position: absolute; z-index: 0; top: 3px; left: 0; height: 38px; border-radius: 999px; background: var(--surface); box-shadow: var(--shadow-1); pointer-events: none; }
+  .seg[data-ready] .ind { transition: transform 250ms var(--ease-out), width 250ms var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .seg button:hover { color: var(--ink); } }
+
+  .stats { display: flex; gap: 20px; margin: 0; }
+  .stats div { display: grid; gap: 0; }
+  .stats dt { font-size: 12px; color: var(--ink-3); }
+  .stats dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; font-size: 15px; }
+
+  .link { display: inline-flex; align-items: center; gap: 4px; color: var(--accent-ink); font-size: 14px; font-weight: 500; text-decoration: none; white-space: nowrap; }
+  .link span { transition: transform 200ms var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .link:hover span { transform: translateX(3px); } }
+
+  .nc { display: grid; gap: 10px; text-decoration: none; min-width: 0; }
+  .nc .cover-wrap { transition: transform 160ms var(--ease-out); }
+  .nc:active .cover-wrap { transform: scale(0.97); }
+  .nc-t { font-size: 14px; font-weight: 550; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .nc-m { display: flex; gap: 10px; font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; }
+  .nc-m .acct { overflow: hidden; text-overflow: ellipsis; min-width: 0; color: var(--ink-2); }
+  @media (hover: hover) and (pointer: fine) { .nc:hover .nc-t { color: var(--accent-ink); } }
+
+  .enter { animation: p2-in 280ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 40ms); }
+  @keyframes p2-in { from { opacity: 0; transform: translateY(8px); } }
+  .swap { animation: p2-fade 180ms ease-out both; }
+  @keyframes p2-fade { from { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .enter { animation: p2-fade 200ms ease-out both; animation-delay: 0ms; }
+    .seg[data-ready] .ind { transition: none; }
+  }
+
+  /* ---------- V1 Shelves ---------- */
+  .v1 .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding-bottom: 8px; }
+  .v1 .csum { color: var(--ink-3); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .v1 .shelf { padding: 40px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 40px; }
+  .v1 .shelf:first-of-type { border-top: 0; }
+  .v1 .s-meta { display: grid; align-content: start; gap: 12px; }
+  .v1 .rank { font-size: 13px; font-weight: 600; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .v1 .s-meta h2 { font-size: 24px; font-weight: 650; letter-spacing: -0.015em; line-height: 1.25; }
+  .v1 .s-meta p { color: var(--ink-2); font-size: 14px; }
+  .v1 .s-meta .stats { margin-top: 8px; }
+  .v1 .s-meta .tag { justify-self: start; font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line); }
+  .v1 .row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  @media (max-width: 860px) {
+    .v1 .shelf { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 32px 0; }
+    .v1 .row { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin: 0 calc(var(--gut) * -1); padding: 0 var(--gut); scrollbar-width: none; scroll-padding: 0 var(--gut); }
+    .v1 .row .nc { flex: 0 0 62%; scroll-snap-align: start; }
+  }
+
+  /* ---------- V2 Quadrant ---------- */
+  .v2 .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding-bottom: 20px; }
+  .v2 .grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 32px; align-items: start; }
+  .v2 .chart-card { background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow-1); padding: 16px 16px 8px; min-width: 0; }
+  .v2 .legend { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .v2 .legend button { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); font-size: 13px; cursor: pointer; box-shadow: inset 0 0 0 1px var(--line); transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease; }
+  .v2 .legend button[aria-pressed="true"] { background: var(--surface-2); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-strong); }
+  .v2 .legend button:active { transform: scale(0.97); }
+  .v2 .legend i { width: 8px; height: 8px; border-radius: 50%; background: var(--sw); flex: none; }
+  .v2 .legend .hollow { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; font-size: 12px; color: var(--ink-3); padding: 0 4px; }
+  .v2 .legend .hollow b { width: 8px; height: 8px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--ink-3); }
+  .v2 .legend .hollow b.f { background: var(--ink-3); box-shadow: none; }
+  .v2 .plot { position: relative; }
+  .v2 svg { display: block; width: 100%; overflow: visible; touch-action: manipulation; }
+  .v2 svg text { font-family: var(--font-sans); fill: var(--ink-3); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .v2 .dot { transition: opacity 180ms ease; }
+  .v2 .tip { position: absolute; z-index: 5; pointer-events: none; min-width: 140px; max-width: 220px; padding: 8px 10px; border-radius: 10px; background: var(--surface); box-shadow: var(--shadow-2); font-size: 12px; line-height: 1.45; opacity: 0; transform: translate(-50%, calc(-100% - 12px)) scale(0.97); transform-origin: 50% 100%; transition: opacity 120ms ease-out, transform 120ms ease-out; }
+  .v2 .tip[data-show] { opacity: 1; transform: translate(-50%, calc(-100% - 12px)); }
+  .v2 .tip strong { display: block; font-size: 15px; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .v2 .tip .k { display: flex; align-items: center; gap: 6px; color: var(--ink-2); }
+  .v2 .tip .k i { width: 10px; height: 2px; border-radius: 1px; background: var(--sw); }
+  .v2 .tip .tt { color: var(--ink); margin-top: 4px; }
+  .v2 .note { font-size: 12px; color: var(--ink-3); padding: 4px 4px 8px; }
+  .v2 .panel { display: grid; gap: 16px; position: sticky; top: 72px; }
+  .v2 .panel h2 { font-size: 20px; font-weight: 650; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; }
+  .v2 .panel h2 i { width: 10px; height: 10px; border-radius: 50%; background: var(--sw); flex: none; }
+  .v2 .panel p { color: var(--ink-2); font-size: 14px; }
+  .v2 .panel .trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .v2 .panel .trio .nc-t { font-size: 12px; }
+  .v2 .panel .trio .nc-m { font-size: 11px; }
+  .v2 .frow { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; text-align: left; padding: 14px 12px; border: 0; border-radius: var(--r-md); background: transparent; cursor: pointer; transition: background-color 150ms ease; }
+  .v2 .frow:active { transform: scale(0.98); }
+  @media (hover: hover) and (pointer: fine) { .v2 .frow:hover { background: var(--surface-2); } }
+  .v2 .frow i { width: 10px; height: 10px; border-radius: 50%; background: var(--sw); }
+  .v2 .frow b { font-weight: 600; display: block; }
+  .v2 .frow small { color: var(--ink-3); font-size: 12px; }
+  .v2 .frow .q { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+  .v2 .frow .q small { display: block; font-weight: 400; }
+  @media (max-width: 960px) { .v2 .grid { grid-template-columns: minmax(0, 1fr); } .v2 .panel { position: static; } .v2 .legend .hollow { margin-left: 0; } }
+
+  /* ---------- V3 Cross matrix ---------- */
+  .v3 .mx { display: grid; grid-template-columns: 96px repeat(3, minmax(0, 1fr)); grid-template-rows: auto repeat(3, auto); column-gap: 16px; padding-bottom: 24px; }
+  .v3 .rows, .v3 .col { grid-row: 1 / span 4; display: grid; grid-template-rows: subgrid; }
+  .v3 .rows > div { padding: 24px 0; border-top: 1px solid transparent; }
+  .v3 .rows > div:first-child { padding: 0; }
+  .v3 .rows b { display: block; font-size: 22px; font-weight: 650; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .v3 .rows span { font-size: 12px; color: var(--ink-3); }
+  .v3 .col { background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow-1); padding: 0 20px; min-width: 0; }
+  .v3 .ch { padding: 20px 0 16px; display: grid; gap: 4px; }
+  .v3 .ch h2 { font-size: 18px; font-weight: 650; letter-spacing: -0.01em; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .v3 .ch .kind { font-size: 12px; font-weight: 500; color: var(--ink-3); }
+  .v3 .ch p { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .v3 .ch p b { color: var(--ink); font-weight: 600; }
+  .v3 .cell { border-top: 1px solid var(--line); padding: 24px 0; display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .v3 .cell .rk { display: none; font-size: 12px; font-weight: 600; color: var(--ink-3); }
+  .v3 .cell h3 { font-size: 16px; font-weight: 650; }
+  .v3 .cell h3 a { text-decoration: none; }
+  @media (hover: hover) and (pointer: fine) { .v3 .cell h3 a:hover { color: var(--accent-ink); } }
+  .v3 .cell > p { font-size: 13px; color: var(--ink-2); min-height: 2.9em; }
+  .v3 .stats { gap: 16px; }
+  .v3 .stats dd { font-size: 14px; }
+  .v3 .bar-share { height: 4px; border-radius: 2px; background: var(--surface-2); overflow: hidden; }
+  .v3 .bar-share i { display: block; height: 100%; width: var(--w); border-radius: 2px; background: var(--accent); }
+  .v3 .fan { position: relative; height: 156px; margin: 6px 0 2px; }
+  .v3 .fan .cover-wrap { position: absolute; left: 50%; top: 4px; width: 96px; transform: translateX(-50%) translateX(var(--x)) rotate(var(--r)); transition: transform 320ms var(--ease-out); transform-origin: 50% 100%; }
+  .v3 .fan .cover-wrap:nth-child(1) { --x: -34px; --r: -7deg; z-index: 1; }
+  .v3 .fan .cover-wrap:nth-child(2) { --x: 0px; --r: 0deg; z-index: 3; }
+  .v3 .fan .cover-wrap:nth-child(3) { --x: 34px; --r: 7deg; z-index: 2; }
+  .v3 .fan .cover { box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 6px 16px rgba(0,0,0,.12); }
+  .v3 .fan .cover-text { font-size: 12px; }
+  @media (hover: hover) and (pointer: fine) {
+    .v3 .cell:hover .fan .cover-wrap:nth-child(1) { --x: -102px; --r: -2deg; }
+    .v3 .cell:hover .fan .cover-wrap:nth-child(3) { --x: 102px; --r: 2deg; }
+  }
+  .v3 .cell:focus-within .fan .cover-wrap:nth-child(1) { --x: -102px; --r: -2deg; }
+  .v3 .cell:focus-within .fan .cover-wrap:nth-child(3) { --x: 102px; --r: 2deg; }
+  .v3 .fan[data-open] .cover-wrap:nth-child(1) { --x: -102px; --r: -2deg; }
+  .v3 .fan[data-open] .cover-wrap:nth-child(3) { --x: 102px; --r: 2deg; }
+  .v3 .fanbtn { position: absolute; inset: 0; z-index: 4; border: 0; background: none; cursor: pointer; border-radius: var(--r-md); }
+  .v3 .ex { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .v3 .ex li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; font-size: 12px; }
+  .v3 .ex .t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink); }
+  .v3 .ex .t span { color: var(--ink-3); }
+  .v3 .ex .n { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  @media (max-width: 1080px) { .v3 .fan .cover-wrap { width: 84px; } .v3 .fan { height: 140px; } }
+  @media (max-width: 860px) {
+    .v3 .mx { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .v3 .rows { display: none; }
+    .v3 .col { grid-row: auto; display: block; }
+    .v3 .cell .rk { display: block; }
+    .v3 .cell > p { min-height: 0; }
+    .v3 .fan .cover-wrap { width: 96px; }
+    .v3 .fan { height: 156px; }
+  }
+
+  /* ---------- V4 Waterfall ---------- */
+  .v4 .filters { display: grid; gap: 10px; padding-bottom: 24px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+  .v4 .fg { display: flex; align-items: center; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--gut) * -1); padding: 2px var(--gut); }
+  .v4 .fg .lbl { flex: none; width: 40px; font-size: 12px; color: var(--ink-3); }
+  .v4 .chip { flex: none; height: 34px; padding: 0 14px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); font-size: 13px; cursor: pointer; box-shadow: inset 0 0 0 1px var(--line); transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease; white-space: nowrap; }
+  .v4 .chip:active { transform: scale(0.97); }
+  .v4 .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); box-shadow: none; }
+  @media (hover: hover) and (pointer: fine) { .v4 .chip:not([aria-pressed="true"]):hover { color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-strong); } }
+  .v4 .count { font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .v4 .count b { color: var(--ink); font-weight: 600; }
+  .v4 .masonry { columns: 4 220px; column-gap: 16px; }
+  .v4 .card { break-inside: avoid; display: grid; gap: 8px; width: 100%; margin: 0 0 20px; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; }
+  .v4 .card .cover-wrap { transition: transform 160ms var(--ease-out); }
+  .v4 .card:active .cover-wrap { transform: scale(0.97); }
+  .v4 .card .t { font-size: 14px; font-weight: 550; line-height: 1.45; padding: 0 2px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .v4 .card .m { display: flex; align-items: center; gap: 6px; padding: 0 2px; font-size: 12px; color: var(--ink-3); min-width: 0; }
+  .v4 .card .m .av { width: 18px; height: 18px; border-radius: 50%; flex: none; background: linear-gradient(135deg, var(--c1), var(--c2)); }
+  .v4 .card .m .a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; color: var(--ink-2); }
+  .v4 .card .m .l { margin-left: auto; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .v4 .card .src { font-size: 11px; color: var(--ink-3); padding: 0 2px; }
+  @media (hover: hover) and (pointer: fine) { .v4 .card:hover .t { color: var(--accent-ink); } }
+  @media (max-width: 720px) { .v4 .masonry { columns: 2; column-gap: 10px; } .v4 .card { margin-bottom: 16px; } }
+  .v4 .empty { display: grid; justify-items: start; gap: 8px; padding: 64px 0 120px; }
+  .v4 .empty h2 { font-size: 18px; font-weight: 600; }
+  .v4 .empty p { color: var(--ink-2); font-size: 14px; }
+  .btn { height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: var(--ink); color: var(--bg); font-size: 14px; font-weight: 550; cursor: pointer; transition: transform 160ms var(--ease-out); }
+  .btn:active { transform: scale(0.97); }
+
+  .v4 .scrim { position: fixed; inset: 0; z-index: 190; background: rgba(10, 8, 6, 0.32); opacity: 0; visibility: hidden; transition: opacity 200ms ease, visibility 0s 200ms; }
+  .v4 .scrim[data-open] { opacity: 1; visibility: visible; transition: opacity 260ms ease, visibility 0s; }
+  .v4 .sheet { position: fixed; z-index: 200; top: 8px; right: 8px; bottom: 8px; width: min(440px, calc(100% - 16px)); overflow-y: auto; overscroll-behavior: contain; background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow-2); transform: translateX(calc(100% + 16px)); visibility: hidden; transition: transform 200ms cubic-bezier(0.4, 0, 1, 1), visibility 0s 200ms; }
+  .v4 .sheet[data-open] { transform: none; visibility: visible; transition: transform 340ms var(--ease-drawer), visibility 0s; }
+  .v4 .sh-in { display: grid; gap: 20px; padding: 20px 24px 120px; }
+  .v4 .sh-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .v4 .sh-top .crumb { font-size: 12px; color: var(--ink-3); }
+  .v4 .x { position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: var(--surface-2); color: var(--ink-2); cursor: pointer; display: grid; place-items: center; transition: background-color 150ms ease, transform 160ms var(--ease-out); }
+  .v4 .x::before { content: ""; position: absolute; inset: -6px; }
+  .v4 .x:active { transform: scale(0.94); }
+  .v4 .sh-hero { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 16px; align-items: start; }
+  .v4 .sh-hero h2 { font-size: 18px; font-weight: 650; line-height: 1.35; letter-spacing: -0.01em; }
+  .v4 .sh-hero .who { font-size: 13px; color: var(--ink-2); margin-top: 8px; }
+  .v4 .sh-hero .who span { color: var(--ink-3); }
+  .v4 .sh-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border-radius: var(--r-md); overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+  .v4 .sh-nums div { background: var(--surface); padding: 12px; }
+  .v4 .sh-nums dt { font-size: 12px; color: var(--ink-3); }
+  .v4 .sh-nums dd { margin: 0; font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .v4 .sh-fmt { display: grid; gap: 10px; padding: 16px; border-radius: var(--r-md); background: var(--surface-2); }
+  .v4 .sh-fmt .eyebrow { letter-spacing: 0.04em; }
+  .v4 .sh-fmt h3 { font-size: 16px; font-weight: 650; }
+  .v4 .sh-fmt p { font-size: 13px; color: var(--ink-2); }
+  .v4 .sib { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .v4 .sib .nc-t { font-size: 13px; }
+  .v4 .cta { display: flex; align-items: center; justify-content: center; gap: 6px; height: 44px; border-radius: 999px; background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 550; font-size: 15px; transition: transform 160ms var(--ease-out); }
+  .v4 .cta:active { transform: scale(0.97); }
+  @media (max-width: 720px) {
+    .v4 .sheet { top: auto; left: 0; right: 0; bottom: 0; width: 100%; max-height: 88dvh; border-radius: var(--r-lg) var(--r-lg) 0 0; transform: translateY(100%); }
+    .v4 .sh-in { padding: 12px 16px calc(120px + env(safe-area-inset-bottom)); }
+    .v4 .sh-in::before { content: ""; justify-self: center; width: 36px; height: 4px; border-radius: 2px; background: var(--line-strong); }
+    .v4 .sh-hero { grid-template-columns: 112px minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .v4 .sheet, .v4 .sheet[data-open] { transition: opacity 200ms ease, visibility 0s; transform: none; opacity: 0; }
+    .v4 .sheet[data-open] { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+<main id="stage" class="p2"></main>
+<script src="shared/data.js"></script>
+<script src="shared/harness.js"></script>
+<script>
+(() => {
+  const A = window.ATLAS, U = window.AtlasUI, fmt = U.fmt;
+  const C = A.competitors;
+  const params = new URLSearchParams(location.search);
+  let sel = C.some((c) => c.id === params.get('c')) ? params.get('c') : 'jingyu';
+  const comp = (id) => C.find((c) => c.id === id);
+  const setSel = (id) => { sel = id; const u = new URL(location); u.searchParams.set('c', id); history.replaceState(null, '', u); };
+  const tear = (fid) => `p3-teardown.html?f=${fid}`;
+  const SW = ['var(--s1)', 'var(--s2)', 'var(--s3)'];
+
+  const stats = (f) => `<dl class="stats">
+      <div><dt>爆文率</dt><dd>${f.hitRate}%</dd></div>
+      <div><dt>均赞</dt><dd>${fmt(f.avgLikes)}</dd></div>
+      <div><dt>占爆款</dt><dd>${f.share}%</dd></div></dl>`;
+
+  const nc = (n, fid, i = 0) => `<a class="nc enter" style="--i:${i}" href="${tear(fid)}">
+      ${U.cover(n, { tag: false })}
+      <div style="display:grid;gap:4px">
+        <p class="nc-t">${n.title}</p>
+        <p class="nc-m"><span class="acct">${n.account}</span><span>♥ ${fmt(n.likes)}</span><span>★ ${fmt(n.collects)}</span></p>
+      </div></a>`;
+
+  const head = (h1, lede) => `<header class="p2-wrap p2-head">
+      <p class="eyebrow">第 2 步 · 竞品爆款</p><h1>${h1}</h1><p class="lede">${lede}</p></header>`;
+
+  const seg = (label) => `<div class="seg" role="group" aria-label="${label}"><span class="ind" aria-hidden="true"></span>
+      ${C.map((c) => `<button type="button" data-c="${c.id}" aria-pressed="${c.id === sel}">${c.name}<small>${c.stats.hits}</small></button>`).join('')}</div>`;
+
+  function wireSeg(root, onChange) {
+    const s = root.querySelector('.seg'), ind = s.querySelector('.ind');
+    const btns = [...s.querySelectorAll('button')];
+    const place = () => { const b = btns.find((x) => x.dataset.c === sel); ind.style.width = b.offsetWidth + 'px'; ind.style.transform = `translateX(${b.offsetLeft - 3}px)`; };
+    btns.forEach((b) => b.addEventListener('click', () => {
+      if (b.dataset.c === sel) return;
+      setSel(b.dataset.c);
+      btns.forEach((x) => x.setAttribute('aria-pressed', x.dataset.c === sel));
+      place(); onChange();
+    }));
+    place(); requestAnimationFrame(() => requestAnimationFrame(() => s.setAttribute('data-ready', '')));
+    window.addEventListener('resize', place);
+  }
+
+  /* ---------------- V1 Shelves ---------------- */
+  const v1Body = () => {
+    const c = comp(sel);
+    return `<p class="csum">${c.kind} · ${c.tagline} · 近 90 天 ${c.stats.notes} 条笔记，${c.stats.hits} 条爆款（爆文率 ${c.stats.hitRate}%）</p>` ;
+  };
+  const v1Shelves = () => comp(sel).formats.map((f, i) => `<section class="shelf">
+      <div class="s-meta">
+        <span class="rank">0${i + 1} · 爆款形式</span>
+        <h2>${f.name}</h2>
+        <p>${f.desc}</p>
+        ${stats(f)}
+        <span class="tag">${f.type}为主 · ${f.axis.content}</span>
+        <a class="link" href="${tear(f.id)}">看这个形式的拆解 <span>→</span></a>
+      </div>
+      <div class="row">${f.notes.map((n, j) => nc(n, f.id, i * 3 + j)).join('')}</div>
+    </section>`).join('');
+  const V1 = {
+    name: '货架',
+    render: () => `<div class="v1">
+      ${head('三个竞品，各有三种爆款打法', '按内容形式归类，每种形式挑 3 条代表笔记。先看形式，再点进去看拆解。')}
+      <div class="p2-wrap"><div class="bar">${seg('选择竞品')}<span class="csum-slot">${v1Body()}</span></div>
+      <div class="shelves">${v1Shelves()}</div></div></div>`,
+    mount(stage) {
+      wireSeg(stage, () => {
+        const sh = stage.querySelector('.shelves'), sm = stage.querySelector('.csum-slot');
+        sh.innerHTML = v1Shelves(); sm.innerHTML = v1Body();
+        sh.classList.remove('swap'); void sh.offsetWidth; sh.classList.add('swap');
+      });
+    },
+  };
+
+  /* ---------------- V2 Quadrant ---------------- */
+  const LIKE_T = 3000, TR_T = 60, X0 = 50, X1 = 50000;
+  let qFilter = null; // format id or null
+  const fIndex = (c, fid) => c.formats.findIndex((f) => f.id === fid);
+  const inQ = (d) => d.likes >= LIKE_T && d.transfer >= TR_T;
+
+  function v2Panel() {
+    const c = comp(sel);
+    if (!qFilter) {
+      const pts = A.scatter[c.id];
+      return `<div class="swap" style="display:grid;gap:12px">
+        <p class="eyebrow">高赞 · 好迁移 区里有什么</p>
+        <h2 style="display:block">${c.name}</h2>
+        <p>每个点是一条笔记。右上角 = 点赞过 ${fmt(LIKE_T)} 且可迁移度 ≥ ${TR_T}，是最值得抄的区域。点一个形式看代表笔记。</p>
+        <div style="display:grid;gap:2px;margin:0 -12px">
+        ${c.formats.map((f, i) => {
+          const all = pts.filter((d) => d.format === f.id), q = all.filter(inQ).length;
+          return `<button type="button" class="frow" data-f="${f.id}" style="--sw:${SW[i]}"><i></i>
+            <span><b>${f.name}</b><small>爆文率 ${f.hitRate}% · 均赞 ${fmt(f.avgLikes)}</small></span>
+            <span class="q">${q}<small>在高价值区</small></span></button>`;
+        }).join('')}</div></div>`;
+    }
+    const i = fIndex(c, qFilter), f = c.formats[i];
+    return `<div class="swap" style="display:grid;gap:14px">
+      <p class="eyebrow">${c.name} · 形式 0${i + 1}</p>
+      <h2 style="--sw:${SW[i]}"><i></i>${f.name}</h2>
+      <p>${f.desc}</p>
+      ${stats(f)}
+      <div class="trio">${f.notes.map((n, j) => nc(n, f.id, j)).join('')}</div>
+      <a class="link" href="${tear(f.id)}">看这个形式的拆解 <span>→</span></a>
+    </div>`;
+  }
+
+  function v2Legend() {
+    const c = comp(sel);
+    return `<button type="button" data-f="" aria-pressed="${!qFilter}">全部形式</button>
+      ${c.formats.map((f, i) => `<button type="button" data-f="${f.id}" aria-pressed="${qFilter === f.id}" style="--sw:${SW[i]}"><i></i>${f.name}</button>`).join('')}
+      <span class="hollow"><b class="f"></b>爆款 <b></b>普通</span>`;
+  }
+
+  function drawQuad(stage) {
+    const plot = stage.querySelector('.plot');
+    const c = comp(sel), pts = A.scatter[c.id];
+    const W = plot.clientWidth, H = Math.round(Math.min(460, Math.max(300, W * 0.64)));
+    const m = { l: 36, r: 12, t: 28, b: 36 };
+    const lx = Math.log10(X0), lr = Math.log10(X1) - lx;
+    const x = (v) => m.l + ((Math.log10(Math.max(X0, Math.min(X1, v))) - lx) / lr) * (W - m.l - m.r);
+    const y = (v) => m.t + (1 - v / 100) * (H - m.t - m.b);
+    const ns = 'http://www.w3.org/2000/svg';
+    let s = `<svg viewBox="0 0 ${W} ${H}" height="${H}" role="img" aria-label="${c.name} 笔记散点：点赞 × 可迁移度">`;
+    // highlight quadrant
+    s += `<rect x="${x(LIKE_T)}" y="${y(100)}" width="${W - m.r - x(LIKE_T)}" height="${y(TR_T) - y(100)}" rx="6" fill="var(--accent-soft)"/>`;
+    s += `<text x="${W - m.r - 8}" y="${y(100) + 18}" text-anchor="end" style="fill:var(--accent-ink);font-weight:600;font-size:12px">高赞 · 好迁移</text>`;
+    // grid
+    [0, 25, 50, 75, 100].forEach((t) => {
+      s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)" />`;
+      s += `<text x="${m.l - 8}" y="${y(t) + 4}" text-anchor="end">${t}</text>`;
+    });
+    [[100, '100'], [1000, '1000'], [10000, '1万'], [50000, '5万']].forEach(([v, l]) => {
+      s += `<text x="${x(v)}" y="${H - m.b + 18}" text-anchor="${v === X1 ? 'end' : 'middle'}">${l}</text>`;
+    });
+    s += `<line x1="${x(LIKE_T)}" x2="${x(LIKE_T)}" y1="${m.t}" y2="${H - m.b}" stroke="var(--line-strong)" />`;
+    s += `<text x="${x(LIKE_T) + 6}" y="${H - m.b - 8}" style="font-size:11px">爆文线 3000 赞</text>`;
+    s += `<line x1="${m.l}" x2="${W - m.r}" y1="${H - m.b}" y2="${H - m.b}" stroke="var(--line-strong)" />`;
+    s += `<text x="${m.l - 8}" y="14" text-anchor="start" style="fill:var(--ink-2);font-weight:550">可迁移度 ↑</text>`;
+    s += `<text x="${W - m.r}" y="${H - 4}" text-anchor="end" style="fill:var(--ink-2);font-weight:550">点赞（对数）→</text>`;
+    // dots: non-hits first, then hits, featured on top
+    const order = [...pts].sort((a, b) => (a.hit - b.hit) || (!!a.note - !!b.note));
+    const pos = [];
+    order.forEach((d) => {
+      const fi = fIndex(c, d.format), col = SW[fi], cx = x(d.likes), cy = y(d.transfer);
+      const dim = qFilter && qFilter !== d.format ? ' opacity="0.12"' : '';
+      if (d.hit) s += `<circle class="dot" cx="${cx}" cy="${cy}" r="${d.note ? 6 : 4.5}" fill="${col}" stroke="var(--surface)" stroke-width="2"${dim}/>`;
+      else s += `<circle class="dot" cx="${cx}" cy="${cy}" r="3.5" fill="none" stroke="${col}" stroke-opacity="0.55" stroke-width="1.25"${dim}/>`;
+      pos.push({ d, cx, cy, fi });
+    });
+    // focusable featured notes (keyboard path to tooltip)
+    pos.filter((p) => p.d.note).forEach((p) => {
+      const n = A.notes[p.d.note];
+      s += `<circle class="kb" data-note="${p.d.note}" cx="${p.cx}" cy="${p.cy}" r="12" fill="transparent" tabindex="0" role="button" aria-label="${n.title}，${p.d.likes} 赞，可迁移度 ${p.d.transfer}"/>`;
+    });
+    s += `<circle class="ring" r="9" fill="none" stroke="var(--ink)" stroke-width="1.5" opacity="0" pointer-events="none"/>`;
+    s += `<rect class="hit" x="${m.l}" y="${m.t}" width="${W - m.l - m.r}" height="${H - m.t - m.b}" fill="transparent"/>`;
+    s += `</svg><div class="tip" role="status"></div>`;
+    plot.innerHTML = s;
+
+    const svg = plot.querySelector('svg'), tip = plot.querySelector('.tip'), ring = svg.querySelector('.ring');
+    const show = (p) => {
+      if (!p) { tip.removeAttribute('data-show'); ring.setAttribute('opacity', 0); return; }
+      const f = c.formats[p.fi];
+      tip.textContent = '';
+      const st = document.createElement('strong'); st.textContent = `♥ ${fmt(p.d.likes)}`;
+      const k = document.createElement('div'); k.className = 'k'; k.style.setProperty('--sw', SW[p.fi]);
+      const ki = document.createElement('i'); k.append(ki, document.createTextNode(`${f.name} · ${p.d.hit ? '爆款' : '普通'}`));
+      const tr = document.createElement('div'); tr.className = 'k'; tr.textContent = `可迁移度 ${p.d.transfer}`;
+      tip.append(st, k, tr);
+      if (p.d.note) { const t = document.createElement('div'); t.className = 'tt'; t.textContent = A.notes[p.d.note].title; tip.append(t); }
+      const left = Math.max(80, Math.min(W - 80, p.cx));
+      tip.style.left = left + 'px'; tip.style.top = p.cy + 'px';
+      tip.setAttribute('data-show', '');
+      ring.setAttribute('cx', p.cx); ring.setAttribute('cy', p.cy); ring.setAttribute('opacity', 1);
+    };
+    const nearest = (e) => {
+      const r = svg.getBoundingClientRect(), px = e.clientX - r.left, py = e.clientY - r.top;
+      let best = null, bd = 24 * 24;
+      for (const p of pos) {
+        if (qFilter && qFilter !== p.d.format) continue;
+        const dd = (p.cx - px) ** 2 + (p.cy - py) ** 2;
+        if (dd < bd) { bd = dd; best = p; }
+      }
+      return best;
+    };
+    const hit = svg.querySelector('.hit');
+    hit.addEventListener('pointermove', (e) => show(nearest(e)));
+    hit.addEventListener('pointerleave', () => show(null));
+    hit.addEventListener('click', (e) => { const p = nearest(e); if (p) v2Set(stage, p.d.format); });
+    svg.querySelectorAll('.kb').forEach((el) => {
+      const p = pos.find((q) => q.d.note === el.dataset.note);
+      el.addEventListener('focus', () => show(p));
+      el.addEventListener('blur', () => show(null));
+      el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); v2Set(stage, p.d.format); } });
+      el.addEventListener('click', () => v2Set(stage, p.d.format));
+    });
+  }
+
+  function v2Set(stage, fid) {
+    qFilter = fid || null;
+    stage.querySelector('.legend').innerHTML = v2Legend();
+    stage.querySelector('.panel').innerHTML = v2Panel();
+    drawQuad(stage); wireV2Bits(stage);
+  }
+  function wireV2Bits(stage) {
+    stage.querySelectorAll('.legend button').forEach((b) => b.addEventListener('click', () => v2Set(stage, b.dataset.f === qFilter ? '' : b.dataset.f)));
+    stage.querySelectorAll('.panel .frow').forEach((b) => b.addEventListener('click', () => v2Set(stage, b.dataset.f)));
+  }
+  const V2 = {
+    name: '象限',
+    render: () => { qFilter = null; return `<div class="v2">
+      ${head('哪些爆款值得抄：点赞 × 可迁移度', '可迁移度 = 这条内容的套路能多大程度搬到拾光上（人群、场景、制作成本）。右上角是又火又好抄的。')}
+      <div class="p2-wrap">
+        <div class="bar">${seg('选择竞品')}</div>
+        <div class="grid">
+          <div class="chart-card"><div class="legend" role="group" aria-label="按形式筛选">${v2Legend()}</div><div class="plot"></div>
+            <p class="note">实心 = 爆款（≥ 3000 赞），空心 = 普通笔记；大圆点是选出的代表笔记，可用 Tab 键聚焦。</p></div>
+          <aside class="panel" aria-live="polite">${v2Panel()}</aside>
+        </div>
+      </div></div>`; },
+    mount(stage) {
+      wireSeg(stage, () => v2Set(stage, ''));
+      drawQuad(stage); wireV2Bits(stage);
+      const ro = new ResizeObserver(() => drawQuad(stage));
+      ro.observe(stage.querySelector('.chart-card'));
+    },
+  };
+
+  /* ---------------- V3 Cross matrix ---------------- */
+  const V3 = {
+    name: '对照',
+    render: () => `<div class="v3">
+      ${head('三个竞品的爆款，并排对照', '每列一个竞品，每行按爆款占比排序。横着看：同样排第一的打法，各家有什么不同。')}
+      <div class="p2-wrap"><div class="mx">
+        <div class="rows" aria-hidden="true"><div></div>
+          ${['主力形式', '第二形式', '第三形式'].map((t, i) => `<div><b>#${i + 1}</b><span>${t}</span></div>`).join('')}</div>
+        ${C.map((c, ci) => `<section class="col enter" style="--i:${ci}" aria-label="${c.name}">
+          <div class="ch"><h2>${c.name}<span class="kind">${c.kind}</span></h2>
+            <p>爆文率 <b>${c.stats.hitRate}%</b> · ${c.stats.hits} 条爆款 · 中位赞 ${fmt(c.stats.medianLikes)}</p></div>
+          ${c.formats.map((f, i) => `<div class="cell">
+            <span class="rk">#${i + 1} ${['主力形式', '第二形式', '第三形式'][i]}</span>
+            <h3><a href="${tear(f.id)}">${f.name}</a></h3>
+            <p>${f.desc}</p>
+            ${stats(f)}
+            <div class="bar-share" role="img" aria-label="占爆款 ${f.share}%"><i style="--w:${f.share}%"></i></div>
+            <div class="fan">${f.notes.map((n) => U.cover(n, { tag: false })).join('')}
+              <button type="button" class="fanbtn" aria-label="展开 ${f.name} 的 3 条代表笔记"></button></div>
+            <ul class="ex">${f.notes.map((n) => `<li><span class="t">${n.title} <span>· ${n.account}</span></span><span class="n">♥ ${fmt(n.likes)} ★ ${fmt(n.collects)}</span></li>`).join('')}</ul>
+          </div>`).join('')}
+        </section>`).join('')}
+      </div></div></div>`,
+    mount(stage) {
+      stage.querySelectorAll('.fanbtn').forEach((b) => b.addEventListener('click', () => b.parentElement.toggleAttribute('data-open')));
+      // put the requested competitor first in view on mobile
+      if (sel !== 'jingyu' && matchMedia('(max-width: 860px)').matches) stage.querySelector(`[aria-label="${comp(sel).name}"]`)?.scrollIntoView({ block: 'start' });
+    },
+  };
+
+  /* ---------------- V4 Waterfall ---------------- */
+  const ARS = ['3 / 4', '4 / 5', '3 / 4', '3 / 4.4', '1 / 1', '3 / 4', '4 / 5.2'];
+  const wf = { c: 'all', k: 'all', t: 'all' };
+  const flat = () => {
+    const out = [];
+    C.forEach((c) => c.formats.forEach((f) => f.notes.forEach((n) => out.push({ n, f, c }))));
+    return out.sort((a, b) => b.n.likes - a.n.likes);
+  };
+  const KINDS = ['产品效果', '人设故事', '价格锚点'];
+  function wfFilters() {
+    const g = (key, label, items) => `<div class="fg" role="group" aria-label="${label}"><span class="lbl">${label}</span>
+      ${items.map(([v, l]) => `<button type="button" class="chip" data-k="${key}" data-v="${v}" aria-pressed="${wf[key] === v}">${l}</button>`).join('')}</div>`;
+    return g('c', '竞品', [['all', '全部'], ...C.map((c) => [c.id, c.name])]) +
+      g('k', '打法', [['all', '全部'], ...KINDS.map((k) => [k, k])]) +
+      g('t', '类型', [['all', '全部'], ['图文', '图文'], ['视频', '视频']]);
+  }
+  function wfList() {
+    const items = flat().filter(({ n, f, c }) => (wf.c === 'all' || c.id === wf.c) && (wf.k === 'all' || f.axis.content === wf.k) && (wf.t === 'all' || n.type === wf.t));
+    const cnt = `<p class="count"><b>${items.length}</b> 条代表笔记 · 按点赞排序</p>`;
+    if (!items.length) return cnt + `<div class="empty"><h2>没有符合条件的笔记</h2><p>这几个条件组合下没有代表笔记，放宽一个试试。</p><button type="button" class="btn" data-clear>清除筛选</button></div>`;
+    return cnt + `<div class="masonry">${items.map(({ n, f, c }, i) => {
+      const [c1, c2] = A.palettes[n.pal % A.palettes.length];
+      return `<button type="button" class="card enter" style="--i:${Math.min(i, 12)}" data-note="${n.id}" aria-haspopup="dialog">
+        ${U.cover(n, { tag: false }).replace('style="--c1', `style="aspect-ratio:${ARS[(n.likes + n.collects) % ARS.length]};--c1`)}
+        <span class="t">${n.title}</span>
+        <span class="m"><span class="av" style="--c1:${c1};--c2:${c2}"></span><span class="a">${n.account}</span><span class="l">♥ ${fmt(n.likes)}</span></span>
+        <span class="src">${c.name} · ${f.name}</span>
+      </button>`;
+    }).join('')}</div>`;
+  }
+  function sheetHTML(id) {
+    const n = A.notes[id], c = comp(n.competitor), f = c.formats.find((x) => x.id === n.format);
+    const sib = f.notes.filter((x) => x.id !== id);
+    return `<div class="sh-in">
+      <div class="sh-top"><span class="crumb">${c.name} / ${f.name}</span>
+        <button type="button" class="x" data-close aria-label="关闭"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+      <div class="sh-hero">${U.cover(n, { tag: false })}
+        <div><h2 id="sh-title">${n.title}</h2><p class="who">${n.account} <span>· ${fmt(n.followers)} 粉 · ${n.type} · ${n.date}</span></p></div></div>
+      <dl class="sh-nums"><div><dt>点赞</dt><dd>${fmt(n.likes)}</dd></div><div><dt>收藏</dt><dd>${fmt(n.collects)}</dd></div><div><dt>评论</dt><dd>${fmt(n.comments)}</dd></div></dl>
+      <div class="sh-fmt"><p class="eyebrow">它属于哪种爆款形式</p><h3>${f.name}</h3><p>${f.desc}</p>${stats(f)}</div>
+      <div style="display:grid;gap:12px"><p class="eyebrow">同形式的另外 2 条</p><div class="sib">${sib.map((x, j) => nc(x, f.id, j)).join('')}</div></div>
+      <a class="cta" href="${tear(f.id)}">看「${f.name}」的拆解 →</a>
+    </div>`;
+  }
+  const V4 = {
+    name: '瀑布流',
+    render: () => `<div class="v4">
+      ${head('27 条代表爆款，按小红书的方式翻', '3 个竞品 × 3 种形式 × 3 条笔记。点开任意一条，看它属于哪种打法。')}
+      <div class="p2-wrap"><div class="filters">${wfFilters()}</div><div class="list">${wfList()}</div></div>
+      <div class="scrim" data-close></div>
+      <aside class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-title"></aside></div>`,
+    mount(stage) {
+      if (params.get('c') && C.some((c) => c.id === params.get('c'))) wf.c = sel;
+      stage.querySelector('.filters').innerHTML = wfFilters();
+      const list = stage.querySelector('.list'), sheet = stage.querySelector('.sheet'), scrim = stage.querySelector('.scrim');
+      let opener = null;
+      const refresh = () => { stage.querySelector('.filters').innerHTML = wfFilters(); list.innerHTML = wfList(); };
+      refresh();
+      stage.querySelector('.filters').addEventListener('click', (e) => {
+        const b = e.target.closest('.chip'); if (!b) return;
+        wf[b.dataset.k] = b.dataset.v; if (b.dataset.k === 'c' && b.dataset.v !== 'all') setSel(b.dataset.v); refresh();
+      });
+      const open = (id, from) => {
+        opener = from; sheet.innerHTML = sheetHTML(id); sheet.scrollTop = 0;
+        sheet.setAttribute('data-open', ''); scrim.setAttribute('data-open', '');
+        requestAnimationFrame(() => sheet.querySelector('[data-close]').focus({ preventScroll: true }));
+      };
+      const close = () => {
+        if (!sheet.hasAttribute('data-open')) return;
+        sheet.removeAttribute('data-open'); scrim.removeAttribute('data-open');
+        opener?.focus({ preventScroll: true });
+      };
+      list.addEventListener('click', (e) => {
+        if (e.target.closest('[data-clear]')) { wf.c = wf.k = wf.t = 'all'; refresh(); return; }
+        const card = e.target.closest('.card'); if (card) open(card.dataset.note, card);
+      });
+      stage.addEventListener('click', (e) => { if (e.target.closest('[data-close]')) close(); });
+      sheet.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') { e.stopPropagation(); close(); }
+        if (e.key !== 'Tab') return;
+        const f = [...sheet.querySelectorAll('a[href],button')];
+        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+      });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && stage.contains(sheet)) close(); });
+    },
+  };
+
+  U.topBar(2);
+  U.picker([V1, V2, V3, V4]);
+})();
+</script>
+</body>
+</html>

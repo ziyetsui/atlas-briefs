@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>锁定竞品 · Atlas</title>
+<link rel="stylesheet" href="shared/base.css">
+<style>
+  /* ---------- shared within page ---------- */
+  .p1 { max-width: 1200px; margin: 0 auto; padding: 40px 24px 0; }
+  @media (max-width: 720px) { .p1 { padding: 28px 16px 0; } }
+  .p1-head { display: grid; gap: 10px; max-width: 880px; }
+  .p1-src, .p1-defs { max-width: 72ch; }
+  .p1-head h1 { font-size: clamp(24px, 3vw, 32px); font-weight: 650; letter-spacing: -0.02em; line-height: 1.25; }
+  .p1-src { font-size: 13px; color: var(--ink-3); }
+  .p1-defs { display: grid; gap: 4px; margin: 6px 0 0; font-size: 13.5px; color: var(--ink-2); }
+  .p1-defs div { display: flex; gap: 8px; }
+  .p1-defs dt { flex: none; font-weight: 600; color: var(--ink); }
+  .p1-defs dd { margin: 0; }
+  .p1-section-title { font-size: 13px; font-weight: 600; color: var(--ink-2); margin-bottom: 12px; display: flex; align-items: baseline; gap: 8px; }
+  .p1-section-title .num { color: var(--ink-3); font-weight: 500; }
+
+  .p1-picks { display: grid; gap: 12px; }
+  .p1-pick {
+    position: relative; display: grid; gap: 6px; padding: 16px 16px 14px;
+    background: var(--surface); border-radius: var(--r-md); box-shadow: var(--shadow-1);
+  }
+  .p1-pick-top { display: flex; align-items: center; gap: 8px; }
+  .p1-pick-rank { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; flex: none;
+    background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .p1-pick-name { font-weight: 650; letter-spacing: -0.01em; }
+  .p1-kind { font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
+  .p1-pick-metrics { font-size: 12.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .p1-pick-why { font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
+  .p1-pick-link {
+    justify-self: start; display: inline-flex; align-items: center; gap: 4px; margin-top: 2px;
+    min-height: 32px; font-size: 13px; font-weight: 600; color: var(--accent-ink); text-decoration: none;
+    touch-action: manipulation; transition: transform 160ms var(--ease-out);
+  }
+  .p1-pick-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; } /* card-wide hit area, link stays the only control */
+  .p1-pick-link span { transition: transform 200ms var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) {
+    .p1-pick:hover .p1-pick-link span { transform: translateX(3px); }
+  }
+  .p1-pick:has(.p1-pick-link:active) { transform: scale(0.98); }
+  .p1-pick { transition: transform 160ms var(--ease-out); }
+
+  .p1-tip {
+    position: fixed; z-index: 300; left: 0; top: 0; pointer-events: none;
+    max-width: 260px; padding: 10px 12px; border-radius: 10px;
+    background: var(--surface); box-shadow: var(--shadow-2);
+    font-size: 12.5px; line-height: 1.5; color: var(--ink-2);
+    opacity: 0; transform: translateY(2px); transition: opacity 120ms ease-out, transform 120ms ease-out;
+  }
+  .p1-tip[data-on] { opacity: 1; transform: none; }
+  .p1-tip b { color: var(--ink); font-weight: 650; font-size: 13.5px; }
+  .p1-tip .row { display: flex; justify-content: space-between; gap: 16px; font-variant-numeric: tabular-nums; }
+  .p1-tip .row strong { color: var(--ink); font-weight: 600; }
+  .p1-tip .why { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--line); }
+
+  .p1-details { margin-top: 12px; font-size: 13px; }
+  .p1-details summary { cursor: pointer; color: var(--ink-2); min-height: 36px; display: flex; align-items: center; gap: 6px; list-style: none; touch-action: manipulation; }
+  .p1-details summary::-webkit-details-marker { display: none; }
+  .p1-details summary::before { content: "▸"; font-size: 10px; color: var(--ink-3); transition: transform 160ms var(--ease-out); }
+  .p1-details[open] summary::before { transform: rotate(90deg); }
+  .p1-table-wrap { overflow-x: auto; margin-top: 8px; border-radius: var(--r-sm); box-shadow: var(--shadow-1); background: var(--surface); }
+  .p1-table { width: 100%; border-collapse: collapse; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+  .p1-table th, .p1-table td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  .p1-table th:first-child, .p1-table td:first-child { text-align: left; }
+  .p1-table th { font-weight: 600; color: var(--ink-3); font-size: 11.5px; }
+  .p1-table tr:last-child td { border-bottom: 0; }
+  .p1-table tr[data-picked] td:first-child { color: var(--accent-ink); font-weight: 600; }
+
+  .p1-rest { display: grid; gap: 8px; margin-top: 8px; }
+  .p1-rest li { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: 13px; }
+  .p1-rest .n { font-weight: 600; color: var(--ink); }
+  .p1-rest .w { grid-column: 1 / -1; color: var(--ink-3); }
+  ul.p1-rest { list-style: none; padding: 0; margin: 8px 0 0; }
+
+  .p1-enter { animation: p1-in 280ms var(--ease-out) both; animation-delay: var(--d, 0ms); }
+  @keyframes p1-in { from { opacity: 0; transform: translateY(6px); } }
+  @media (prefers-reduced-motion: reduce) {
+    .p1-enter { animation: p1-fade 200ms ease both; }
+    @keyframes p1-fade { from { opacity: 0; } }
+  }
+
+  /* ---------- V1 scatter ---------- */
+  .v1-body { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 32px; margin-top: 32px; align-items: start; }
+  @media (max-width: 960px) { .v1-body { grid-template-columns: 1fr; gap: 28px; } }
+  .v1-chart { background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow-1); padding: 16px 12px 12px; }
+  .v1-svg { display: block; width: 100%; overflow: visible; }
+  .v1-svg text { font-family: var(--font-sans); }
+  .v1-pt { cursor: default; outline: none; }
+  .v1-pt .mark { transition: stroke-width 120ms ease-out; transform-box: fill-box; transform-origin: center; }
+  .v1-pt:focus-visible .mark, .v1-pt[data-on] .mark { stroke: var(--ink); stroke-width: 2; }
+  .v1-pt .mark { animation: v1-pop 300ms var(--ease-out) both; animation-delay: var(--d, 0ms); }
+  @keyframes v1-pop { from { opacity: 0; transform: scale(0.6); } }
+  @media (prefers-reduced-motion: reduce) { .v1-pt .mark { animation: p1-fade 200ms ease both; } }
+  .v1-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 10px 8px 2px; font-size: 12px; color: var(--ink-2); }
+  .v1-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .v1-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+  .v1-side { display: grid; gap: 16px; position: sticky; top: 72px; }
+  @media (max-width: 960px) { .v1-side { position: static; } }
+  .v1-verdict { font-size: 15px; color: var(--ink-2); line-height: 1.6; }
+  .v1-verdict strong { color: var(--ink); font-weight: 650; }
+
+  /* ---------- V2 nine-grid ---------- */
+  .v2-wrap { margin-top: 32px; display: grid; grid-template-columns: 28px minmax(0, 1fr); grid-template-rows: auto 1fr auto; gap: 8px; }
+  .v2-ylab { grid-row: 2; display: grid; grid-template-rows: repeat(3, 1fr); gap: 6px; font-size: 11.5px; color: var(--ink-3); text-align: center; }
+  .v2-ylab span { display: grid; place-items: center; writing-mode: vertical-rl; letter-spacing: 0.1em; }
+  .v2-ytitle { grid-row: 1; grid-column: 1 / -1; font-size: 12px; color: var(--ink-2); font-weight: 600; }
+  .v2-grid { grid-row: 2; grid-column: 2; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, minmax(120px, auto)); gap: 6px; }
+  .v2-xlab { grid-row: 3; grid-column: 2; display: grid; grid-template-columns: repeat(3, 1fr); font-size: 11.5px; color: var(--ink-3); text-align: center; gap: 6px; }
+  .v2-xlab b { grid-column: 1 / -1; font-size: 12px; color: var(--ink-2); font-weight: 600; text-align: right; }
+  .v2-cell { position: relative; padding: 30px 10px 10px; border-radius: var(--r-md); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line);
+    display: flex; flex-wrap: wrap; align-content: flex-start; gap: 6px; }
+  .v2-cell[data-tier="P0"] { background: color-mix(in oklch, var(--accent) 15%, var(--surface)); box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--accent) 30%, transparent); }
+  .v2-cell[data-tier="P1"] { background: color-mix(in oklch, var(--accent) 8%, var(--surface)); }
+  .v2-cell[data-tier="P2"] { background: color-mix(in oklch, var(--accent) 3.5%, var(--surface)); }
+  .v2-cell-tag { position: absolute; top: 9px; left: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink-3); }
+  .v2-cell[data-tier="P0"] .v2-cell-tag { color: var(--accent-ink); }
+  .v2-cell-tag em { font-style: normal; font-weight: 500; margin-left: 6px; letter-spacing: 0; }
+  .v2-chip {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 10px; border: 0; border-radius: 999px;
+    background: var(--surface); box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgba(0,0,0,0.04);
+    font-size: 12.5px; color: var(--ink-2); cursor: pointer; text-align: left; touch-action: manipulation;
+    transition: transform 160ms var(--ease-out), box-shadow 150ms ease-out, color 150ms ease-out;
+  }
+  .v2-chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--s-muted); flex: none; box-shadow: 0 0 0 2px var(--surface); }
+  .v2-chip[data-picked] { color: var(--ink); font-weight: 600; }
+  .v2-chip[data-picked] i { background: var(--accent); }
+  .v2-chip:active { transform: scale(0.96); }
+  .v2-chip[aria-expanded="true"] { box-shadow: 0 0 0 1.5px var(--ink); color: var(--ink); }
+  @media (hover: hover) and (pointer: fine) { .v2-chip:hover { color: var(--ink); box-shadow: 0 0 0 1px var(--line-strong), 0 2px 6px rgba(0,0,0,0.06); } }
+  .v2-pop {
+    position: fixed; z-index: 200; width: min(300px, calc(100vw - 32px)); padding: 16px; border-radius: var(--r-md);
+    background: var(--surface); box-shadow: var(--shadow-2); font-size: 13px; color: var(--ink-2);
+    transform-origin: var(--origin, top center);
+    transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out);
+  }
+  .v2-pop[data-closed] { opacity: 0; transform: scale(0.96); pointer-events: none; visibility: hidden; transition: opacity 120ms ease-out, transform 120ms ease-out, visibility 0s 120ms; }
+  .v2-pop h3 { font-size: 15px; font-weight: 650; color: var(--ink); display: flex; gap: 8px; align-items: center; }
+  .v2-pop .bars { display: grid; gap: 6px; margin: 12px 0; }
+  .v2-pop .bar { display: grid; grid-template-columns: 44px 1fr 28px; align-items: center; gap: 8px; font-size: 12px; font-variant-numeric: tabular-nums; }
+  .v2-pop .bar > span:last-child { text-align: right; color: var(--ink); }
+  .v2-pop .track { height: 6px; border-radius: 3px; background: var(--surface-2); overflow: hidden; }
+  .v2-pop .fill { height: 100%; border-radius: 3px; background: var(--ink-3); transform-origin: left; }
+  .v2-pop .fill.hot { background: var(--accent); }
+  .v2-pop .why { line-height: 1.55; }
+  .v2-pop a { display: inline-flex; margin-top: 10px; min-height: 32px; align-items: center; font-weight: 600; color: var(--accent-ink); text-decoration: none; }
+  .v2-read { margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; font-size: 13px; color: var(--ink-2); }
+  .v2-read b { display: block; color: var(--ink); font-size: 13px; margin-bottom: 2px; }
+  @media (max-width: 720px) {
+    .v2-read { grid-template-columns: 1fr; gap: 10px; }
+    .v2-grid { grid-template-rows: repeat(3, minmax(100px, auto)); gap: 4px; }
+    .v2-cell { padding: 26px 6px 6px; gap: 4px; }
+    .v2-chip { font-size: 11.5px; padding: 0 8px; min-height: 30px; gap: 5px; }
+    .v2-wrap { grid-template-columns: 20px minmax(0, 1fr); gap: 6px; }
+  }
+  .v2-result { margin-top: 40px; }
+  .v2-result .p1-picks { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 860px) { .v2-result .p1-picks { grid-template-columns: 1fr; } }
+
+  /* ---------- V3 elimination ---------- */
+  .v3-body { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 40px; margin-top: 32px; align-items: start; }
+  @media (max-width: 900px) { .v3-body { grid-template-columns: 1fr; gap: 24px; } }
+  .v3-funnel { display: grid; gap: 4px; }
+  .v3-step {
+    position: relative; display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center;
+    padding: 12px 14px; border: 0; border-radius: var(--r-md); background: transparent; text-align: left; cursor: pointer;
+    touch-action: manipulation; transition: background-color 150ms ease-out, transform 160ms var(--ease-out);
+  }
+  .v3-step:active { transform: scale(0.98); }
+  @media (hover: hover) and (pointer: fine) { .v3-step:hover { background: var(--surface-2); } }
+  .v3-step[aria-current="step"] { background: var(--surface); box-shadow: var(--shadow-1); }
+  .v3-step-label { font-size: 13px; color: var(--ink-2); }
+  .v3-step-label small { display: block; font-size: 12px; color: var(--ink-3); }
+  .v3-step[aria-current="step"] .v3-step-label { color: var(--ink); }
+  .v3-step-count { font-size: 20px; font-weight: 650; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--ink-3); }
+  .v3-step[aria-current="step"] .v3-step-count { color: var(--ink); }
+  .v3-step-bar { grid-column: 1 / -1; height: 4px; border-radius: 2px; background: var(--surface-2); overflow: hidden; }
+  .v3-step-bar span { display: block; height: 100%; border-radius: 2px; background: var(--ink-3); transform-origin: left; }
+  .v3-step[aria-current="step"] .v3-step-bar span { background: var(--accent); }
+  .v3-step[data-future] { opacity: 0.55; }
+  .v3-ctrl { display: flex; gap: 8px; margin-top: 12px; }
+  .v3-btn {
+    min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; font-size: 13.5px; font-weight: 600; cursor: pointer;
+    touch-action: manipulation; transition: transform 160ms var(--ease-out), background-color 150ms ease-out, opacity 150ms ease-out;
+  }
+  .v3-btn:active { transform: scale(0.97); }
+  .v3-btn.primary { background: var(--ink); color: var(--bg); }
+  .v3-btn.ghost { background: transparent; color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line-strong); }
+  .v3-btn:disabled { opacity: 0.4; cursor: default; transform: none; }
+  .v3-now { display: grid; gap: 6px; margin-bottom: 20px; }
+  .v3-now h2 { font-size: 20px; font-weight: 650; letter-spacing: -0.01em; }
+  .v3-now p { font-size: 14px; color: var(--ink-2); max-width: 60ch; }
+  .v3-field { display: flex; flex-wrap: wrap; gap: 8px; }
+  .v3-chip {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 12px; border-radius: 999px;
+    background: var(--surface); box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgba(0,0,0,0.04);
+    font-size: 13px; color: var(--ink);
+    transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out), box-shadow 200ms ease-out;
+    transition-delay: var(--d, 0ms);
+  }
+  .v3-chip .m { font-size: 11.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; display: inline-flex; gap: 6px; }
+  .v3-chip .m b { font-weight: 500; }
+  .v3-chip .m b[data-hot] { color: var(--ink); }
+  .v3-chip[data-out] { opacity: 0.32; transform: scale(0.96); box-shadow: 0 0 0 1px var(--line); text-decoration: line-through; text-decoration-color: var(--ink-3); }
+  .v3-chip[data-win] { box-shadow: 0 0 0 1.5px var(--accent), 0 2px 8px color-mix(in oklch, var(--accent) 18%, transparent); font-weight: 600; }
+  .v3-chip[data-win]::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  @media (prefers-reduced-motion: reduce) { .v3-chip { transition: opacity 200ms ease, box-shadow 200ms ease; } .v3-chip[data-out] { transform: none; } }
+  .v3-log { margin-top: 28px; display: grid; gap: 4px; }
+  .v3-log details { border-top: 1px solid var(--line); }
+  .v3-log summary { min-height: 44px; display: flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; font-size: 13px; color: var(--ink-2); touch-action: manipulation; }
+  .v3-log summary::-webkit-details-marker { display: none; }
+  .v3-log summary::before { content: "▸"; font-size: 10px; color: var(--ink-3); transition: transform 160ms var(--ease-out); }
+  .v3-log details[open] summary::before { transform: rotate(90deg); }
+  .v3-log summary b { color: var(--ink); font-weight: 600; }
+  .v3-log ul { list-style: none; padding: 0 0 14px 18px; margin: 0; display: grid; gap: 8px; }
+  .v3-log li { font-size: 13px; color: var(--ink-3); line-height: 1.5; }
+  .v3-log li span { color: var(--ink); font-weight: 600; margin-right: 6px; }
+  .v3-log li em { font-style: normal; font-variant-numeric: tabular-nums; margin-right: 6px; }
+  .v3-result { margin-top: 28px; }
+  .v3-result .p1-picks { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 1100px) { .v3-result .p1-picks { grid-template-columns: 1fr; } }
+
+  /* ---------- V4 scorecard ---------- */
+  .v4-picks { margin-top: 32px; }
+  .v4-picks .p1-picks { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 860px) { .v4-picks .p1-picks { grid-template-columns: 1fr; } }
+  .v4-how { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border-radius: var(--r-md); overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+  .v4-how div { background: var(--surface); padding: 14px 16px; font-size: 13px; color: var(--ink-2); line-height: 1.55; }
+  .v4-how b { display: block; color: var(--ink); font-size: 13px; margin-bottom: 2px; }
+  .v4-how .k { font-size: 11px; color: var(--ink-3); font-weight: 600; font-variant-numeric: tabular-nums; }
+  @media (max-width: 720px) { .v4-how { grid-template-columns: 1fr; } }
+  .v4-tablebox { margin-top: 24px; background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow-1); overflow: hidden; }
+  .v4-table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+  .v4-table th { font-size: 11.5px; font-weight: 600; color: var(--ink-3); text-align: right; padding: 0 12px; height: 40px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  .v4-table th.l, .v4-table td.l { text-align: left; }
+  .v4-sort { display: inline-flex; align-items: center; gap: 4px; min-height: 32px; padding: 0 6px; margin: 0 -6px; border: 0; background: transparent; border-radius: 6px; color: inherit; font: inherit; cursor: pointer; touch-action: manipulation; transition: color 150ms ease-out; }
+  .v4-sort::after { content: "↓"; opacity: 0; font-size: 11px; }
+  .v4-sort[data-dir="desc"]::after { content: "↓"; opacity: 1; }
+  .v4-sort[data-dir="asc"]::after { content: "↑"; opacity: 1; }
+  .v4-sort[data-dir] { color: var(--ink); }
+  @media (hover: hover) and (pointer: fine) { .v4-sort:hover { color: var(--ink); } }
+  .v4-table td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; color: var(--ink-2); }
+  .v4-table tbody tr:last-child td { border-bottom: 0; }
+  .v4-table tr[data-picked] td { background: color-mix(in oklch, var(--accent) 5%, var(--surface)); }
+  .v4-table .rank { color: var(--ink-3); width: 36px; }
+  .v4-table .name { color: var(--ink); font-weight: 600; }
+  .v4-table tr[data-picked] .name::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: 1px; }
+  .v4-table .score { color: var(--ink); font-weight: 650; font-size: 14px; }
+  .v4-mini { display: inline-grid; grid-template-columns: 22px 44px; align-items: center; gap: 6px; }
+  .v4-mini .track { height: 4px; border-radius: 2px; background: var(--surface-2); overflow: hidden; }
+  .v4-mini .fill { height: 100%; border-radius: 2px; background: var(--ink-3); opacity: 0.6; }
+  .v4-bar { display: inline-grid; grid-template-columns: 24px 64px; align-items: center; gap: 8px; color: var(--ink); }
+  .v4-bar .track { height: 6px; border-radius: 3px; background: var(--surface-2); overflow: hidden; }
+  .v4-bar .fill { height: 100%; border-radius: 3px; background: var(--ink-3); }
+  tr[data-picked] .v4-bar .fill { background: var(--accent); }
+  .v4-cut td { padding: 0 !important; border-bottom: 0 !important; background: transparent !important; }
+  .v4-cut-inner { position: relative; display: flex; align-items: center; gap: 10px; padding: 10px 12px; font-size: 12px; color: var(--accent-ink); white-space: normal; text-align: left; }
+  .v4-cut-inner::before, .v4-cut-inner::after { content: ""; height: 0; border-top: 1.5px dashed color-mix(in oklch, var(--accent) 60%, transparent); flex: 0 0 24px; }
+  .v4-cut-inner::after { flex: 1; }
+  .v4-cut-inner span { flex: none; font-weight: 600; }
+  .v4-note { padding: 12px 16px; font-size: 12.5px; color: var(--ink-3); border-top: 1px solid var(--line); line-height: 1.6; }
+  .v4-note b { color: var(--ink-2); font-weight: 600; }
+  @media (max-width: 760px) {
+    .v4-sub, .v4-kind, .v4-notes { display: none; }
+    .v4-table th, .v4-table td { padding-left: 8px; padding-right: 8px; }
+    .v4-bar { grid-template-columns: 22px 36px; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+<main id="stage"></main>
+<script src="shared/data.js"></script>
+<script src="shared/harness.js"></script>
+<script>
+const A = window.ATLAS;
+// fmt comes from harness.js (global)
+const POOL = A.pool;
+const PICKED = POOL.filter((b) => b.picked).sort((a, b) => b.relevance + b.heat - a.relevance - a.heat);
+const P = A.product.pool;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function head(title) {
+  return `<header class="p1-head">
+    <p class="eyebrow">第 1 步 · 锁定竞品</p>
+    <h1>${title}</h1>
+    <p class="p1-src">池子：${P.source} · ${P.window} · ${P.brands} 个品牌 / ${fmt(P.notes)} 条素材</p>
+    <dl class="p1-defs">
+      <div><dt>相关性</dt><dd>用户·场景·价格重合度加权</dd></div>
+      <div><dt>爆品度</dt><dd>爆文率·投放增速·素材量加权</dd></div>
+    </dl>
+  </header>`;
+}
+
+function pickCards(delayBase = 0) {
+  return `<div class="p1-picks">${PICKED.map((b, i) => `
+    <article class="p1-pick p1-enter" style="--d:${delayBase + i * 50}ms">
+      <div class="p1-pick-top"><span class="p1-pick-rank">${i + 1}</span><span class="p1-pick-name">${b.name}</span><span class="p1-kind">${b.kind}竞品</span></div>
+      <div class="p1-pick-metrics">相关性 ${b.relevance} · 爆品度 ${b.heat} · ${b.notes} 条素材</div>
+      <p class="p1-pick-why">${b.why}</p>
+      <a class="p1-pick-link" href="p2-hits.html?c=${b.id}">看爆款 <span aria-hidden="true">→</span></a>
+    </article>`).join('')}</div>`;
+}
+
+function dataTable() {
+  const rows = [...POOL].sort((a, b) => b.relevance - a.relevance);
+  return `<details class="p1-details"><summary>查看数据表（${POOL.length} 个品牌）</summary>
+    <div class="p1-table-wrap"><table class="p1-table">
+      <thead><tr><th scope="col">品牌</th><th scope="col">类型</th><th scope="col">用户</th><th scope="col">场景</th><th scope="col">价格</th><th scope="col">相关性</th><th scope="col">爆品度</th><th scope="col">素材</th></tr></thead>
+      <tbody>${rows.map((b) => `<tr ${b.picked ? 'data-picked' : ''}><td>${b.name}</td><td>${b.kind}</td><td>${b.user}</td><td>${b.scene}</td><td>${b.price}</td><td>${b.relevance}</td><td>${b.heat}</td><td>${b.notes}</td></tr>`).join('')}</tbody>
+    </table></div></details>`;
+}
+
+/* tooltip: content built with textContent (labels are data) */
+function makeTip(stage) {
+  const tip = document.createElement('div');
+  tip.className = 'p1-tip';
+  tip.setAttribute('role', 'tooltip');
+  stage.append(tip);
+  function fill(b) {
+    tip.replaceChildren();
+    const t = document.createElement('b'); t.textContent = b.name; tip.append(t);
+    const k = document.createElement('div'); k.textContent = `${b.kind}竞品${b.picked ? ' · 已入选' : ''}`; k.style.color = 'var(--ink-3)'; tip.append(k);
+    const rows = [['相关性', b.relevance, `用户 ${b.user} · 场景 ${b.scene} · 价格 ${b.price}`], ['爆品度', b.heat, ''], ['素材量', b.notes, '']];
+    for (const [l, v, s] of rows) {
+      const r = document.createElement('div'); r.className = 'row';
+      const a = document.createElement('span'); a.textContent = s ? `${l}（${s}）` : l;
+      const c = document.createElement('strong'); c.textContent = v;
+      r.append(a, c); tip.append(r);
+    }
+    const w = document.createElement('div'); w.className = 'why'; w.textContent = b.why; tip.append(w);
+  }
+  return {
+    show(b, x, y) {
+      fill(b);
+      tip.setAttribute('data-on', '');
+      const r = tip.getBoundingClientRect();
+      let left = x + 14, top = y + 14;
+      if (left + r.width > innerWidth - 12) left = x - r.width - 14;
+      if (left < 12) left = 12;
+      if (top + r.height > innerHeight - 12) top = y - r.height - 14;
+      tip.style.left = left + 'px'; tip.style.top = top + 'px';
+    },
+    hide() { tip.removeAttribute('data-on'); },
+  };
+}
+
+/* ================= V1 · 四象限 ================= */
+function v1Render() {
+  return `<section class="p1 v1">
+    ${head('相关性 × 爆品度：右上角的 3 个就是要对标的竞品')}
+    <div class="v1-body">
+      <div>
+        <figure class="v1-chart" style="margin:0">
+          <div class="v1-plot" aria-label="竞品四象限散点图"></div>
+          <figcaption class="v1-legend">
+            <span><i style="background:var(--accent)"></i>已入选</span>
+            <span><i style="background:var(--s-muted)"></i>未入选</span>
+            <span><i style="background:transparent;box-shadow:inset 0 0 0 1.5px var(--ink-3);width:7px;height:7px"></i><i style="background:transparent;box-shadow:inset 0 0 0 1.5px var(--ink-3);width:14px;height:14px"></i>圆面积 = 近 90 天素材量</span>
+          </figcaption>
+        </figure>
+        ${dataTable()}
+      </div>
+      <aside class="v1-side">
+        <p class="v1-verdict p1-enter">分界线取 <strong>60 / 60</strong>。右上「核心对标」区 5 个品牌，人工复核去掉两个：<strong>快修相机</strong>（免费滤镜为主，不打付费）和<strong>兔子写真</strong>（贴着分界线，留作候补），留下 3 个。</p>
+        <div><p class="p1-section-title">最终竞品 <span class="num">3 / ${POOL.length}</span></p>${pickCards(80)}</div>
+        <details class="p1-details"><summary>其余 ${POOL.length - 3} 个为什么不选</summary>
+          <ul class="p1-rest">${POOL.filter((b) => !b.picked).map((b) => `<li><span class="n">${b.name}</span><span class="num" style="color:var(--ink-3)">${b.relevance} / ${b.heat}</span><span class="w">${b.why}</span></li>`).join('')}</ul>
+        </details>
+      </aside>
+    </div>
+  </section>`;
+}
+function v1Mount(stage) {
+  const host = stage.querySelector('.v1-plot');
+  const tip = makeTip(stage);
+  const ns = 'http://www.w3.org/2000/svg';
+  let lastW = 0;
+  function draw(animate) {
+    const W = Math.round(host.clientWidth);
+    if (!W || W === lastW) return;
+    lastW = W;
+    const small = W < 520;
+    const H = Math.round(Math.min(560, Math.max(340, W * 0.7)));
+    const pad = { l: small ? 30 : 40, r: small ? 10 : 16, t: 30, b: 34 };
+    const x = (v) => pad.l + ((v - 20) / 80) * (W - pad.l - pad.r);
+    const y = (v) => pad.t + ((100 - v) / 80) * (H - pad.t - pad.b);
+    const rScale = small ? 0.75 : 1;
+    const rad = (n) => (5 + Math.sqrt(n / 1240) * 14) * rScale;
+    const fs = small ? 11 : 12;
+    let s = `<svg class="v1-svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="group" aria-label="横轴相关性，纵轴爆品度，${POOL.length} 个品牌">`;
+    // core zone
+    s += `<rect x="${x(60)}" y="${y(100)}" width="${x(100) - x(60)}" height="${y(60) - y(100)}" fill="var(--accent)" fill-opacity="0.07" rx="6"/>`;
+    // grid
+    for (const t of [20, 40, 60, 80, 100]) {
+      const strong = t === 60;
+      s += `<line x1="${x(t)}" x2="${x(t)}" y1="${y(100)}" y2="${y(20)}" stroke="var(${strong ? '--line-strong' : '--line'})" stroke-width="1"/>`;
+      s += `<line x1="${x(20)}" x2="${x(100)}" y1="${y(t)}" y2="${y(t)}" stroke="var(${strong ? '--line-strong' : '--line'})" stroke-width="1"/>`;
+      s += `<text x="${x(t)}" y="${H - pad.b + 16}" font-size="${fs - 1}" fill="var(--ink-3)" text-anchor="middle" style="font-variant-numeric:tabular-nums">${t}</text>`;
+      s += `<text x="${pad.l - 8}" y="${y(t) + 4}" font-size="${fs - 1}" fill="var(--ink-3)" text-anchor="end" style="font-variant-numeric:tabular-nums">${t}</text>`;
+    }
+    s += `<text x="${pad.l}" y="14" font-size="${fs}" fill="var(--ink-2)" font-weight="600">爆品度 ↑</text>`;
+    s += `<text x="${W - pad.r}" y="${H - 4}" font-size="${fs}" fill="var(--ink-2)" font-weight="600" text-anchor="end">相关性 →</text>`;
+    // quadrant names
+    const q = (tx, ty, label, anchor, color = 'var(--ink-3)', weight = 500) =>
+      `<text x="${tx}" y="${ty}" font-size="${fs}" fill="${color}" font-weight="${weight}" text-anchor="${anchor}" pointer-events="none">${label}</text>`;
+    s += q(x(100) - 8, y(60) - 8, '核心对标', 'end', 'var(--accent-ink)', 650);
+    s += q(x(20) + 8, y(100) + 18, '内容借鉴', 'start');
+    s += q(x(100) - 8, y(20) - 8, '潜在威胁', 'end');
+    s += q(x(20) + 8, y(20) - 8, '忽略', 'start');
+    // points: muted first, picked last
+    const order = [...POOL].sort((a, b) => (a.picked - b.picked) || (b.notes - a.notes));
+    order.forEach((b, i) => {
+      const cx = x(b.relevance), cy = y(b.heat), r = rad(b.notes);
+      const d = animate && !reduce ? Math.min(i * 30, 420) : 0;
+      s += `<g class="v1-pt" tabindex="0" role="img" data-id="${b.id}" aria-label="${b.name}，相关性 ${b.relevance}，爆品度 ${b.heat}，${b.picked ? '已入选' : '未入选'}" ${animate ? '' : 'style="--d:0ms"'}>
+        <circle cx="${cx}" cy="${cy}" r="${Math.max(r + 6, 14)}" fill="transparent"/>
+        <circle class="mark" cx="${cx}" cy="${cy}" r="${r}" fill="var(${b.picked ? '--accent' : '--s-muted'})" stroke="var(--surface)" stroke-width="2" style="--d:${d}ms${animate ? '' : ';animation:none'}"/>
+      </g>`;
+    });
+    // direct labels on picked only, positioned per point and clamped
+    const lab = { jingyu: 'above', xiangsu: 'below', lumi: 'above' };
+    for (const b of PICKED) {
+      const cx = x(b.relevance), cy = y(b.heat), r = rad(b.notes);
+      const ty = lab[b.id] === 'above' ? cy - r - 7 : cy + r + fs + 4;
+      const estW = b.name.length * fs * 0.9;
+      const tx = Math.min(Math.max(cx, pad.l + estW / 2), W - pad.r - estW / 2);
+      s += `<text x="${tx}" y="${ty}" font-size="${fs}" font-weight="650" fill="var(--ink)" text-anchor="middle" pointer-events="none" paint-order="stroke" stroke="var(--surface)" stroke-width="3" stroke-linejoin="round">${b.name}</text>`;
+    }
+    s += '</svg>';
+    host.innerHTML = s;
+    host.querySelectorAll('.v1-pt').forEach((g) => {
+      const b = POOL.find((p) => p.id === g.dataset.id);
+      g.addEventListener('pointerenter', (e) => { g.setAttribute('data-on', ''); tip.show(b, e.clientX, e.clientY); });
+      g.addEventListener('pointermove', (e) => tip.show(b, e.clientX, e.clientY));
+      g.addEventListener('pointerleave', () => { g.removeAttribute('data-on'); tip.hide(); });
+      g.addEventListener('focus', () => { const r = g.getBoundingClientRect(); tip.show(b, r.right, r.top + r.height / 2); });
+      g.addEventListener('blur', () => tip.hide());
+    });
+  }
+  draw(true);
+  const ro = new ResizeObserver(() => draw(false));
+  ro.observe(host);
+  addEventListener('scroll', () => tip.hide(), { passive: true });
+}
+
+/* ================= V2 · 九宫格 ================= */
+const lvl = (v) => (v >= 75 ? 2 : v >= 50 ? 1 : 0);
+const LV = ['低', '中', '高'];
+const TIER = (s) => (s === 4 ? 'P0' : s === 3 ? 'P1' : s === 2 ? 'P2' : '');
+const TIER_NOTE = { P0: '直接对标', P1: '候选', P2: '观察', '': '' };
+function v2Render() {
+  let cells = '';
+  for (let r = 2; r >= 0; r--) for (let c = 0; c <= 2; c++) {
+    const t = TIER(r + c);
+    const items = POOL.filter((b) => lvl(b.heat) === r && lvl(b.relevance) === c).sort((a, b) => b.picked - a.picked || b.relevance - a.relevance);
+    cells += `<div class="v2-cell" data-tier="${t}">
+      <span class="v2-cell-tag">${t || '—'}${t ? `<em>${TIER_NOTE[t]}</em>` : ''}</span>
+      ${items.map((b, i) => `<button class="v2-chip p1-enter" style="--d:${(r === 2 ? 0 : 1) * 60 + i * 40}ms" data-id="${b.id}" ${b.picked ? 'data-picked' : ''} aria-expanded="false" aria-haspopup="dialog"><i aria-hidden="true"></i>${b.name}</button>`).join('')}
+    </div>`;
+  }
+  return `<section class="p1 v2">
+    ${head('九宫格优先级：先看格子，再看格子里的人')}
+    <div class="v2-wrap">
+      <span class="v2-ytitle">爆品度 ↑</span>
+      <div class="v2-ylab" aria-hidden="true"><span>高 ≥75</span><span>中 50–74</span><span>低 &lt;50</span></div>
+      <div class="v2-grid">${cells}</div>
+      <div class="v2-xlab" aria-hidden="true"><span>低 &lt;50</span><span>中 50–74</span><span>高 ≥75</span><b>相关性 →</b></div>
+    </div>
+    <div class="v2-read">
+      <div><b>P0 · 直接对标</b>高相关 × 高爆品。镜屿、像素照相馆全部入选。</div>
+      <div><b>P1 · 候选</b>只差一档。Lumi 内容可迁移，入选；另外 3 个转候补。</div>
+      <div><b>P2 及以下 · 观察</b>差两档以上，本轮不看。点任意品牌看理由。</div>
+    </div>
+    ${dataTable()}
+    <div class="v2-result"><p class="p1-section-title">最终竞品 <span class="num">3 / ${POOL.length}</span></p>${pickCards(120)}</div>
+    <div class="v2-pop" role="dialog" aria-modal="false" data-closed></div>
+  </section>`;
+}
+function v2Mount(stage) {
+  const pop = stage.querySelector('.v2-pop');
+  let openChip = null;
+  function close(returnFocus) {
+    if (!openChip) return;
+    openChip.setAttribute('aria-expanded', 'false');
+    pop.setAttribute('data-closed', '');
+    if (returnFocus) openChip.focus();
+    openChip = null;
+  }
+  function open(chip) {
+    const b = POOL.find((p) => p.id === chip.dataset.id);
+    if (openChip === chip) return close(false);
+    if (openChip) openChip.setAttribute('aria-expanded', 'false');
+    openChip = chip;
+    chip.setAttribute('aria-expanded', 'true');
+    const t = TIER(lvl(b.heat) + lvl(b.relevance));
+    pop.replaceChildren();
+    pop.setAttribute('aria-label', b.name);
+    const h = document.createElement('h3'); h.textContent = b.name;
+    const k = document.createElement('span'); k.className = 'p1-kind'; k.textContent = `${t || '—'} · ${b.kind}`; h.append(k);
+    const bars = document.createElement('div'); bars.className = 'bars';
+    for (const [l, v, hot] of [['用户', b.user], ['场景', b.scene], ['价格', b.price], ['相关性', b.relevance, 1], ['爆品度', b.heat, 1]]) {
+      const row = document.createElement('div'); row.className = 'bar';
+      const a = document.createElement('span'); a.textContent = l;
+      const tr = document.createElement('span'); tr.className = 'track';
+      const f = document.createElement('span'); f.className = 'fill' + (hot && b.picked ? ' hot' : ''); f.style.display = 'block'; f.style.width = v + '%';
+      tr.append(f);
+      const n = document.createElement('span'); n.textContent = v;
+      row.append(a, tr, n); bars.append(row);
+    }
+    const why = document.createElement('p'); why.className = 'why'; why.textContent = (b.picked ? '入选：' : '不选：') + b.why;
+    pop.append(h, bars, why);
+    if (b.picked) { const a = document.createElement('a'); a.href = `p2-hits.html?c=${b.id}`; a.textContent = '看它的爆款 →'; pop.append(a); }
+    // position: below the chip, flip above if needed; origin follows the chip
+    pop.style.left = '0px'; pop.style.top = '0px';
+    const cr = chip.getBoundingClientRect();
+    pop.removeAttribute('data-closed');
+    const pr = pop.getBoundingClientRect();
+    let left = Math.min(Math.max(12, cr.left + cr.width / 2 - pr.width / 2), innerWidth - pr.width - 12);
+    let top = cr.bottom + 8, below = true;
+    if (top + pr.height > innerHeight - 12 && cr.top - pr.height - 8 > 12) { top = cr.top - pr.height - 8; below = false; }
+    const ox = cr.left + cr.width / 2 - left;
+    pop.style.setProperty('--origin', `${ox}px ${below ? '0' : '100%'}`);
+    // restart transition from the closed state so origin applies
+    pop.setAttribute('data-closed', '');
+    pop.style.left = left + 'px'; pop.style.top = top + 'px';
+    requestAnimationFrame(() => pop.removeAttribute('data-closed'));
+  }
+  stage.querySelectorAll('.v2-chip').forEach((c) => c.addEventListener('click', (e) => { e.stopPropagation(); open(c); }));
+  pop.addEventListener('click', (e) => e.stopPropagation());
+  document.addEventListener('click', () => close(false));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(true); });
+  addEventListener('scroll', () => close(false), { passive: true });
+  addEventListener('resize', () => close(false));
+}
+
+/* ================= V3 · 筛选 ================= */
+const STEPS3 = [
+  { label: '全部品牌', sub: P.source.split(' + ')[0], test: () => true, title: `池子里有 ${POOL.length} 个品牌`, desc: '先把聚光后台「AI 影像」行业近 90 天投过放的品牌全拉进来，不预设立场。', metric: null },
+  { label: '相关性 ≥ 50', sub: '人群、场景、价格对得上', test: (b) => b.relevance >= 50, title: '门槛 1：相关性 ≥ 50', desc: '用户、场景、价格三项重合度加权。不到 50 的，爆款再多也搬不到我的产品上。', metric: 'relevance' },
+  { label: '爆品度 ≥ 70', sub: '真的在出爆款', test: (b) => b.relevance >= 50 && b.heat >= 70, title: '门槛 2：爆品度 ≥ 70', desc: '爆文率、投放增速、素材量加权。重合度再高，没有爆款就没有可学的东西。', metric: 'heat' },
+  { label: '人工复核', sub: '看素材本身', test: (b) => b.picked, title: '门槛 3：人工复核，锁定 3 个', desc: '逐条翻素材：内容能不能迁移、体量是否可比。', metric: null },
+];
+function v3Render() {
+  const counts = STEPS3.map((s) => POOL.filter(s.test).length);
+  return `<section class="p1 v3">
+    ${head(`${POOL.length} → ${counts[1]} → ${counts[2]} → ${counts[3]}：三道门槛筛出竞品`)}
+    <div class="v3-body">
+      <div>
+        <nav class="v3-funnel" aria-label="筛选步骤">
+          ${STEPS3.map((s, i) => `<button class="v3-step" data-i="${i}">
+            <span class="v3-step-label">${s.label}<small>${s.sub}</small></span>
+            <span class="v3-step-count">${counts[i]}</span>
+            <span class="v3-step-bar" aria-hidden="true"><span style="transform:scaleX(${counts[i] / POOL.length})"></span></span>
+          </button>`).join('')}
+        </nav>
+        <div class="v3-ctrl">
+          <button class="v3-btn primary" data-next>下一步</button>
+          <button class="v3-btn ghost" data-reset>从头看</button>
+        </div>
+      </div>
+      <div>
+        <div class="v3-now" aria-live="polite"><h2></h2><p></p></div>
+        <div class="v3-field">${[...POOL].sort((a, b) => b.relevance - a.relevance).map((b) => `
+          <span class="v3-chip" data-id="${b.id}">${b.name}<span class="m"><b data-k="relevance">相 ${b.relevance}</b><b data-k="heat">爆 ${b.heat}</b></span></span>`).join('')}
+        </div>
+        <div class="v3-log"></div>
+        <div class="v3-result"></div>
+        ${dataTable()}
+      </div>
+    </div>
+  </section>`;
+}
+function v3Mount(stage) {
+  const chips = [...stage.querySelectorAll('.v3-chip')];
+  const steps = [...stage.querySelectorAll('.v3-step')];
+  const next = stage.querySelector('[data-next]');
+  const log = stage.querySelector('.v3-log');
+  const result = stage.querySelector('.v3-result');
+  const h = stage.querySelector('.v3-now h2');
+  const p = stage.querySelector('.v3-now p');
+  let cur = -1;
+  function set(i) {
+    if (i === cur) return;
+    const prev = cur; cur = i;
+    const s = STEPS3[i];
+    h.textContent = s.title; p.textContent = s.desc;
+    steps.forEach((el, j) => {
+      el.toggleAttribute('data-future', j > i);
+      if (j === i) el.setAttribute('aria-current', 'step'); else el.removeAttribute('aria-current');
+    });
+    let k = 0;
+    chips.forEach((c) => {
+      const b = POOL.find((x) => x.id === c.dataset.id);
+      const alive = s.test(b);
+      const was = !c.hasAttribute('data-out');
+      c.style.setProperty('--d', alive !== was && !reduce ? `${Math.min(k++ * 40, 320)}ms` : '0ms');
+      c.toggleAttribute('data-out', !alive);
+      c.toggleAttribute('data-win', i === 3 && alive);
+      c.querySelectorAll('b').forEach((m) => m.toggleAttribute('data-hot', m.dataset.k === s.metric));
+    });
+    // log: one group per completed step, newest open
+    let html = '';
+    for (let j = 1; j <= i; j++) {
+      const out = POOL.filter((b) => STEPS3[j - 1].test(b) && !STEPS3[j].test(b));
+      const m = STEPS3[j].metric;
+      html += `<details ${j === i ? 'open' : ''}><summary><b>第 ${j} 步</b>${STEPS3[j].label}，淘汰 ${out.length} 个</summary>
+        <ul>${out.map((b) => `<li><span>${b.name}</span>${m ? `<em>${m === 'relevance' ? '相关性' : '爆品度'} ${b[m]}</em>` : ''}${b.why}</li>`).join('')}</ul></details>`;
+    }
+    log.innerHTML = html;
+    result.innerHTML = i === 3 ? `<p class="p1-section-title">最终竞品 <span class="num">3 / ${POOL.length}</span></p>${pickCards(180)}` : '';
+    next.disabled = i === 3;
+    next.textContent = i === 3 ? '已锁定' : '下一步';
+  }
+  steps.forEach((el) => el.addEventListener('click', () => set(+el.dataset.i)));
+  next.addEventListener('click', () => set(Math.min(3, cur + 1)));
+  stage.querySelector('[data-reset]').addEventListener('click', () => set(0));
+  set(location.hash === '#s3' ? 3 : 0);
+}
+
+/* ================= V4 · 评分卡 ================= */
+const score = (b) => Math.round((b.relevance + b.heat) / 2);
+function v4Render() {
+  return `<section class="p1 v4">
+    ${head('综合打分排名，取前三；一个例外人工排除')}
+    <div class="v4-picks"><p class="p1-section-title">结论 · 锁定 3 个竞品</p>${pickCards(0)}</div>
+    <div class="v4-how">
+      <div><span class="k">01</span><b>打分</b>每个品牌算相关性、爆品度两项，0–100。</div>
+      <div><span class="k">02</span><b>排序</b>综合 = 相关性 × 0.5 + 爆品度 × 0.5，取前 3。</div>
+      <div><span class="k">03</span><b>复核</b>排第 4 的「某头部修图 App」体量过大，不对标。</div>
+    </div>
+    <div class="v4-tablebox">
+      <table class="v4-table">
+        <thead><tr>
+          <th class="l" scope="col">#</th>
+          <th class="l" scope="col">品牌</th>
+          <th class="l v4-kind" scope="col">类型</th>
+          <th class="v4-sub" scope="col">用户</th><th class="v4-sub" scope="col">场景</th><th class="v4-sub" scope="col">价格</th>
+          <th scope="col" aria-sort="none"><button class="v4-sort" data-k="relevance">相关性</button></th>
+          <th scope="col" aria-sort="none"><button class="v4-sort" data-k="heat">爆品度</button></th>
+          <th class="v4-notes" scope="col" aria-sort="none"><button class="v4-sort" data-k="notes">素材</button></th>
+          <th scope="col" aria-sort="descending"><button class="v4-sort" data-k="score" data-dir="desc">综合</button></th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+      <p class="v4-note"><b>为什么没选妙拍写真馆？</b>它的相关性 88，全池第 2，但近 90 天爆品度只有 41，几乎没有爆文可学，所以综合只排第 ${[...POOL].sort((a, b) => score(b) - score(a)).findIndex((b) => b.id === 'miaopai') + 1}。重合度高、没爆款的品牌只做监测，不做对标。</p>
+    </div>
+  </section>`;
+}
+function v4Mount(stage) {
+  const body = stage.querySelector('tbody');
+  const btns = [...stage.querySelectorAll('.v4-sort')];
+  let key = 'score', dir = 'desc';
+  const val = (b, k) => (k === 'score' ? score(b) : b[k]);
+  const mini = (v) => `<span class="v4-mini"><span>${v}</span><span class="track"><span class="fill" style="display:block;width:${v}%"></span></span></span>`;
+  const bar = (v) => `<span class="v4-bar"><span>${v}</span><span class="track"><span class="fill" style="display:block;width:${v}%"></span></span></span>`;
+  function draw(first) {
+    const rows = [...POOL].sort((a, b) => (dir === 'desc' ? -1 : 1) * (val(a, key) - val(b, key)) || score(b) - score(a));
+    const showCut = key === 'score' && dir === 'desc';
+    body.innerHTML = rows.map((b, i) => `
+      ${showCut && i === 3 ? `<tr class="v4-cut"><td colspan="10"><div class="v4-cut-inner"><span>入选线</span></div></td></tr>` : ''}
+      <tr ${b.picked ? 'data-picked' : ''} ${first ? `class="p1-enter" style="--d:${Math.min(i * 30, 360)}ms"` : ''}>
+        <td class="l rank">${i + 1}</td>
+        <td class="l name">${b.name}</td>
+        <td class="l v4-kind">${b.kind}</td>
+        <td class="v4-sub">${mini(b.user)}</td><td class="v4-sub">${mini(b.scene)}</td><td class="v4-sub">${mini(b.price)}</td>
+        <td>${bar(b.relevance)}</td>
+        <td>${bar(b.heat)}</td>
+        <td class="v4-notes">${b.notes}</td>
+        <td class="score">${score(b)}</td>
+      </tr>`).join('');
+    btns.forEach((x) => {
+      const on = x.dataset.k === key;
+      if (on) x.dataset.dir = dir; else delete x.dataset.dir;
+      x.closest('th').setAttribute('aria-sort', on ? (dir === 'desc' ? 'descending' : 'ascending') : 'none');
+    });
+  }
+  btns.forEach((x) => x.addEventListener('click', () => {
+    if (key === x.dataset.k) dir = dir === 'desc' ? 'asc' : 'desc'; else { key = x.dataset.k; dir = 'desc'; }
+    draw(false);
+  }));
+  draw(true);
+}
+
+AtlasUI.topBar(1);
+AtlasUI.picker([
+  { name: '四象限', render: v1Render, mount: v1Mount },
+  { name: '九宫格', render: v2Render, mount: v2Mount },
+  { name: '筛选', render: v3Render, mount: v3Mount },
+  { name: '评分卡', render: v4Render, mount: v4Mount },
+]);
+</script>
+</body>
+</html>

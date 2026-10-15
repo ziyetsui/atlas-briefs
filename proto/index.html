@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas Proto</title>
+<link rel="stylesheet" href="shared/base.css">
+<style>
+  main { max-width: 760px; margin: 0 auto; padding: 72px 24px 96px; }
+  h1 { font-size: 32px; font-weight: 650; letter-spacing: -0.02em; margin-top: 8px; }
+  .lede { color: var(--ink-2); margin-top: 12px; max-width: 56ch; }
+  ol { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 1px; background: var(--line); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-1); }
+  li a { display: grid; grid-template-columns: 40px 1fr auto; gap: 16px; align-items: baseline; padding: 20px 24px; background: var(--surface); text-decoration: none; transition: background-color 150ms ease; }
+  @media (hover: hover) and (pointer: fine) { li a:hover { background: var(--surface-2); } }
+  li a:active { background: var(--surface-2); }
+  .n { font-variant-numeric: tabular-nums; color: var(--ink-3); font-weight: 600; }
+  .t { font-weight: 600; }
+  .d { display: block; color: var(--ink-2); font-size: 14px; margin-top: 2px; font-weight: 400; }
+  .v { color: var(--ink-3); font-size: 13px; white-space: nowrap; }
+  .foot { margin-top: 24px; font-size: 13px; color: var(--ink-3); }
+  kbd { font-family: var(--font-mono); font-size: 12px; padding: 1px 6px; border-radius: 5px; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Atlas · 原型挑选</p>
+  <h1>竞品爆款 Brief 原型</h1>
+  <p class="lede">一份 brief 分 5 页：先讲清楚我的产品，再讲怎么锁定竞品、竞品有哪些爆款、单条爆款怎么拆，最后提炼规律、落到我的产品上。每页做了几个方向，用底部的切换条挑。</p>
+  <ol>
+    <li><a href="p0-overview.html"><span class="n">0</span><span class="t">总览<span class="d">我的产品 → 3 个竞品 → 爆款 → 规律，一页看完</span></span><span class="v">4 个方向</span></a></li>
+    <li><a href="p1-competitors.html"><span class="n">1</span><span class="t">锁定竞品<span class="d">从 14 个品牌里怎么挑出 3 个：相关性 × 爆品度矩阵</span></span><span class="v">4 个方向</span></a></li>
+    <li><a href="p2-hits.html"><span class="n">2</span><span class="t">竞品爆款<span class="d">每个竞品的 3 种爆款形式，每种 3 个例子</span></span><span class="v">4 个方向</span></a></li>
+    <li><a href="p3-teardown.html"><span class="n">3</span><span class="t">爆款拆解<span class="d">账号是谁、流量从哪来、怎么变现、内容怎么搭</span></span><span class="v">4 个方向</span></a></li>
+    <li><a href="p4-playbook.html"><span class="n">4</span><span class="t">规律与落地<span class="d">每条规律配 3 个例子，再落到我的产品上</span></span><span class="v">4 个方向</span></a></li>
+  </ol>
+  <p class="foot">切换方向：数字键 <kbd>1</kbd>–<kbd>4</kbd> 或 <kbd>←</kbd> <kbd>→</kbd>，<kbd>R</kbd> 重播动画。示例数据均为虚构。</p>
+</main>
+</body>
+</html>

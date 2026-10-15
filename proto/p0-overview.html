@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas 总览</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;800&display=swap">
+<link rel="stylesheet" href="shared/base.css">
+<style>
+  /* ---------- page-wide helpers ---------- */
+  a, button { touch-action: manipulation; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  @media (max-width: 600px) { .wrap { padding: 0 16px; } }
+  .rise { animation: rise 280ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 40ms); }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } }
+  @keyframes fade { from { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .rise { animation: fade 200ms ease both; animation-delay: 0ms; } }
+  .tiny .cover { border-radius: 4px; }
+  .tiny .cover-text, .tiny .cover-play, .tiny .cover-tag, .tiny .cover-figure { display: none; }
+  .press { transition: transform 160ms var(--ease-out); }
+  .press:active { transform: scale(0.97); }
+  .more { color: var(--accent-ink); text-decoration: none; font-weight: 500; font-size: 14px; white-space: nowrap; }
+  @media (hover: hover) and (pointer: fine) { .more:hover { text-decoration: underline; text-underline-offset: 3px; } }
+  .muted { color: var(--ink-3); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .foot { padding: 40px 0 0; font-size: 13px; color: var(--ink-3); }
+
+  /* ============ 1 · 长卷 Editorial ============ */
+  .v-ed header { padding: 88px 0 56px; }
+  .v-ed h1 { font-family: var(--font-serif); font-weight: 800; font-size: clamp(36px, 6vw, 64px); line-height: 1.12; letter-spacing: -0.02em; margin-top: 16px; }
+  .v-ed .lede { font-size: 19px; line-height: 1.65; color: var(--ink-2); max-width: 36em; margin-top: 20px; }
+  .v-ed .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 48px 0 0; padding-top: 24px; border-top: 1px solid var(--line); }
+  .v-ed .facts dd { margin: 6px 0 0; font-size: 15px; }
+  .v-ed .goal { margin-top: 32px; font-size: 15px; color: var(--ink-2); }
+  .v-ed .goal b { color: var(--ink); font-weight: 600; }
+  .v-ed section { border-top: 1px solid var(--line); padding: 64px 0; }
+  .v-ed .sec-head { display: grid; grid-template-columns: 200px 1fr; gap: 24px; margin-bottom: 40px; }
+  .v-ed .sec-num { font-family: var(--font-serif); font-weight: 800; font-size: 15px; color: var(--accent-ink); }
+  .v-ed .sec-head h2 { font-family: var(--font-serif); font-weight: 800; font-size: 30px; line-height: 1.25; letter-spacing: -0.01em; }
+  .v-ed .sec-head p { margin-top: 10px; color: var(--ink-2); max-width: 42em; }
+  .v-ed .comps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .v-ed .comp { display: flex; flex-direction: column; gap: 14px; text-decoration: none; }
+  .v-ed .fan { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .v-ed .comp h3 { font-family: var(--font-serif); font-weight: 800; font-size: 24px; letter-spacing: -0.01em; margin-top: 4px; }
+  .v-ed .comp .tagline { color: var(--ink-2); font-size: 14px; }
+  .v-ed .stats { display: flex; gap: 20px; font-size: 13px; color: var(--ink-3); }
+  .v-ed .stats b { display: block; font-size: 18px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  @media (hover: hover) and (pointer: fine) { .v-ed .comp:hover h3 { color: var(--accent-ink); } .v-ed .comp h3 { transition: color 150ms ease; } }
+  .v-ed .group + .group { margin-top: 48px; }
+  .v-ed .group-title { display: flex; align-items: baseline; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--ink); }
+  .v-ed .group-title h3 { font-size: 17px; font-weight: 650; }
+  .v-ed .frow { display: grid; grid-template-columns: 1fr 312px; gap: 32px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+  .v-ed .frow h4 { font-size: 17px; font-weight: 600; }
+  .v-ed .frow p { color: var(--ink-2); font-size: 14px; margin-top: 4px; max-width: 34em; }
+  .v-ed .frow .meta { margin-top: 10px; font-size: 13px; color: var(--ink-3); display: flex; gap: 16px; flex-wrap: wrap; }
+  .v-ed .frow .meta b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .v-ed .frow .covers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  @media (hover: hover) and (pointer: fine) { .v-ed .frow h4 { transition: color 150ms ease; } .v-ed .frow:hover h4 { color: var(--accent-ink); } }
+  .v-ed .laws { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+  .v-ed .law { display: grid; grid-template-columns: 72px 1fr 200px; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); text-decoration: none; align-items: start; }
+  .v-ed .law .n { font-family: var(--font-serif); font-weight: 800; font-size: 44px; line-height: 1; color: var(--accent-ink); font-variant-numeric: tabular-nums; }
+  .v-ed .law h3 { font-family: var(--font-serif); font-weight: 800; font-size: 22px; }
+  .v-ed .law p { color: var(--ink-2); margin-top: 6px; max-width: 36em; }
+  .v-ed .law .apply { margin-top: 12px; font-size: 14px; color: var(--ink-3); }
+  .v-ed .law .apply b { color: var(--ink); font-weight: 600; }
+  .v-ed .law .covers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  @media (max-width: 860px) {
+    .v-ed header { padding: 56px 0 40px; }
+    .v-ed .facts { grid-template-columns: repeat(2, 1fr); }
+    .v-ed .sec-head { grid-template-columns: 1fr; gap: 8px; }
+    .v-ed .comps { grid-template-columns: 1fr; gap: 40px; }
+    .v-ed .frow { grid-template-columns: 1fr; gap: 14px; }
+    .v-ed .law { grid-template-columns: 44px 1fr; }
+    .v-ed .law .n { font-size: 32px; }
+    .v-ed .law .covers { grid-column: 2; max-width: 240px; }
+    .v-ed section { padding: 48px 0; }
+  }
+
+  /* ============ 2 · 脉络 Map ============ */
+  .v-map header { padding: 48px 0 8px; display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 32px; }
+  .v-map h1 { font-size: 28px; font-weight: 650; letter-spacing: -0.02em; margin-top: 8px; }
+  .v-map header p { color: var(--ink-3); font-size: 14px; }
+  .v-map .map { position: relative; display: grid; grid-template-columns: 1.05fr 0.95fr 1.2fr 1.15fr; column-gap: 64px; row-gap: 10px; padding: 24px 0 8px; isolation: isolate; }
+  .v-map .edges { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: visible; }
+  .v-map .edges path { fill: none; stroke: var(--line-strong); stroke-width: 1; transition: stroke 150ms ease, opacity 150ms ease; }
+  .v-map .edges path[data-on] { stroke: var(--accent); stroke-width: 1.5; }
+  .v-map .map[data-focus] .edges path:not([data-on]) { opacity: 0.35; }
+  .v-map .colhead { padding-bottom: 6px; }
+  .v-map .node { position: relative; display: block; background: var(--surface); border-radius: var(--r-md); box-shadow: var(--shadow-1); padding: 12px 14px; text-decoration: none; align-self: center; transition: opacity 150ms ease, box-shadow 150ms ease, transform 160ms var(--ease-out); }
+  .v-map .node:active { transform: scale(0.97); }
+  .v-map .map[data-focus] .node:not([data-on]) { opacity: 0.4; }
+  .v-map .node[data-on] { box-shadow: 0 0 0 1px var(--accent), 0 4px 12px rgba(20, 16, 10, 0.06); }
+  .v-map .node .k { font-size: 12px; color: var(--ink-3); }
+  .v-map .node .t { font-weight: 600; font-size: 15px; line-height: 1.35; }
+  .v-map .n-product { padding: 18px; }
+  .v-map .n-product .t { font-size: 18px; }
+  .v-map .n-product p { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+  .v-map .n-product dl { margin: 12px 0 0; display: grid; gap: 4px; font-size: 12px; }
+  .v-map .n-product dl div { display: flex; gap: 8px; }
+  .v-map .n-product dt { color: var(--ink-3); flex: none; width: 3em; }
+  .v-map .n-product dd { margin: 0; color: var(--ink-2); }
+  .v-map .n-comp .row { display: flex; justify-content: space-between; gap: 8px; margin-top: 6px; font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .v-map .n-fmt { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; padding: 8px 12px 8px 8px; }
+  .v-map .n-fmt .t { font-size: 14px; }
+  .v-map .n-fmt .k { font-variant-numeric: tabular-nums; }
+  .v-map .stack { display: flex; }
+  .v-map .stack > * { width: 26px; flex: none; box-shadow: 0 0 0 2px var(--surface); border-radius: 4px; }
+  .v-map .stack > * + * { margin-left: -10px; }
+  .v-map .n-fmt.gap-top { margin-top: 14px; }
+  .v-map .n-law .t { font-size: 15px; }
+  .v-map .n-law .t span { color: var(--accent-ink); margin-right: 6px; font-variant-numeric: tabular-nums; }
+  .v-map .n-law p { font-size: 12px; color: var(--ink-2); margin-top: 4px; line-height: 1.5; }
+  .v-map .n-law .k { margin-top: 6px; font-variant-numeric: tabular-nums; }
+  .v-map .mlabel { display: none; }
+  @media (min-width: 901px) {
+    .v-map .colhead[data-c="0"] { grid-column: 1; grid-row: 1; }
+    .v-map .colhead[data-c="1"] { grid-column: 2; grid-row: 1; }
+    .v-map .colhead[data-c="2"] { grid-column: 3; grid-row: 1; }
+    .v-map .colhead[data-c="3"] { grid-column: 4; grid-row: 1; }
+    .v-map .n-product { grid-column: 1; grid-row: 2 / span 9; }
+    .v-map .n-comp { grid-column: 2; }
+    .v-map .n-fmt { grid-column: 3; }
+    .v-map .n-law { grid-column: 4; }
+    .v-map .n-comp, .v-map .n-fmt, .v-map .n-law { grid-row: var(--row) / span var(--span); }
+  }
+  @media (max-width: 900px) {
+    .v-map .map { grid-template-columns: 1fr; row-gap: 8px; }
+    .v-map .edges, .v-map .colhead { display: none; }
+    .v-map .n-comp { margin-top: 20px; }
+    .v-map .n-fmt { margin-left: 20px; }
+    .v-map .n-fmt.gap-top { margin-top: 0; }
+    .v-map .n-fmt::before { content: ""; position: absolute; left: -12px; top: -8px; bottom: 50%; width: 8px; border-left: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); border-bottom-left-radius: 6px; pointer-events: none; }
+    .v-map .mlabel { display: block; margin-top: 28px; }
+  }
+
+  /* ============ 3 · 画廊 Gallery ============ */
+  .v-gal .layout { display: grid; grid-template-columns: 300px 1fr; gap: 56px; padding-top: 40px; align-items: start; }
+  .v-gal aside { position: sticky; top: 76px; display: flex; flex-direction: column; gap: 20px; }
+  .v-gal aside h1 { font-size: 24px; font-weight: 650; letter-spacing: -0.02em; margin-top: 6px; }
+  .v-gal aside .one { color: var(--ink-2); font-size: 14px; margin-top: 6px; }
+  .v-gal aside dl { margin: 0; display: grid; gap: 8px; font-size: 13px; }
+  .v-gal aside dl div { display: grid; grid-template-columns: 3.5em 1fr; gap: 8px; }
+  .v-gal aside dt { color: var(--ink-3); }
+  .v-gal aside dd { margin: 0; }
+  .v-gal .goal { padding: 14px 16px; border-radius: var(--r-md); background: var(--accent-soft); font-size: 14px; }
+  .v-gal .goal .eyebrow { color: var(--accent-ink); }
+  .v-gal .goal p { margin-top: 4px; }
+  .v-gal .laws { display: grid; gap: 2px; margin-top: 8px; }
+  .v-gal .laws a { display: block; padding: 10px 12px; margin: 0 -12px; border-radius: var(--r-sm); text-decoration: none; transition: background-color 150ms ease; }
+  @media (hover: hover) and (pointer: fine) { .v-gal .laws a:hover { background: var(--surface-2); } }
+  .v-gal .laws b { font-weight: 600; font-size: 14px; }
+  .v-gal .laws b span { color: var(--accent-ink); margin-right: 6px; }
+  .v-gal .laws p { font-size: 13px; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 2px; }
+  .v-gal .seg { position: relative; display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; padding: 3px; border-radius: 999px; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); max-width: 100%; }
+  .v-gal .seg-ind { position: absolute; top: 3px; bottom: 3px; left: 0; border-radius: 999px; background: var(--surface); box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgba(20, 16, 10, 0.08); transition: transform 220ms var(--ease-out), width 220ms var(--ease-out); pointer-events: none; }
+  .v-gal .seg button { position: relative; border: 0; background: none; padding: 8px 18px; min-height: 40px; border-radius: 999px; cursor: pointer; font-size: 14px; font-weight: 500; color: var(--ink-3); white-space: nowrap; transition: color 150ms ease; }
+  .v-gal .seg button[aria-selected="true"] { color: var(--ink); }
+  @media (hover: hover) and (pointer: fine) { .v-gal .seg button:hover { color: var(--ink); } }
+  @media (prefers-reduced-motion: reduce) { .v-gal .seg-ind { transition: none; } }
+  .v-gal .chead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin: 28px 0 8px; }
+  .v-gal .chead h2 { font-size: 28px; font-weight: 650; letter-spacing: -0.02em; }
+  .v-gal .chead .sub { color: var(--ink-2); font-size: 14px; margin-top: 2px; }
+  .v-gal .cstats { display: flex; gap: 24px; font-size: 13px; color: var(--ink-3); margin-top: 16px; }
+  .v-gal .cstats b { display: block; color: var(--ink); font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .v-gal .fmt { margin-top: 40px; }
+  .v-gal .fmt-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .v-gal .fmt-head h3 { font-size: 17px; font-weight: 600; }
+  .v-gal .fmt-head h3 span { font-weight: 400; color: var(--ink-3); font-size: 13px; margin-left: 10px; font-variant-numeric: tabular-nums; }
+  .v-gal .fmt-head h3 span { display: inline-block; white-space: nowrap; }
+  .v-gal .fmt > p { color: var(--ink-2); font-size: 14px; margin-top: 10px; max-width: 40em; }
+  .v-gal .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+  .v-gal .card { text-decoration: none; display: flex; flex-direction: column; gap: 8px; }
+  .v-gal .card .ct { font-size: 14px; font-weight: 500; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .v-gal .card .cm { font-size: 12px; color: var(--ink-3); display: flex; justify-content: space-between; gap: 8px; font-variant-numeric: tabular-nums; }
+  .v-gal .card .cm span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .v-gal .card .cover { transition: transform 200ms var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .v-gal .card:hover .cover { transform: translateY(-2px); } }
+  @media (max-width: 900px) {
+    .v-gal .layout { grid-template-columns: 1fr; gap: 32px; padding-top: 28px; }
+    .v-gal aside { position: static; }
+    .v-gal .seg { display: grid; width: 100%; }
+    .v-gal .seg button { padding: 8px 6px; font-size: 13px; }
+    .v-gal .grid { gap: 8px; }
+    .v-gal .card .ct { font-size: 12px; }
+    .v-gal .card .cm span:first-child { display: none; }
+  }
+
+  /* ============ 4 · 目录 Index ============ */
+  .v-idx { font-size: 14px; }
+  .v-idx header { padding: 40px 0 24px; display: grid; grid-template-columns: 1fr auto; gap: 16px 40px; align-items: end; border-bottom: 1px solid var(--line); }
+  .v-idx h1 { font-size: 22px; font-weight: 650; letter-spacing: -0.02em; margin-top: 6px; }
+  .v-idx header .one { color: var(--ink-2); margin-top: 4px; }
+  .v-idx .facts { display: grid; grid-template-columns: repeat(3, auto); gap: 4px 28px; font-size: 13px; }
+  .v-idx .facts dt { color: var(--ink-3); font-size: 12px; }
+  .v-idx .facts dd { margin: 0; }
+  .v-idx .facts div:last-child dd { color: var(--accent-ink); font-weight: 500; }
+  .v-idx .laws { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
+  .v-idx .laws a { padding: 16px 20px 16px 0; text-decoration: none; display: grid; gap: 2px; }
+  .v-idx .laws a + a { padding-left: 20px; border-left: 1px solid var(--line); }
+  .v-idx .laws .lt { font-weight: 600; display: flex; justify-content: space-between; gap: 8px; }
+  .v-idx .laws .lt span:first-child em { font-style: normal; color: var(--accent-ink); margin-right: 6px; }
+  .v-idx .laws .lt span:last-child { font-weight: 400; color: var(--ink-3); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .v-idx .laws .la { color: var(--ink-3); font-size: 13px; }
+  @media (hover: hover) and (pointer: fine) { .v-idx .laws a .lt span:first-child { transition: color 150ms ease; } .v-idx .laws a:hover .lt span:first-child { color: var(--accent-ink); } }
+  .v-idx .tbar { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 28px 0 8px; }
+  .v-idx .tbar h2 { font-size: 15px; font-weight: 600; }
+  .v-idx table { width: 100%; border-collapse: collapse; }
+  .v-idx th { text-align: left; font-weight: 500; font-size: 12px; color: var(--ink-3); padding: 8px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  .v-idx th.r, .v-idx td.r { text-align: right; }
+  .v-idx th button { border: 0; background: none; padding: 4px 0; margin: -4px 0; cursor: pointer; font: inherit; color: inherit; display: inline-flex; gap: 4px; align-items: center; min-height: 32px; }
+  .v-idx th button .arr { display: inline-block; width: 8px; opacity: 0; }
+  .v-idx th.r button { flex-direction: row-reverse; }
+  .v-idx th[aria-sort] button { color: var(--ink); }
+  .v-idx th[aria-sort] button .arr { opacity: 1; }
+  @media (hover: hover) and (pointer: fine) { .v-idx th button:hover { color: var(--ink); } }
+  .v-idx td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: middle; font-variant-numeric: tabular-nums; }
+  .v-idx th:first-child, .v-idx td:first-child { padding-left: 0; }
+  .v-idx th:last-child, .v-idx td:last-child { padding-right: 0; }
+  .v-idx tbody tr { transition: background-color 150ms ease; }
+  @media (hover: hover) and (pointer: fine) { .v-idx tbody tr:hover { background: var(--surface-2); } }
+  .v-idx tr.grp td { border-top: 1px solid var(--line-strong); }
+  .v-idx .cname a { text-decoration: none; font-weight: 500; }
+  .v-idx .cname .k { display: block; font-size: 12px; color: var(--ink-3); }
+  .v-idx .cname.rep > * { visibility: hidden; }
+  .v-idx .fname a { text-decoration: none; font-weight: 600; }
+  .v-idx .fname a::after { content: ""; position: absolute; inset: 0; }
+  .v-idx tbody tr { position: relative; }
+  .v-idx .fname .sub { display: block; font-size: 12px; color: var(--ink-3); font-weight: 400; max-width: 30em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .v-idx .ex { display: flex; gap: 4px; }
+  .v-idx .ex > * { width: 30px; flex: none; }
+  .v-idx .bar { display: inline-flex; align-items: center; gap: 8px; }
+  .v-idx .bar i { display: block; width: 64px; height: 4px; border-radius: 2px; background: var(--s-muted); overflow: hidden; }
+  .v-idx .bar i b { display: block; height: 100%; background: var(--ink-2); border-radius: 2px; }
+  .v-idx td.go { color: var(--ink-3); width: 1%; }
+  .v-idx .mobile-c { display: none; }
+  @media (max-width: 760px) {
+    .v-idx header { grid-template-columns: 1fr; }
+    .v-idx .facts { grid-template-columns: 1fr 1fr; }
+    .v-idx .laws { grid-template-columns: 1fr; }
+    .v-idx .laws a + a { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+    .v-idx .col-c, .v-idx .col-share, .v-idx .go { display: none; }
+    .v-idx .mobile-c { display: inline; }
+    .v-idx .ex > * { width: 22px; }
+    .v-idx td, .v-idx th { padding-left: 6px; padding-right: 6px; }
+    .v-idx .fname .sub { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+<main id="stage"></main>
+
+<script src="shared/data.js"></script>
+<script src="shared/harness.js"></script>
+<script>
+(() => {
+const A = window.ATLAS, P = A.product, C = A.competitors, L = A.laws;
+const { cover, fmt } = AtlasUI;
+const note = (id) => A.notes[id];
+const hrefC = (c) => `p2-hits.html?c=${c.id}`;
+const hrefF = (f) => `p3-teardown.html?f=${f.id}`;
+const hrefL = (l) => `p4-playbook.html#${l.id}`;
+const tiny = (n) => `<div class="tiny">${cover(n, { tag: false })}</div>`;
+const foot = `<p class="foot">示例数据 · 来源：${P.pool.source} · ${P.pool.window}</p>`;
+const lawFormats = (l) => [...new Set(l.examples.map((id) => note(id).format))];
+
+/* ---------------- 1 · 长卷 ---------------- */
+function editorial() {
+  let i = 0;
+  const r = () => `class="rise" style="--i:${i++}"`;
+  return `<div class="v-ed"><div class="wrap">
+    <header>
+      <p class="eyebrow rise">竞品爆款 Brief · ${P.pool.window}</p>
+      <h1 ${r()}>${P.name}，<br>该向谁学？</h1>
+      <p class="lede" ${r()}>${P.oneLine}。我们从 ${P.pool.brands} 个品牌、${fmt(P.pool.notes)} 条笔记里，锁定 3 个竞品，拆了 9 种爆款形式，提炼出 3 条可以直接用的规律。</p>
+      <dl class="facts" ${r()}>
+        <div><dt class="eyebrow">品类</dt><dd>${P.category}</dd></div>
+        <div><dt class="eyebrow">价格</dt><dd>${P.price}</dd></div>
+        <div><dt class="eyebrow">人群</dt><dd>${P.audience}</dd></div>
+        <div><dt class="eyebrow">平台</dt><dd>${P.platform}</dd></div>
+      </dl>
+      <p class="goal" ${r()}><b>本轮目标</b>　${P.goal}</p>
+    </header>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">01 · 竞品</span><div><h2>从 ${P.pool.brands} 个品牌里，留下 3 个</h2><p>按「和我的用户、场景、价格有多重合」与「近 90 天爆文多不多」两条轴筛选。两个直接竞品，一个内容可迁移的间接竞品。</p><p style="margin-top:12px"><a class="more" href="p1-competitors.html">看筛选过程 →</a></p></div></div>
+      <div class="comps">
+        ${C.map((c, k) => `<a class="comp press rise" style="--i:${k}" href="${hrefC(c)}">
+          <div class="fan">${c.formats.map((f) => cover(f.notes[0], { tag: false })).join('')}</div>
+          <span class="eyebrow">${c.kind}</span>
+          <h3>${c.name}</h3>
+          <p class="tagline">${c.tagline}</p>
+          <div class="stats"><span><b>${c.stats.hits}</b>条爆款</span><span><b>${c.stats.hitRate}%</b>爆文率</span><span><b>${fmt(c.stats.medianLikes)}</b>赞中位数</span></div>
+        </a>`).join('')}
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">02 · 爆款形式</span><div><h2>每个竞品，靠 3 种形式出爆款</h2><p>按形式归类，而不是按单条笔记。每种形式附 3 个代表例子，点进去看完整拆解：账号、流量、变现、结构。</p></div></div>
+      ${C.map((c) => `<div class="group">
+        <div class="group-title"><h3>${c.name}</h3><span class="muted" style="font-size:13px">${c.kind}</span><a class="more" style="margin-left:auto" href="${hrefC(c)}">全部爆款 →</a></div>
+        ${c.formats.map((f) => `<a class="frow" href="${hrefF(f)}">
+          <div><h4>${f.name}</h4><p>${f.desc}</p>
+            <div class="meta"><span>爆文率 <b>${f.hitRate}%</b></span><span>平均 <b>${fmt(f.avgLikes)}</b> 赞</span><span>占爆款 <b>${f.share}%</b></span><span>${f.type}为主</span></div></div>
+          <div class="covers">${f.notes.map((n) => cover(n)).join('')}</div>
+        </a>`).join('')}
+      </div>`).join('')}
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">03 · 规律</span><div><h2>3 条规律，落到${P.name}</h2><p>每条规律都来自上面的爆款，并给出可以直接执行的选题和衡量指标。</p></div></div>
+      <ol class="laws">
+        ${L.map((l, k) => `<li><a class="law" href="${hrefL(l)}">
+          <span class="n">${k + 1}</span>
+          <div><h3>${l.name}</h3><p>${l.claim}</p><p class="apply">落地：<b>${l.apply.title}</b> · ${l.apply.kpi}</p></div>
+          <div class="covers">${l.examples.map((id) => cover(note(id), { tag: false })).join('')}</div>
+        </a></li>`).join('')}
+      </ol>
+      ${foot}
+    </section>
+  </div></div>`;
+}
+
+/* ---------------- 2 · 脉络 ---------------- */
+let mapRO = null;
+function mapView() {
+  const lawsOf = (f) => L.filter((l) => lawFormats(l).includes(f.id));
+  let row = 2, html = '', i = 0;
+  html += `<div class="node n-product rise" style="--i:${i++}" data-id="P" tabindex="0">
+    <span class="k">我的产品</span><div class="t">${P.name}</div><p>${P.oneLine}</p>
+    <dl><div><dt>价格</dt><dd>${P.price}</dd></div><div><dt>人群</dt><dd>${P.audience}</dd></div><div><dt>目标</dt><dd>${P.goal}</dd></div></dl></div>`;
+  C.forEach((c, ci) => {
+    html += `<a class="node n-comp rise" style="--i:${i++};--row:${row};--span:3" data-id="${c.id}" href="${hrefC(c)}">
+      <span class="k">${c.kind}</span><div class="t">${c.name}</div>
+      <div class="row"><span>${c.stats.hits} 条爆款</span><span>爆文率 ${c.stats.hitRate}%</span></div></a>`;
+    c.formats.forEach((f, fi) => {
+      html += `<a class="node n-fmt rise ${fi === 0 && ci > 0 ? 'gap-top' : ''}" style="--i:${i++};--row:${row + fi};--span:1" data-id="${f.id}" data-parent="${c.id}" href="${hrefF(f)}">
+        <span class="stack">${f.notes.map(tiny).join('')}</span>
+        <span><div class="t">${f.name}</div><span class="k">爆文率 ${f.hitRate}% · 均赞 ${fmt(f.avgLikes)}</span></span></a>`;
+    });
+    row += 3;
+  });
+  html += `<p class="eyebrow mlabel">3 条规律</p>`;
+  L.forEach((l, li) => {
+    html += `<a class="node n-law rise" style="--i:${i++};--row:${2 + li * 3};--span:3" data-id="${l.id}" href="${hrefL(l)}">
+      <div class="t"><span>${l.id}</span>${l.name}</div><p>${l.claim.split('。')[0]}。</p>
+      <div class="k">${l.evidence.hits} / ${l.evidence.of} 条爆款符合</div></a>`;
+  });
+  return `<div class="v-map"><div class="wrap">
+    <header><div><p class="eyebrow">竞品爆款 Brief · 脉络</p><h1>从我的产品，到 3 条规律</h1></div>
+      <p>悬停或聚焦任一节点，看它的来龙去脉</p></header>
+    <div class="map">
+      <svg class="edges" aria-hidden="true"></svg>
+      <span class="eyebrow colhead" data-c="0">我的产品</span>
+      <span class="eyebrow colhead" data-c="1">竞品 · 3</span>
+      <span class="eyebrow colhead" data-c="2">爆款形式 · 9</span>
+      <span class="eyebrow colhead" data-c="3">规律 · 3</span>
+      ${html}
+    </div>
+    ${foot}
+  </div></div>`;
+}
+function mountMap(stage) {
+  const map = stage.querySelector('.map');
+  const svg = map.querySelector('.edges');
+  // graph
+  const edges = [];
+  C.forEach((c) => { edges.push(['P', c.id]); c.formats.forEach((f) => edges.push([c.id, f.id])); });
+  L.forEach((l) => lawFormats(l).forEach((fid) => edges.push([fid, l.id])));
+  const up = {}, down = {};
+  edges.forEach(([a, b]) => { (down[a] ||= []).push(b); (up[b] ||= []).push(a); });
+  const walk = (id, g, s) => (g[id] || []).forEach((n) => { if (!s.has(n)) { s.add(n); walk(n, g, s); } });
+  const related = (id) => { const s = new Set([id]); walk(id, up, s); walk(id, down, s); return s; };
+
+  function draw() {
+    const box = map.getBoundingClientRect();
+    if (getComputedStyle(svg).display === 'none') return;
+    const rect = (id) => map.querySelector(`[data-id="${id}"]`).getBoundingClientRect();
+    svg.innerHTML = edges.map(([a, b]) => {
+      const ra = rect(a), rb = rect(b);
+      const x1 = ra.right - box.left, y1 = ra.top + ra.height / 2 - box.top;
+      const x2 = rb.left - box.left, y2 = rb.top + rb.height / 2 - box.top;
+      const mx = (x1 + x2) / 2;
+      return `<path data-a="${a}" data-b="${b}" d="M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}"/>`;
+    }).join('');
+  }
+  mapRO?.disconnect();
+  mapRO = new ResizeObserver(draw);
+  mapRO.observe(map);
+  draw();
+
+  const nodes = [...map.querySelectorAll('.node')];
+  const focus = (id) => {
+    const s = related(id);
+    map.setAttribute('data-focus', '');
+    nodes.forEach((n) => n.toggleAttribute('data-on', s.has(n.dataset.id)));
+    svg.querySelectorAll('path').forEach((p) => p.toggleAttribute('data-on', s.has(p.dataset.a) && s.has(p.dataset.b)));
+  };
+  const clear = () => { map.removeAttribute('data-focus'); map.querySelectorAll('[data-on]').forEach((n) => n.removeAttribute('data-on')); };
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  nodes.forEach((n) => {
+    if (fine) { n.addEventListener('pointerenter', () => focus(n.dataset.id)); n.addEventListener('pointerleave', clear); }
+    n.addEventListener('focus', () => focus(n.dataset.id));
+    n.addEventListener('blur', clear);
+  });
+}
+
+/* ---------------- 3 · 画廊 ---------------- */
+let galIdx = 0;
+function galPanel(c) {
+  return `<div class="chead"><div><h2>${c.name}</h2><p class="sub">${c.kind} · ${c.tagline}</p></div><a class="more" href="${hrefC(c)}">进入竞品页 →</a></div>
+    <div class="cstats"><span><b>${c.stats.notes}</b>条投放笔记</span><span><b>${c.stats.hits}</b>条爆款</span><span><b>${c.stats.hitRate}%</b>爆文率</span><span><b>${fmt(c.stats.medianLikes)}</b>赞中位数</span></div>
+    ${c.formats.map((f, k) => `<div class="fmt">
+      <div class="fmt-head"><h3>${k + 1}. ${f.name}<span>爆文率 ${f.hitRate}% · 均赞 ${fmt(f.avgLikes)}</span></h3><a class="more" href="${hrefF(f)}">拆解 →</a></div>
+      <p>${f.desc}</p>
+      <div class="grid">${f.notes.map((n, j) => `<a class="card press rise" style="--i:${k * 3 + j}" href="${hrefF(f)}">
+        ${cover(n)}<span class="ct">${n.title}</span><span class="cm"><span>${n.account}</span><span>收藏 ${fmt(n.collects)}</span></span></a>`).join('')}</div>
+    </div>`).join('')}`;
+}
+function gallery() {
+  return `<div class="v-gal"><div class="wrap"><div class="layout">
+    <aside>
+      <div><p class="eyebrow">我的产品</p><h1>${P.name}</h1><p class="one">${P.oneLine}</p></div>
+      <dl><div><dt>价格</dt><dd>${P.price}</dd></div><div><dt>人群</dt><dd>${P.audience}</dd></div><div><dt>平台</dt><dd>${P.platform}</dd></div></dl>
+      <div class="goal"><span class="eyebrow">本轮目标</span><p>${P.goal}</p></div>
+      <div><p class="eyebrow">3 条规律</p><div class="laws">${L.map((l) => `<a href="${hrefL(l)}"><b><span>${l.id}</span>${l.name}</b><p>${l.claim}</p></a>`).join('')}</div></div>
+      <p class="muted" style="font-size:12px">从 ${P.pool.brands} 个品牌中锁定 3 个 · <a class="more" style="font-size:12px" href="p1-competitors.html">筛选过程</a></p>
+    </aside>
+    <div>
+      <div class="seg" role="tablist" aria-label="竞品">
+        <span class="seg-ind" aria-hidden="true"></span>
+        ${C.map((c, k) => `<button role="tab" id="tab-${c.id}" aria-controls="gal-panel" aria-selected="${k === galIdx}" tabindex="${k === galIdx ? 0 : -1}">${c.name}</button>`).join('')}
+      </div>
+      <div id="gal-panel" role="tabpanel" aria-labelledby="tab-${C[galIdx].id}">${galPanel(C[galIdx])}</div>
+      ${foot}
+    </div>
+  </div></div></div>`;
+}
+function mountGallery(stage) {
+  const seg = stage.querySelector('.seg'), ind = seg.querySelector('.seg-ind');
+  const tabs = [...seg.querySelectorAll('[role=tab]')], panel = stage.querySelector('#gal-panel');
+  const place = () => { const t = tabs[galIdx]; ind.style.width = t.offsetWidth + 'px'; ind.style.transform = `translateX(${t.offsetLeft}px)`; };
+  ind.style.transition = 'none'; place(); requestAnimationFrame(() => (ind.style.transition = ''));
+  const select = (k, focus) => {
+    if (k === galIdx) return;
+    galIdx = k;
+    tabs.forEach((t, j) => { t.setAttribute('aria-selected', j === k); t.tabIndex = j === k ? 0 : -1; });
+    panel.setAttribute('aria-labelledby', tabs[k].id);
+    panel.innerHTML = galPanel(C[k]);
+    panel.querySelectorAll('.rise').forEach((el) => el.classList.remove('rise')); // swap is instant
+    place();
+    if (focus) tabs[k].focus();
+  };
+  tabs.forEach((t, k) => t.addEventListener('click', () => select(k)));
+  seg.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      e.preventDefault(); e.stopPropagation();
+      select((galIdx + (e.key === 'ArrowRight' ? 1 : -1) + C.length) % C.length, true);
+    }
+  });
+  addEventListener('resize', place);
+}
+
+/* ---------------- 4 · 目录 ---------------- */
+let idxSort = null; // { key, dir }
+function idxRows() {
+  let rows = C.flatMap((c, ci) => c.formats.map((f, fi) => ({ c, f, ci, fi })));
+  if (idxSort) rows.sort((a, b) => (b.f[idxSort.key] - a.f[idxSort.key]) * idxSort.dir);
+  return rows.map(({ c, f, fi }, k) => {
+    const first = !idxSort && fi === 0;
+    const rep = !idxSort && fi > 0;
+    return `<tr class="${first && k > 0 ? 'grp' : ''}">
+      <td class="cname col-c ${rep ? 'rep' : ''}"><a href="${hrefC(c)}">${c.name}</a><span class="k">${c.kind}</span></td>
+      <td class="fname"><a href="${hrefF(f)}">${f.name}</a><span class="sub"><span class="mobile-c">${c.name} · </span>${f.type} · ${f.desc}</span></td>
+      <td><div class="ex">${f.notes.map(tiny).join('')}</div></td>
+      <td class="col-share"><span class="bar"><i><b style="width:${f.share}%"></b></i>${f.share}%</span></td>
+      <td class="r">${f.hitRate}%</td>
+      <td class="r">${fmt(f.avgLikes)}</td>
+      <td class="go" aria-hidden="true">→</td>
+    </tr>`;
+  }).join('');
+}
+function indexView() {
+  const th = (key, label, cls = '') => {
+    const on = idxSort?.key === key;
+    return `<th class="${cls}" ${on ? `aria-sort="${idxSort.dir > 0 ? 'descending' : 'ascending'}"` : ''}><button data-sort="${key}">${label}<span class="arr">${on ? (idxSort.dir > 0 ? '↓' : '↑') : '↓'}</span></button></th>`;
+  };
+  return `<div class="v-idx"><div class="wrap">
+    <header class="rise">
+      <div><p class="eyebrow">我的产品 · ${P.category}</p><h1>${P.name}</h1><p class="one">${P.oneLine}</p></div>
+      <dl class="facts"><div><dt>价格</dt><dd>${P.price}</dd></div><div><dt>平台</dt><dd>${P.platform}</dd></div><div><dt>目标</dt><dd>CPA ¥38 → ¥25</dd></div></dl>
+    </header>
+    <div class="laws rise" style="--i:1">${L.map((l) => `<a href="${hrefL(l)}"><span class="lt"><span><em>${l.id}</em>${l.name}</span><span>${l.evidence.hits}/${l.evidence.of}</span></span><span class="la">落地：${l.apply.title}</span></a>`).join('')}</div>
+    <div class="tbar rise" style="--i:2"><h2>3 个竞品 · 9 种爆款形式</h2><a class="more" href="p1-competitors.html">为什么是这 3 个 →</a></div>
+    <table class="rise" style="--i:3">
+      <thead><tr>
+        <th class="col-c">竞品</th><th>爆款形式</th><th>例子</th>
+        ${th('share', '占爆款', 'col-share')}${th('hitRate', '爆文率', 'r')}${th('avgLikes', '均赞', 'r')}<th class="go"><span class="sr">打开</span></th>
+      </tr></thead>
+      <tbody>${idxRows()}</tbody>
+    </table>
+    ${foot}
+  </div></div>`;
+}
+function mountIndex(stage) {
+  stage.querySelector('thead').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-sort]'); if (!b) return;
+    const key = b.dataset.sort;
+    if (idxSort?.key === key) idxSort = idxSort.dir > 0 ? { key, dir: -1 } : null; // desc → asc → off
+    else idxSort = { key, dir: 1 };
+    const scrollY = window.scrollY;
+    const html = indexView();
+    stage.innerHTML = html;
+    stage.querySelectorAll('.rise').forEach((el) => el.classList.remove('rise'));
+    mountIndex(stage);
+    window.scrollTo(0, scrollY);
+    stage.querySelector(`[data-sort="${key}"]`).focus();
+  });
+}
+
+AtlasUI.topBar(0);
+AtlasUI.picker([
+  { name: '长卷', render: editorial },
+  { name: '脉络', render: mapView, mount: mountMap },
+  { name: '画廊', render: gallery, mount: mountGallery },
+  { name: '目录', render: indexView, mount: mountIndex },
+]);
+})();
+</script>
+</body>
+</html>

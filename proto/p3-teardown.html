@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>爆款拆解 · Atlas</title>
+<link rel="stylesheet" href="shared/base.css">
+<style>
+  /* ---------- shared within page ---------- */
+  .p3 { max-width: 1200px; margin: 0 auto; padding: 40px 24px 0; }
+  @media (max-width: 720px) { .p3 { padding: 28px 16px 0; } }
+  .p3 button, .p3 a { touch-action: manipulation; }
+
+  .p3-in { animation: p3-in 260ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 45ms); }
+  @keyframes p3-in { from { opacity: 0; transform: translateY(8px); } }
+  .p3-grow { transform-origin: left center; animation: p3-grow 300ms var(--ease-out) both; animation-delay: calc(120ms + var(--i, 0) * 45ms); }
+  @keyframes p3-grow { from { transform: scaleX(0.02); } }
+  @media (prefers-reduced-motion: reduce) {
+    .p3-in { animation: p3-fade 200ms ease both; animation-delay: 0ms; }
+    .p3-grow { animation: none; }
+    @keyframes p3-fade { from { opacity: 0; } }
+  }
+
+  .p3-head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .p3-head > *, .v1 article, .v1 section, .v4 .canvas > * { min-width: 0; }
+  .p3-head h1 { font-size: clamp(26px, 3vw + 12px, 36px); font-weight: 650; letter-spacing: -0.02em; line-height: 1.2; }
+  .p3-head .desc { color: var(--ink-2); max-width: 60ch; }
+  .p3-meta { display: flex; flex-wrap: wrap; gap: 6px 16px; color: var(--ink-3); font-size: 13px; }
+  .p3-meta b { color: var(--ink); font-weight: 600; }
+
+  /* switcher between the 3 researched teardowns */
+  .p3-switch { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface-2); width: max-content; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .p3-switch button {
+    flex: none; border: 0; background: transparent; cursor: pointer;
+    min-height: 36px; padding: 0 14px; border-radius: 999px; font-size: 13px; color: var(--ink-2);
+    transition: color 150ms ease-out, background-color 150ms ease-out, box-shadow 150ms ease-out, transform 160ms var(--ease-out);
+  }
+  .p3-switch button:active { transform: scale(0.97); }
+  @media (hover: hover) and (pointer: fine) { .p3-switch button:hover { color: var(--ink); } }
+  .p3-switch button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-1); }
+  .p3-switch .c { color: var(--ink-3); margin-right: 6px; }
+
+  .p3-h2 { display: flex; align-items: baseline; gap: 10px; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+  .p3-h2 .k { font-size: 12px; font-weight: 600; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .p3-sub { color: var(--ink-2); font-size: 14px; }
+  .p3-muted { color: var(--ink-3); font-size: 13px; }
+  .p3-big { font-size: 30px; font-weight: 650; letter-spacing: -0.02em; line-height: 1.1; }
+  .p3-chip { display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border-radius: 999px; background: var(--surface-2); font-size: 12px; color: var(--ink-2); }
+  .p3-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* charts */
+  .p3-bars { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .p3-bars li { display: grid; grid-template-columns: 6.5em 1fr; align-items: center; gap: 10px; font-size: 13px; }
+  .p3-bars .lab { color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .p3-bars .trk { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .p3-bars .bar { height: 14px; min-width: 2px; border-radius: 0 4px 4px 0; background: var(--s1); }
+  .p3-bars .val { color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 12px; }
+  .p3-bars li.dim .bar { background: var(--s-muted); }
+
+  .p3-funnel { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+  .p3-funnel li { display: grid; grid-template-columns: 7.5em 1fr; align-items: center; gap: 12px; font-size: 13px; }
+  .p3-funnel .lab { color: var(--ink-2); }
+  .p3-funnel .trk { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .p3-funnel .bar { height: 20px; min-width: 2px; border-radius: 0 4px 4px 0; background: var(--s1); }
+  .p3-funnel li:last-of-type .bar { background: var(--accent); }
+  .p3-funnel .val { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .p3-funnel .cv { grid-column: 2; padding: 3px 0 3px 2px; font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .p3-funnel .cv::before { content: "↓ "; }
+  .p3-funnel.compact .bar { height: 14px; }
+
+  .p3-mix .stack { display: flex; gap: 2px; height: 10px; }
+  .p3-mix .stack span { height: 100%; }
+  .p3-mix .stack span:first-child { border-radius: 4px 0 0 4px; }
+  .p3-mix .stack span:last-child { border-radius: 0 4px 4px 0; }
+  .p3-mix .leg { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px; font-size: 12px; color: var(--ink-2); }
+  .p3-mix .leg i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 6px; vertical-align: 0; }
+  .p3-mix .leg b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; margin-left: 4px; }
+
+  .p3-curve { position: relative; }
+  .p3-curve { min-height: 170px; }
+  .p3-curve svg { display: block; overflow: visible; touch-action: pan-y; }
+  .p3-curve svg:focus-visible { outline: 2px solid var(--ink-3); outline-offset: 4px; border-radius: 6px; }
+  .p3-curve .grid { stroke: var(--line); stroke-width: 1; }
+  .p3-curve .axis { fill: var(--ink-3); font-size: 10px; font-family: var(--font-sans); }
+  .p3-curve .ln { fill: none; stroke: var(--s1); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  .p3-curve .area { fill: var(--s1); opacity: 0.1; }
+  .p3-curve .dot { fill: var(--s1); stroke: var(--surface); stroke-width: 2; }
+  .p3-curve .endlab { fill: var(--ink); font-size: 11px; font-weight: 600; font-family: var(--font-sans); }
+  .p3-curve .xh { stroke: var(--ink-3); stroke-width: 1; opacity: 0; }
+  .p3-curve .xd { fill: var(--s1); stroke: var(--surface); stroke-width: 2; opacity: 0; }
+  .p3-curve.on .xh, .p3-curve.on .xd { opacity: 1; }
+  .p3-tip {
+    position: absolute; top: 0; left: 0; pointer-events: none; z-index: 2;
+    padding: 6px 9px; border-radius: 8px; background: var(--surface); box-shadow: var(--shadow-2);
+    font-size: 12px; line-height: 1.4; white-space: nowrap; opacity: 0;
+    transition: opacity 120ms ease-out;
+  }
+  .p3-curve.on .p3-tip { opacity: 1; }
+  .p3-tip strong { display: block; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .p3-tip span { color: var(--ink-3); }
+
+  .p3-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .p3-steps li { display: grid; grid-template-columns: 5.5em 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 14px; }
+  .p3-steps li:first-child { border-top: 0; }
+  .p3-steps .t { color: var(--ink-3); font-size: 13px; font-variant-numeric: tabular-nums; }
+
+  .p3-why { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: why; }
+  .p3-why li { counter-increment: why; display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 14px; }
+  .p3-why li::before { content: counter(why); display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-ink); font-size: 12px; font-weight: 650; }
+
+  .p3-apply {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    padding: 14px 16px; border-radius: var(--r-md); background: var(--accent-soft); text-decoration: none; font-size: 14px;
+    transition: transform 160ms var(--ease-out);
+  }
+  .p3-apply:active { transform: scale(0.98); }
+  .p3-apply .lbl { font-weight: 650; color: var(--accent-ink); }
+  .p3-apply .go { margin-left: auto; color: var(--accent-ink); font-weight: 600; white-space: nowrap; }
+
+  .p3-card { background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow-1); padding: 20px; min-width: 0; }
+
+  /* empty state */
+  .p3-empty { display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: start; margin-top: 32px; }
+  .p3-empty .msg { display: grid; gap: 14px; padding-top: 8px; }
+  .p3-empty h2 { font-size: 22px; font-weight: 650; letter-spacing: -0.01em; }
+  .p3-empty .stats { display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 4px 28px; margin: 6px 0; }
+  .p3-empty .stats b { display: block; font-size: 20px; font-weight: 650; color: var(--ink); }
+  .p3-empty .done { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .p3-empty .done a { display: flex; gap: 10px; align-items: center; min-height: 44px; padding: 0 14px; border-radius: var(--r-md); background: var(--surface); box-shadow: var(--shadow-1); text-decoration: none; font-size: 14px; transition: box-shadow 150ms ease-out, transform 160ms var(--ease-out); }
+  .p3-empty .done a:active { transform: scale(0.98); }
+  @media (hover: hover) and (pointer: fine) { .p3-empty .done a:hover { box-shadow: var(--shadow-2); } }
+  .p3-empty .done a span { color: var(--ink-3); }
+  @media (max-width: 720px) {
+    .p3-empty { grid-template-columns: 1fr; gap: 20px; }
+    .p3-empty .cover-wrap { max-width: 200px; }
+    .p3-empty .stats { grid-template-columns: repeat(2, auto); }
+  }
+
+  /* ---------- V1 档案 Dossier ---------- */
+  .v1 .layout { display: grid; grid-template-columns: 300px 1fr; gap: 56px; margin-top: 36px; align-items: start; }
+  .v1 .side { position: sticky; top: 76px; display: grid; gap: 14px; }
+  .v1 .side .cap { font-size: 13px; color: var(--ink-2); display: grid; gap: 2px; }
+  .v1 .side .cap b { color: var(--ink); font-weight: 600; }
+  .v1 .others { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .v1 .others .cap { font-size: 12px; margin-top: 6px; }
+  .v1 article { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; max-width: 640px; }
+  .v1 section { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 28px 0; border-top: 1px solid var(--line); }
+  .v1 section:first-child { border-top: 0; padding-top: 0; }
+  .v1 .lead { font-family: var(--font-serif); font-size: 19px; line-height: 1.6; letter-spacing: -0.005em; color: var(--ink); }
+  .v1 .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .v1 .facts b { display: block; font-size: 22px; font-weight: 650; letter-spacing: -0.01em; }
+  .v1 .facts span { font-size: 12px; color: var(--ink-3); }
+  @media (max-width: 900px) {
+    .v1 .layout { grid-template-columns: 1fr; gap: 32px; }
+    .v1 .side { position: static; grid-template-columns: 1.4fr 1fr; grid-template-areas: "hero others" "cap others"; grid-template-rows: auto 1fr; align-items: start; }
+    .v1 .side > .cover-wrap { grid-area: hero; }
+    .v1 .side > .main-cap { grid-area: cap; }
+    .v1 .others { grid-area: others; grid-template-columns: 1fr; }
+  }
+
+  /* ---------- V2 链路 Pipeline ---------- */
+  .v2 .chain { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; margin-top: 36px; position: relative; }
+  .v2 .node { position: relative; display: grid; gap: 10px; align-content: start; }
+  .v2 .node:not(:last-child)::after {
+    content: ""; position: absolute; top: 34px; right: -22px; width: 16px; height: 16px; pointer-events: none;
+    background: no-repeat center / 16px 16px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8h10M9 4l4 4-4 4'/%3E%3C/svg%3E");
+  }
+  .v2 .node .step { font-size: 12px; font-weight: 600; color: var(--ink-3); }
+  .v2 .node .q { font-size: 13px; color: var(--ink-2); }
+  .v2 .node .detail { font-size: 13px; color: var(--ink-2); display: grid; gap: 8px; }
+  .v2 .thumb { display: grid; grid-template-columns: 56px 1fr; gap: 10px; align-items: center; }
+  .v2 .thumb .cover-text { font-size: 9px; left: 8%; right: 8%; top: 10%; }
+  .v2 .thumb .cover-figure { display: none; }
+  .v2 .lower { display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; margin-top: 28px; }
+  .v2 .funnelcard { margin-top: 28px; display: grid; gap: 16px; }
+  .v2 .funnelcard .top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: baseline; }
+  @media (max-width: 900px) {
+    .v2 .chain { grid-template-columns: 1fr; gap: 24px; }
+    .v2 .node:not(:last-child)::after { top: auto; bottom: -20px; right: auto; left: 28px; transform: rotate(90deg); }
+    .v2 .lower { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- V3 看板 Bento ---------- */
+  .v3 .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; margin-top: 28px; }
+  .v3 .p3-card { padding: 18px; display: grid; gap: 12px; align-content: start; }
+  .v3 .lbl { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; font-weight: 600; color: var(--ink-3); }
+  .v3 .hero { grid-column: span 3; grid-row: span 2; }
+  .v3 .acct { grid-column: span 4; }
+  .v3 .src { grid-column: span 5; }
+  .v3 .curve { grid-column: span 5; }
+  .v3 .fun { grid-column: span 4; }
+  .v3 .struct { grid-column: span 6; }
+  .v3 .why { grid-column: span 6; }
+  .v3 .hero .cap { font-size: 13px; display: grid; gap: 2px; }
+  .v3 .kpis { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 6px; font-size: 12px; color: var(--ink-3); }
+  .v3 .kpis b { display: block; color: var(--ink); font-size: 16px; font-weight: 650; }
+  .v3 .apply-wrap { grid-column: 1 / -1; }
+  @media (max-width: 1080px) {
+    .v3 .hero { grid-column: span 4; }
+    .v3 .acct, .v3 .src { grid-column: span 8; }
+    .v3 .curve, .v3 .fun { grid-column: span 6; }
+  }
+  @media (max-width: 720px) {
+    .v3 .grid { grid-template-columns: 1fr; }
+    .v3 .grid > * { grid-column: 1 / -1 !important; grid-row: auto !important; }
+    .v3 .hero { grid-template-columns: 120px 1fr; align-items: start; }
+  }
+
+  /* ---------- V4 批注 Annotated ---------- */
+  .v4 .canvas { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 32px; margin-top: 32px; align-items: start; }
+  .v4 .film { display: flex; gap: 14px; overflow-x: auto; padding: 14px 4px 18px; margin: -14px -4px 0; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+  .v4 .frame { flex: 1 0 168px; max-width: 230px; scroll-snap-align: start; position: relative; display: grid; gap: 8px; }
+  .v4 .frame .t { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .v4 .frame .shot { position: relative; transition: transform 200ms var(--ease-out); }
+  .v4 .frame[data-on] .shot { transform: translateY(-4px); }
+  .v4 .frame[data-on] .shot .cover::after, .v4 .frame[data-on] .mock::after { box-shadow: inset 0 0 0 2px var(--accent); }
+  .v4 .mock { position: relative; aspect-ratio: 3 / 4; border-radius: var(--r-md); overflow: hidden; background: linear-gradient(160deg, var(--c1), var(--c2)); color: var(--cfg); isolation: isolate; }
+  .v4 .mock::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); pointer-events: none; transition: box-shadow 150ms ease-out; }
+  .v4 .shot .cover::after { transition: box-shadow 150ms ease-out; }
+  .v4 .mock .ui { position: absolute; inset: 12% 10% auto; display: grid; gap: 7px; }
+  .v4 .mock .ui i { display: block; height: 7px; border-radius: 4px; background: currentColor; opacity: 0.22; }
+  .v4 .mock .ui i:nth-child(2) { width: 70%; }
+  .v4 .mock .ui i:nth-child(3) { width: 85%; }
+  .v4 .mock .pair { position: absolute; left: 10%; right: 10%; bottom: 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; height: 46%; }
+  .v4 .mock .pair span { border-radius: 6px; background: currentColor; opacity: 0.16; }
+  .v4 .mock .pair span:last-child { opacity: 0.32; }
+  .v4 .mock .word { position: absolute; left: 10%; right: 10%; bottom: 62%; font-family: var(--font-serif); font-weight: 800; font-size: 15px; line-height: 1.25; }
+  .v4 .pin {
+    position: absolute; z-index: 1; width: 28px; height: 28px; border-radius: 50%; border: 0; cursor: pointer;
+    display: grid; place-items: center; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums;
+    background: var(--surface); color: var(--ink); box-shadow: 0 0 0 2px var(--surface), 0 2px 8px rgba(0,0,0,.18);
+    transition: transform 160ms var(--ease-out), background-color 150ms ease-out, color 150ms ease-out;
+  }
+  .v4 .pin::before { content: ""; position: absolute; inset: -8px; }
+  .v4 .pin:active { transform: scale(0.94); }
+  .v4 .pin[aria-pressed="true"] { background: var(--accent); color: #fff; }
+  .v4 .notes { display: grid; gap: 4px; position: sticky; top: 76px; }
+  .v4 .notes h2 { font-size: 13px; font-weight: 600; color: var(--ink-3); margin-bottom: 6px; }
+  .v4 .ann { display: grid; grid-template-columns: 24px 1fr; gap: 10px; text-align: left; width: 100%; padding: 10px 12px; border: 0; border-radius: var(--r-md); background: transparent; cursor: pointer; transition: background-color 150ms ease-out; }
+  @media (hover: hover) and (pointer: fine) { .v4 .ann:hover { background: var(--surface-2); } }
+  .v4 .ann[aria-pressed="true"] { background: var(--surface); box-shadow: var(--shadow-1); }
+  .v4 .ann .n { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; background: var(--surface-2); color: var(--ink-2); transition: background-color 150ms ease-out, color 150ms ease-out; }
+  .v4 .ann[aria-pressed="true"] .n { background: var(--accent); color: #fff; }
+  .v4 .ann b { display: block; font-size: 13px; font-weight: 600; }
+  .v4 .ann span { font-size: 14px; color: var(--ink-2); }
+  .v4 .whybox { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); display: grid; gap: 12px; }
+  .v4 .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin-top: 36px; background: var(--line); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-1); }
+  .v4 .strip > div { background: var(--surface); padding: 18px 20px; display: grid; gap: 10px; align-content: start; }
+  .v4 .strip .lbl { font-size: 12px; font-weight: 600; color: var(--ink-3); }
+  .v4 .strip .row { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .v4 .strip .row b { font-size: 22px; font-weight: 650; letter-spacing: -0.01em; }
+  .v4 .v4-apply { margin-top: 16px; }
+  @media (max-width: 960px) {
+    .v4 .canvas { grid-template-columns: 1fr; }
+    .v4 .notes { position: static; }
+    .v4 .strip { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px) { .v4 .frame { flex: 0 0 64%; max-width: none; } }
+</style>
+</head>
+<body>
+<main id="stage"></main>
+
+<script src="shared/data.js"></script>
+<script src="shared/harness.js"></script>
+<script>
+(() => {
+  const A = window.ATLAS;
+  const { cover, fmt } = AtlasUI;
+  const DONE = ['jy-1', 'xs-1', 'lm-1'];
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const pct = (v, d = 1) => (v * 100).toFixed(d).replace(/\.0+$/, '') + '%';
+
+  let fid = new URLSearchParams(location.search).get('f') || 'jy-1';
+
+  function find(id) {
+    for (const c of A.competitors) for (const f of c.formats) if (f.id === id) return { c, f };
+    return null;
+  }
+  if (!find(fid)) fid = 'jy-1';
+
+  function ctx() {
+    const { c, f } = find(fid);
+    const td = A.teardowns[f.id];
+    const hero = A.notes[td.hero];
+    const others = f.notes.filter((n) => n.id !== hero.id).map((n) => A.notes[n.id]);
+    const law = A.laws.find((l) => l.examples.some((e) => f.notes.some((n) => n.id === e)));
+    return { c, f, td, hero, others, law, short: c.name.split(' ')[0] };
+  }
+
+  // ---------- pieces ----------
+  const switcher = () => `<div class="p3-switch" role="group" aria-label="切换拆解">${DONE.map((id) => {
+    const { c, f } = find(id);
+    return `<button type="button" data-f="${id}" aria-pressed="${id === fid}"><span class="c">${esc(c.name.split(' ')[0])}</span>${esc(f.name)}</button>`;
+  }).join('')}</div>`;
+
+  const head = (x, i = 0) => `<header class="p3-head p3-in" style="--i:${i}">
+    <p class="eyebrow">爆款拆解 · ${esc(x.c.name)} · ${esc(x.c.kind)}</p>
+    <h1>${esc(x.f.name)}</h1>
+    <p class="desc">${esc(x.f.desc)}</p>
+    <div class="p3-meta num"><span>占该竞品爆款 <b>${x.f.share}%</b></span><span>爆文率 <b>${x.f.hitRate}%</b></span><span>平均点赞 <b>${fmt(x.f.avgLikes)}</b></span><span>${esc(x.f.type)}为主</span></div>
+    <div style="margin-top:6px">${switcher()}</div>
+  </header>`;
+
+  const mix = (m) => {
+    const cols = ['var(--s1)', 'var(--s2)', 'var(--s3)'];
+    return `<div class="p3-mix" role="img" aria-label="账号内容构成：${m.map((s) => `${s.k} ${s.v}%`).join('，')}">
+      <div class="stack">${m.map((s, i) => `<span class="p3-grow" style="--i:${i};width:${s.v}%;background:${cols[i]}"></span>`).join('')}</div>
+      <div class="leg">${m.map((s, i) => `<span><i style="background:${cols[i]}"></i>${esc(s.k)}<b>${s.v}%</b></span>`).join('')}</div>
+    </div>`;
+  };
+
+  const bars = (rows, { highlightFirst = true } = {}) => {
+    const max = Math.max(...rows.map((r) => r.v));
+    return `<ul class="p3-bars">${rows.map((r, i) => `<li class="${highlightFirst && i > 0 ? 'dim' : ''}"><span class="lab">${esc(r.k)}</span><span class="trk"><span class="bar p3-grow" style="--i:${i};width:calc((100% - 44px) * ${r.v / max})"></span><span class="val">${r.v}%</span></span></li>`).join('')}</ul>`;
+  };
+
+  const funnel = (steps, compact = false) => {
+    const max = steps[0].v;
+    return `<ol class="p3-funnel${compact ? ' compact' : ''}">${steps.map((s, i) => `
+      ${i > 0 ? `<li aria-hidden="true"><span></span><span class="cv">${pct(s.v / steps[i - 1].v)}</span></li>` : ''}
+      <li><span class="lab">${esc(s.k)}</span><span class="trk"><span class="bar p3-grow" style="--i:${i};width:calc((100% - 64px) * ${s.v / max})"></span><span class="val">${fmt(s.v)}</span></span></li>`).join('')}</ol>`;
+  };
+
+  const curve = (cv, peak) => `<div class="p3-curve" data-cv="${cv.join(',')}" data-peak="${esc(peak)}"><div class="p3-tip" role="status" aria-live="polite"></div></div>`;
+
+  const steps = (s) => `<ol class="p3-steps">${s.map((r) => `<li><span class="t">${esc(r.t)}</span><span>${esc(r.d)}</span></li>`).join('')}</ol>`;
+  const why = (w) => `<ol class="p3-why">${w.map((r) => `<li>${esc(r)}</li>`).join('')}</ol>`;
+  const apply = (x) => x.law
+    ? `<a class="p3-apply" href="p4-playbook.html?law=${x.law.id}"><span class="lbl">放到拾光上</span><span>${esc(x.law.apply.title)}：${esc(x.law.apply.cover)}</span><span class="go">看落地 →</span></a>`
+    : `<a class="p3-apply" href="p4-playbook.html"><span class="lbl">放到拾光上</span><span>看这类内容怎么落到拾光</span><span class="go">看落地 →</span></a>`;
+
+  const conv = (td) => { const s = td.money.steps; return s[s.length - 1].v / s[1].v; };
+  const noteCap = (n) => `<div class="cap"><b>${esc(n.title)}</b><span class="p3-muted num">@${esc(n.account)} · ♥ ${fmt(n.likes)} · 藏 ${fmt(n.collects)}</span></div>`;
+
+  function empty(x) {
+    return `<div class="p3 p3-in">
+      ${head(x)}
+      <div class="p3-empty">
+        ${cover(x.hero)}
+        <div class="msg">
+          <h2>这一条还没拆</h2>
+          <p class="p3-sub">「${esc(x.f.name)}」已经进了爆款池，账号、流量和变现的拆解还在排队。先看已经拆完的 3 条：</p>
+          <div class="stats num"><span class="p3-muted">占比<b>${x.f.share}%</b></span><span class="p3-muted">爆文数<b>${x.f.hits}</b></span><span class="p3-muted">平均点赞<b>${fmt(x.f.avgLikes)}</b></span><span class="p3-muted">爆文率<b>${x.f.hitRate}%</b></span></div>
+          <ul class="done">${DONE.map((id) => { const o = find(id); return `<li><a href="#" data-f="${id}">${esc(o.f.name)}<span>${esc(o.c.name)}</span></a></li>`; }).join('')}</ul>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  // ---------- variants ----------
+  function v1(x) {
+    const { td } = x, a = td.account;
+    return `<div class="p3 v1">
+      ${head(x)}
+      <div class="layout">
+        <aside class="side p3-in" style="--i:1">
+          ${cover(x.hero)}
+          <div class="cap main-cap">${noteCap(x.hero).replace('class="cap"', 'class="cap"')}</div>
+          <div class="others">${x.others.map((n) => `<div>${cover(n)}${noteCap(n)}</div>`).join('')}</div>
+        </aside>
+        <article>
+          <section class="p3-in" style="--i:2">
+            <p class="lead">${esc(td.why[0])}。这条笔记由 ${esc(a.kind)}「${esc(a.name)}」发布，${esc(td.traffic.peak)}达到峰值，最后带来 ${fmt(td.money.steps.at(-1).v)} 笔${esc(td.money.steps.at(-1).k.replace(/^¥[\d.]+ ?/, ''))}。</p>
+          </section>
+          <section class="p3-in" style="--i:3">
+            <h2 class="p3-h2"><span class="k">01</span>账号是谁</h2>
+            <div class="facts num"><div><b>${fmt(a.followers)}</b><span>粉丝</span></div><div><b>${esc(a.posts)}</b><span>更新频率</span></div><div><b>${a.mix.at(-1).v}%</b><span>广告占比</span></div></div>
+            <p class="p3-sub">${esc(a.kind)}。${esc(a.note)}。</p>
+            ${mix(a.mix)}
+          </section>
+          <section class="p3-in" style="--i:4">
+            <h2 class="p3-h2"><span class="k">02</span>流量从哪来</h2>
+            <p class="p3-sub">${esc(td.traffic.sources[0].k)}占 ${td.traffic.sources[0].v}%，${esc(td.traffic.peak)}见顶；${esc(td.traffic.boost)}。</p>
+            ${bars(td.traffic.sources)}
+            ${curve(td.traffic.curve, td.traffic.peak)}
+            <div class="p3-chips">${td.traffic.keywords.map((k) => `<span class="p3-chip">${esc(k)}</span>`).join('')}</div>
+          </section>
+          <section class="p3-in" style="--i:5">
+            <h2 class="p3-h2"><span class="k">03</span>怎么变现</h2>
+            <p class="p3-sub">${esc(td.money.path)}。阅读到下单 <b class="num">${pct(conv(td), 2)}</b>，客单 ${esc(td.money.price)}。</p>
+            ${funnel(td.money.steps)}
+          </section>
+          <section class="p3-in" style="--i:6">
+            <h2 class="p3-h2"><span class="k">04</span>内容怎么搭</h2>
+            ${steps(td.structure)}
+          </section>
+          <section class="p3-in" style="--i:7">
+            <h2 class="p3-h2"><span class="k">05</span>为什么有效</h2>
+            ${why(td.why)}
+            ${apply(x)}
+          </section>
+        </article>
+      </div>
+    </div>`;
+  }
+
+  function v2(x) {
+    const { td } = x, a = td.account, top = td.traffic.sources[0], last = td.money.steps.at(-1);
+    return `<div class="p3 v2">
+      ${head(x)}
+      <div class="chain">
+        <div class="node p3-card p3-in" style="--i:1">
+          <span class="step">① 账号</span>
+          <span class="p3-big">${fmt(a.followers)}<span class="p3-muted" style="font-size:13px;font-weight:400;margin-left:4px">粉丝</span></span>
+          <span class="q">${esc(a.name)} · ${esc(a.kind)}</span>
+          <div class="detail">${mix(a.mix)}<span>${esc(a.note)}</span></div>
+        </div>
+        <div class="node p3-card p3-in" style="--i:2">
+          <span class="step">② 内容</span>
+          <span class="p3-big">${fmt(x.hero.likes)}<span class="p3-muted" style="font-size:13px;font-weight:400;margin-left:4px">点赞</span></span>
+          <div class="thumb">${cover(x.hero, { tag: false })}<span class="q">${esc(x.hero.title)}</span></div>
+          <div class="detail"><span>收藏 ${fmt(x.hero.collects)} · 评论 ${fmt(x.hero.comments)}</span></div>
+        </div>
+        <div class="node p3-card p3-in" style="--i:3">
+          <span class="step">③ 流量</span>
+          <span class="p3-big">${top.v}%<span class="p3-muted" style="font-size:13px;font-weight:400;margin-left:4px">${esc(top.k)}</span></span>
+          <span class="q">${esc(td.traffic.peak)}</span>
+          <div class="detail">${bars(td.traffic.sources)}</div>
+        </div>
+        <div class="node p3-card p3-in" style="--i:4">
+          <span class="step">④ 变现</span>
+          <span class="p3-big">${fmt(last.v)}<span class="p3-muted" style="font-size:13px;font-weight:400;margin-left:4px">单</span></span>
+          <span class="q">${esc(td.money.price)}</span>
+          <div class="detail"><span>${esc(td.money.path)}</span></div>
+        </div>
+      </div>
+      <section class="p3-card funnelcard p3-in" style="--i:5">
+        <div class="top"><h2 class="p3-h2">从曝光到下单</h2><span class="p3-muted num">阅读 → 下单 ${pct(conv(td), 2)} · 全链路 ${pct(last.v / td.money.steps[0].v, 3)}</span></div>
+        ${funnel(td.money.steps)}
+      </section>
+      <div class="lower">
+        <section class="p3-card p3-in" style="--i:6;display:grid;gap:12px"><h2 class="p3-h2">内容怎么搭</h2>${steps(td.structure)}</section>
+        <section class="p3-card p3-in" style="--i:7;display:grid;gap:14px;align-content:start"><h2 class="p3-h2">为什么有效</h2>${why(td.why)}${apply(x)}</section>
+      </div>
+    </div>`;
+  }
+
+  function v3(x) {
+    const { td } = x, a = td.account;
+    return `<div class="p3 v3">
+      ${head(x)}
+      <div class="grid">
+        <div class="p3-card hero p3-in" style="--i:1">${cover(x.hero)}${noteCap(x.hero)}</div>
+        <div class="p3-card acct p3-in" style="--i:2">
+          <div class="lbl"><span>账号</span><span>${esc(a.posts)}</span></div>
+          <div><span class="p3-big" style="font-size:22px">${esc(a.name)}</span> <span class="p3-muted">· ${esc(a.kind)}</span></div>
+          <div class="kpis num"><span><b>${fmt(a.followers)}</b>粉丝</span><span><b>${fmt(x.hero.likes)}</b>点赞</span><span><b>${fmt(x.hero.collects)}</b>收藏</span></div>
+          ${mix(a.mix)}
+        </div>
+        <div class="p3-card src p3-in" style="--i:3">
+          <div class="lbl"><span>流量来源</span><span>${esc(td.traffic.boost)}</span></div>
+          ${bars(td.traffic.sources)}
+          <div class="p3-chips">${td.traffic.keywords.map((k) => `<span class="p3-chip">${esc(k)}</span>`).join('')}</div>
+        </div>
+        <div class="p3-card curve p3-in" style="--i:4">
+          <div class="lbl"><span>10 天累计互动</span><span>${esc(td.traffic.peak)}</span></div>
+          ${curve(td.traffic.curve, td.traffic.peak)}
+        </div>
+        <div class="p3-card fun p3-in" style="--i:5">
+          <div class="lbl"><span>变现漏斗</span><span class="num">阅读→下单 ${pct(conv(td), 2)}</span></div>
+          ${funnel(td.money.steps, true)}
+          <span class="p3-muted">${esc(td.money.price)}</span>
+        </div>
+        <div class="p3-card struct p3-in" style="--i:6"><div class="lbl"><span>内容结构</span><span>${esc(x.f.type)}</span></div>${steps(td.structure)}</div>
+        <div class="p3-card why p3-in" style="--i:7"><div class="lbl"><span>为什么有效</span></div>${why(td.why)}</div>
+        <div class="apply-wrap p3-in" style="--i:8">${apply(x)}</div>
+      </div>
+    </div>`;
+  }
+
+  // simulated frame for each structure beat; first beat is the real cover
+  function frame(x, s, i) {
+    const pins = [[78, 18], [14, 64], [72, 70], [20, 22]];
+    const [px, py] = pins[i % pins.length];
+    const [c1, c2, fg] = A.palettes[(x.hero.pal + i) % A.palettes.length];
+    const shot = i === 0 ? cover(x.hero, { tag: false })
+      : `<div class="mock" style="--c1:${c1};--c2:${c2};--cfg:${fg}" aria-hidden="true">
+          <div class="ui"><i></i><i></i><i></i></div>
+          <div class="word">${esc(s.t)}</div>
+          <div class="pair"><span></span><span></span></div>
+        </div>`;
+    return `<div class="frame p3-in" style="--i:${i + 1}" data-n="${i}">
+      <div class="shot">${shot}<button type="button" class="pin" data-n="${i}" aria-pressed="false" aria-label="批注 ${i + 1}：${esc(s.t)}" style="left:calc(${px}% - 14px);top:calc(${py}% - 14px)">${i + 1}</button></div>
+      <span class="t">${esc(s.t)}</span>
+    </div>`;
+  }
+
+  function v4(x) {
+    const { td } = x, a = td.account, last = td.money.steps.at(-1);
+    return `<div class="p3 v4">
+      ${head(x)}
+      <div class="canvas">
+        <div>
+          <div class="film" tabindex="0" aria-label="内容分镜，可横向滚动">${td.structure.map((s, i) => frame(x, s, i)).join('')}</div>
+          <p class="p3-muted" style="margin-top:4px">点编号看批注。同形式还有：${x.others.map((n) => `「${esc(n.title)}」♥ ${fmt(n.likes)}`).join('，')}</p>
+        </div>
+        <aside class="notes p3-in" style="--i:2">
+          <h2>内容怎么搭</h2>
+          ${td.structure.map((s, i) => `<button type="button" class="ann" data-n="${i}" aria-pressed="false"><span class="n">${i + 1}</span><span><b>${esc(s.t)}</b><span>${esc(s.d)}</span></span></button>`).join('')}
+          <div class="whybox"><h2 style="margin:0">为什么有效</h2>${why(td.why)}</div>
+        </aside>
+      </div>
+      <div class="strip p3-in" style="--i:6">
+        <div><span class="lbl">账号是谁</span><div class="row"><b>${esc(a.name)}</b><span class="p3-muted num">${fmt(a.followers)} 粉 · ${esc(a.kind)}</span></div>${mix(a.mix)}</div>
+        <div><span class="lbl">流量从哪来</span><div class="row"><b class="num">${td.traffic.sources[0].v}%</b><span class="p3-muted">${esc(td.traffic.sources[0].k)} · ${esc(td.traffic.peak)}</span></div>${bars(td.traffic.sources.slice(0, 3))}</div>
+        <div><span class="lbl">怎么变现</span><div class="row"><b class="num">${fmt(last.v)} 单</b><span class="p3-muted num">阅读→下单 ${pct(conv(td), 2)}</span></div><span class="p3-sub">${esc(td.money.path)}</span></div>
+      </div>
+      <div class="v4-apply p3-in" style="--i:7">${apply(x)}</div>
+    </div>`;
+  }
+
+  // ---------- wiring ----------
+  // Drawn at the measured width so axis text stays 10–11px at every size.
+  function drawCurve(wrap) {
+    const cv = wrap.dataset.cv.split(',').map(Number);
+    const W = Math.max(240, Math.round(wrap.clientWidth)), H = 170, L = 34, R = 44, T = 12, B = 26;
+    const x = (i) => L + (i / (cv.length - 1)) * (W - L - R);
+    const y = (v) => T + (1 - v / 100) * (H - T - B);
+    const d = cv.map((v, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join('');
+    const inc = cv.map((v, i) => v - (cv[i - 1] || 0));
+    const pk = inc.indexOf(Math.max(...inc));
+    const n = cv.length - 1;
+    const svgNS = 'http://www.w3.org/2000/svg';
+    wrap.querySelector('svg')?.remove();
+    const holder = document.createElement('div');
+    holder.innerHTML = `<svg xmlns="${svgNS}" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" tabindex="0" role="img" aria-label="10 天累计互动曲线，${wrap.dataset.peak}；方向键查看每天">
+      ${[0, 50, 100].map((g) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(g)}" y2="${y(g)}"/><text class="axis" x="${L - 6}" y="${y(g) + 3}" text-anchor="end">${g}%</text>`).join('')}
+      ${[0, 4, 9].map((i) => `<text class="axis" x="${x(i)}" y="${H - 8}" text-anchor="middle">第 ${i + 1} 天</text>`).join('')}
+      <path class="area" d="${d}L${x(n)},${y(0)}L${x(0)},${y(0)}Z"/>
+      <path class="ln" d="${d}"/>
+      <circle class="dot" cx="${x(pk)}" cy="${y(cv[pk])}" r="4"/>
+      <text class="axis" x="${x(pk) + 8}" y="${y(cv[pk]) + 14}">单日最快 +${inc[pk]}%</text>
+      <circle class="dot" cx="${x(n)}" cy="${y(cv[n])}" r="4"/>
+      <text class="endlab" x="${x(n) + 8}" y="${y(cv[n]) + 4}">${cv[n]}%</text>
+      <line class="xh" x1="0" x2="0" y1="${T}" y2="${y(0)}"/>
+      <circle class="xd" r="4" cx="0" cy="0"/>
+      <rect x="${L - 12}" y="0" width="${W - L - R + 24}" height="${H}" fill="transparent"/>
+    </svg>`;
+    const svg = holder.firstElementChild;
+    wrap.prepend(svg);
+    const tip = wrap.querySelector('.p3-tip');
+    const xh = svg.querySelector('.xh'), xd = svg.querySelector('.xd');
+    let cur = n;
+    function show(i) {
+      cur = Math.max(0, Math.min(n, i));
+      xh.setAttribute('x1', x(cur)); xh.setAttribute('x2', x(cur));
+      xd.setAttribute('cx', x(cur)); xd.setAttribute('cy', y(cv[cur]));
+      const s = document.createElement('strong'); s.textContent = `累计 ${cv[cur]}%`;
+      const sp = document.createElement('span'); sp.textContent = `第 ${cur + 1} 天 · 当日 +${inc[cur]}%`;
+      tip.replaceChildren(s, sp);
+      const tw = tip.offsetWidth;
+      const left = Math.min(Math.max(x(cur) - tw / 2, 0), W - tw);
+      tip.style.transform = `translate(${left}px, ${Math.max(y(cv[cur]) - 56, -10)}px)`;
+      wrap.classList.add('on');
+    }
+    const hide = () => wrap.classList.remove('on');
+    svg.addEventListener('pointermove', (e) => {
+      const r = svg.getBoundingClientRect();
+      show(Math.round(((e.clientX - r.left - L) / (W - L - R)) * n));
+    });
+    svg.addEventListener('pointerleave', hide);
+    svg.addEventListener('focus', () => show(cur));
+    svg.addEventListener('blur', hide);
+    svg.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); e.stopPropagation(); show(cur - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); e.stopPropagation(); show(cur + 1); }
+    });
+  }
+  let ro;
+  function wireCurves(root) {
+    ro?.disconnect();
+    ro = new ResizeObserver((entries) => entries.forEach((en) => {
+      const w = Math.round(en.contentRect.width);
+      if (w && w !== +en.target.dataset.w) { en.target.dataset.w = w; drawCurve(en.target); }
+    }));
+    root.querySelectorAll('.p3-curve').forEach((wrap) => ro.observe(wrap));
+  }
+
+  function wirePins(root) {
+    const pins = [...root.querySelectorAll('.v4 .pin')];
+    const anns = [...root.querySelectorAll('.v4 .ann')];
+    const frames = [...root.querySelectorAll('.v4 .frame')];
+    if (!pins.length) return;
+    function select(n, from) {
+      pins.forEach((p) => p.setAttribute('aria-pressed', String(p.dataset.n === n)));
+      anns.forEach((a) => a.setAttribute('aria-pressed', String(a.dataset.n === n)));
+      frames.forEach((f) => f.toggleAttribute('data-on', f.dataset.n === n));
+      const target = from === 'pin' ? anns.find((a) => a.dataset.n === n) : frames.find((f) => f.dataset.n === n);
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      target?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest', inline: 'nearest' });
+    }
+    pins.forEach((p) => p.addEventListener('click', () => select(p.dataset.n, 'pin')));
+    anns.forEach((a) => a.addEventListener('click', () => select(a.dataset.n, 'ann')));
+    // start with the hook selected so the pairing is obvious on first look
+    pins[0].setAttribute('aria-pressed', 'true'); anns[0].setAttribute('aria-pressed', 'true'); frames[0].toggleAttribute('data-on', true);
+  }
+
+  let active = null;
+  function rerender(focusF) {
+    const stage = document.getElementById('stage');
+    stage.innerHTML = active.render();
+    active.mount(stage);
+    if (focusF) stage.querySelector(`.p3-switch [data-f="${focusF}"]`)?.focus({ preventScroll: true });
+  }
+  function go(id, e) {
+    e?.preventDefault();
+    fid = id;
+    const url = new URL(location); url.searchParams.set('f', id); history.replaceState(null, '', url);
+    rerender(id);
+  }
+
+  const variant = (name, fn) => {
+    const v = {
+      name,
+      render() { active = v; const x = ctx(); return x.td.inherit ? empty(x) : fn(x); },
+      mount(stage) {
+        stage.querySelectorAll('[data-f]').forEach((b) => b.addEventListener('click', (e) => go(b.dataset.f, e)));
+        wireCurves(stage);
+        wirePins(stage);
+      },
+    };
+    return v;
+  };
+
+  AtlasUI.topBar(3);
+  AtlasUI.picker([variant('档案', v1), variant('链路', v2), variant('看板', v3), variant('批注', v4)]);
+})();
+</script>
+</body>
+</html>

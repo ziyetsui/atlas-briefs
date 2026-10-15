@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>规律与落地 · Atlas</title>
+<link rel="stylesheet" href="shared/base.css">
+<style>
+  /* ---------- page frame shared by all variants ---------- */
+  .p4 { max-width: 1200px; margin: 0 auto; padding: 48px 24px 0; }
+  .p4-head { display: grid; gap: 10px; margin-bottom: 40px; }
+  .p4-head h1 { font-size: clamp(26px, 3vw, 34px); font-weight: 650; letter-spacing: -0.02em; line-height: 1.2; }
+  .p4-head p { color: var(--ink-2); max-width: 65ch; }
+  .p4-head p b { color: var(--ink); font-weight: 600; }
+
+  .ex, .seg button, .v3-name, .v4-ref-btn, .v2-row { touch-action: manipulation; }
+
+  /* law identity dot — always paired with the law label, never color alone */
+  .lawdot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--lc); flex: none; }
+  [data-law="L1"] { --lc: var(--s1); }
+  [data-law="L2"] { --lc: var(--s2); }
+  [data-law="L3"] { --lc: var(--s3); }
+
+  /* evidence proportion bar, direct-labeled */
+  .ev { display: grid; gap: 6px; max-width: 280px; }
+  .ev-label { font-size: 13px; color: var(--ink-2); }
+  .ev-label b { color: var(--ink); font-weight: 650; font-variant-numeric: tabular-nums; font-size: 15px; }
+  .ev-track { position: relative; height: 6px; border-radius: 999px; background: var(--s-muted); overflow: hidden; }
+  .ev-fill { position: absolute; inset: 0 auto 0 0; border-radius: inherit; background: var(--ink); }
+
+  /* example cover link */
+  .ex { display: grid; gap: 6px; text-decoration: none; min-width: 0; border-radius: var(--r-md); transition: transform 160ms var(--ease-out); }
+  .ex:active { transform: scale(0.97); }
+  .ex-cap { font-size: 12px; color: var(--ink-3); line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ex-cap b { color: var(--ink-2); font-weight: 500; }
+  @media (hover: hover) and (pointer: fine) {
+    .ex .cover { transition: transform 200ms var(--ease-out); }
+    .ex:hover .cover { transform: translateY(-2px); }
+    .ex:hover .ex-cap b { color: var(--ink); }
+  }
+
+  /* 拾光 mock badge */
+  .mock { position: relative; }
+  .mock .cover { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--accent); }
+  .mock-badge {
+    display: inline-flex; align-items: center; gap: 6px; width: fit-content;
+    font-size: 11px; font-weight: 600; color: var(--accent-ink);
+    padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); white-space: nowrap;
+  }
+
+  .kv { display: grid; grid-template-columns: 3.5em 1fr; gap: 6px 12px; margin: 0; font-size: 14px; }
+  .kv dt { color: var(--ink-3); }
+  .kv dd { margin: 0; color: var(--ink); }
+  .kpi-chip { display: inline-flex; white-space: nowrap; padding: 2px 8px; border-radius: 6px; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); font-variant-numeric: tabular-nums; font-weight: 600; font-size: 13px; }
+
+  /* entrance: transform + opacity only, staggered */
+  .rise { animation: rise 280ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 50ms); }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  @media (prefers-reduced-motion: reduce) {
+    .rise { animation-name: fade; }
+    @keyframes fade { from { opacity: 0; } }
+  }
+
+  /* ---------- V1 规律卡 ---------- */
+  .v1-list { display: grid; gap: 20px; }
+  .v1-law { background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow-1); padding: 32px; display: grid; gap: 28px; }
+  .v1-top { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: start; }
+  .v1-num { font-size: 56px; line-height: 0.9; font-weight: 700; letter-spacing: -0.04em; color: var(--ink-3); font-variant-numeric: tabular-nums; opacity: 0.5; }
+  .v1-name { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 650; letter-spacing: -0.01em; }
+  .v1-claim { color: var(--ink-2); margin-top: 6px; max-width: 60ch; }
+  .v1-body { display: grid; grid-template-columns: minmax(0, 3fr) 32px minmax(0, 2.3fr); gap: 20px; align-items: start; }
+  .v1-col-h { font-size: 12px; color: var(--ink-3); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .v1-exs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .v1-arrow { align-self: center; color: var(--ink-3); display: grid; place-items: center; padding-top: 22px; }
+  .v1-me { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: 16px; padding: 16px; border-radius: var(--r-md); background: var(--surface-2); }
+  .v1-me .kv { font-size: 13px; align-content: start; }
+  .v1-me h3 { font-size: 15px; font-weight: 650; margin-bottom: 10px; }
+  @media (max-width: 960px) {
+    .v1-top { grid-template-columns: auto 1fr; }
+    .v1-top .ev { grid-column: 1 / -1; }
+    .v1-body { grid-template-columns: 1fr; }
+    .v1-arrow { transform: rotate(90deg); padding: 0; }
+  }
+  @media (max-width: 560px) {
+    .v1-law { padding: 20px; gap: 20px; }
+    .v1-num { font-size: 40px; }
+    .v1-top { gap: 14px; }
+    .v1-me { grid-template-columns: 110px 1fr; padding: 12px; gap: 12px; }
+    .v1-exs { gap: 8px; }
+  }
+
+  /* ---------- V2 映射 ---------- */
+  .seg { position: relative; display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; padding: 4px; border-radius: 999px; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); margin-bottom: 28px; max-width: 100%; }
+  .seg-hl { position: absolute; top: 4px; bottom: 4px; left: 4px; border-radius: 999px; background: var(--surface); box-shadow: var(--shadow-1); transition: transform 220ms var(--ease-out); }
+  .seg button { position: relative; display: flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 0 18px; border: 0; background: none; border-radius: 999px; cursor: pointer; color: var(--ink-3); font-size: 14px; white-space: nowrap; transition: color 150ms ease; }
+  .seg button[aria-selected="true"] { color: var(--ink); }
+  @media (hover: hover) and (pointer: fine) { .seg button:hover { color: var(--ink); } }
+  .seg button:active { transform: scale(0.97); }
+  @media (max-width: 560px) { .seg { display: grid; width: 100%; } .seg button { padding: 0 8px; font-size: 13px; } }
+  .v2-panel { display: grid; gap: 24px; }
+  .v2-panel.swap { animation: swap 180ms var(--ease-out); }
+  @keyframes swap { from { opacity: 0; transform: translateY(4px); } }
+  @media (prefers-reduced-motion: reduce) { .v2-panel.swap { animation-name: fade; } .seg-hl { transition: none; } }
+  .v2-claim { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; }
+  .v2-claim h2 { font-size: clamp(20px, 2.4vw, 26px); font-weight: 650; letter-spacing: -0.015em; line-height: 1.35; max-width: 32ch; }
+  .v2-panes { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: var(--r-lg); box-shadow: var(--shadow-1); background: var(--surface); overflow: hidden; }
+  .v2-pane { padding: 28px; display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .v2-pane + .v2-pane { border-left: 1px solid var(--line); background: color-mix(in oklch, var(--accent-soft) 35%, var(--surface)); }
+  .v2-pane h3 { font-size: 13px; font-weight: 600; color: var(--ink-3); display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+  .v2-row { display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; align-items: center; text-decoration: none; padding: 8px; margin: -8px; border-radius: var(--r-md); transition: background-color 150ms ease, transform 160ms var(--ease-out); }
+  .v2-row:active { transform: scale(0.98); }
+  @media (hover: hover) and (pointer: fine) { .v2-row:hover { background: var(--surface-2); } }
+  .v2-row .cover { border-radius: 8px; }
+  .v2-row .cover-text { font-size: 9px; left: 8%; right: 8%; }
+  .v2-row .cover-play { width: 14px; height: 14px; font-size: 6px; right: 4px; top: 4px; }
+  .v2-row-t { font-size: 14px; font-weight: 500; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .v2-row-m { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+  .v2-row-n { font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .v2-me { display: grid; grid-template-columns: 150px 1fr; gap: 20px; }
+  .v2-me h4 { font-size: 17px; font-weight: 650; margin-bottom: 4px; }
+  .v2-me .sub { font-size: 13px; color: var(--ink-2); }
+  .steps-list { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; counter-reset: s; }
+  .steps-list li { counter-increment: s; display: grid; grid-template-columns: 22px 1fr; gap: 8px; font-size: 14px; }
+  .steps-list li::before { content: counter(s); width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 600; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line-strong); color: var(--ink-2); margin-top: 1px; }
+  @media (max-width: 860px) {
+    .v2-panes { grid-template-columns: 1fr; }
+    .v2-pane + .v2-pane { border-left: 0; border-top: 1px solid var(--line); }
+    .v2-claim { grid-template-columns: 1fr; gap: 14px; }
+  }
+  @media (max-width: 560px) { .v2-pane { padding: 20px; } .v2-me { grid-template-columns: 110px 1fr; gap: 14px; } }
+
+  /* ---------- V3 矩阵 ---------- */
+  .v3-table { background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow-1); overflow: hidden; }
+  .v3-grid { display: grid; grid-template-columns: minmax(200px, 1.6fr) repeat(3, 76px) 20px minmax(180px, 1.4fr) 156px 32px; gap: 0 14px; align-items: center; padding: 0 20px; }
+  .v3-hd { height: 44px; font-size: 12px; color: var(--ink-3); border-bottom: 1px solid var(--line); }
+  .v3-hd span:nth-child(5) { visibility: hidden; }
+  .v3-row + .v3-row { border-top: 1px solid var(--line); }
+  .v3-name { border: 0; background: none; padding: 10px 0; margin: -10px 0; cursor: pointer; text-align: left; }
+  .v3-btn { width: 100%; cursor: pointer; padding-top: 16px; padding-bottom: 16px; transition: background-color 150ms ease; }
+  @media (hover: hover) and (pointer: fine) { .v3-btn:hover { background: color-mix(in oklch, var(--surface-2) 60%, var(--surface)); } }
+  .v3-name { display: flex; align-items: center; gap: 8px; font-weight: 650; font-size: 15px; }
+  .v3-name small { font-weight: 500; color: var(--ink-3); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .v3-ev { margin-top: 8px; }
+  .v3-ev .ev-track { height: 4px; }
+  .v3-thumb .cover { border-radius: 7px; }
+  .v3-thumb .cover-text { font-size: 9px; left: 8%; right: 8%; top: 10%; }
+  .v3-thumb .cover-play { width: 14px; height: 14px; font-size: 6px; right: 4px; top: 4px; }
+  .v3-thumb.mock .cover { box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--accent); }
+  .v3-arrow { color: var(--ink-3); font-size: 13px; }
+  .v3-apply b { display: block; font-size: 14px; font-weight: 600; }
+  .v3-apply span { font-size: 12px; color: var(--ink-3); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .v3-chev { color: var(--ink-3); transition: transform 200ms var(--ease-out); justify-self: end; }
+  .v3-row[data-open] .v3-chev { transform: rotate(180deg); }
+  .v3-more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 220ms var(--ease-out); }
+  .v3-row[data-open] .v3-more { grid-template-rows: 1fr; }
+  .v3-more > div { overflow: hidden; }
+  .v3-more-in { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 4px 20px 22px; opacity: 0; transition: opacity 180ms ease; }
+  .v3-row[data-open] .v3-more-in { opacity: 1; }
+  .v3-more-in h4 { font-size: 12px; color: var(--ink-3); font-weight: 600; margin-bottom: 6px; }
+  .v3-more-in p { font-size: 14px; max-width: 60ch; }
+  .v3-legend { display: flex; gap: 16px; align-items: center; font-size: 12px; color: var(--ink-3); margin-top: 14px; flex-wrap: wrap; }
+  .v3-legend i { display: inline-block; width: 10px; height: 13px; border-radius: 3px; box-shadow: 0 0 0 1px var(--accent); vertical-align: -2px; margin-right: 6px; }
+  @media (prefers-reduced-motion: reduce) { .v3-more, .v3-chev { transition: none; } }
+  @media (max-width: 960px) {
+    .v3-hd { display: none; }
+    .v3-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) 14px minmax(0, 1fr); gap: 12px 10px; padding: 0 16px; }
+    .v3-btn { padding: 18px 16px 20px; }
+    .v3-cell-law { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; }
+    .v3-cell-law .v3-ev { grid-column: 1 / -1; }
+    .v3-arrow { text-align: center; }
+    .v3-apply { grid-column: 1 / -1; }
+    .v3-kpi { grid-column: 1 / -1; justify-self: start; }
+    .v3-chev { display: none; }
+    .v3-more-in { grid-template-columns: 1fr; gap: 14px; padding: 4px 16px 20px; }
+  }
+
+  /* ---------- V4 行动表 ---------- */
+  .v4-goal { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; margin-bottom: 20px; font-size: 14px; color: var(--ink-2); }
+  .v4-weeks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .v4-week { display: grid; gap: 10px; align-content: start; }
+  .v4-wh { display: flex; align-items: baseline; justify-content: space-between; padding: 0 2px 10px; border-bottom: 1px solid var(--line-strong); }
+  .v4-wh b { font-size: 15px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .v4-wh span { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .v4-act { background: var(--surface); border-radius: var(--r-md); box-shadow: var(--shadow-1); padding: 14px; display: grid; gap: 8px; }
+  .v4-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-2); }
+  .v4-tag b { font-weight: 600; color: var(--ink); }
+  .v4-act p { font-size: 14px; line-height: 1.5; }
+  .v4-act small { font-size: 12px; color: var(--ink-3); }
+  .v4-act.review { background: transparent; box-shadow: inset 0 0 0 1px var(--line-strong); }
+  .v4-sec { margin-top: 48px; }
+  .v4-sec > h2 { font-size: 13px; font-weight: 600; color: var(--ink-3); margin-bottom: 12px; }
+  .v4-refs { border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-1); overflow: hidden; }
+  .v4-ref + .v4-ref { border-top: 1px solid var(--line); }
+  .v4-ref-btn { width: 100%; display: grid; grid-template-columns: auto 1fr auto auto; gap: 14px; align-items: center; padding: 16px 20px; border: 0; background: none; text-align: left; cursor: pointer; transition: background-color 150ms ease; }
+  @media (hover: hover) and (pointer: fine) { .v4-ref-btn:hover { background: color-mix(in oklch, var(--surface-2) 60%, var(--surface)); } }
+  .v4-ref-btn:focus-visible { outline-offset: -2px; border-radius: 0; }
+  .v4-ref-name { font-weight: 650; }
+  .v4-ref-name span { color: var(--ink-3); font-weight: 500; margin-right: 8px; font-variant-numeric: tabular-nums; }
+  .v4-ref-n { font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .v4-ref-chev { color: var(--ink-3); transition: transform 200ms var(--ease-out); }
+  .v4-ref[data-open] .v4-ref-chev { transform: rotate(180deg); }
+  .v4-ref-more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 220ms var(--ease-out); }
+  .v4-ref[data-open] .v4-ref-more { grid-template-rows: 1fr; }
+  .v4-ref-more > div { overflow: hidden; }
+  .v4-ref-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; padding: 4px 20px 24px; opacity: 0; transition: opacity 180ms ease; }
+  .v4-ref[data-open] .v4-ref-in { opacity: 1; }
+  .v4-ref-in p { color: var(--ink-2); font-size: 14px; max-width: 52ch; margin-bottom: 14px; }
+  .v4-ref-exs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  @media (prefers-reduced-motion: reduce) { .v4-ref-more, .v4-ref-chev { transition: none; } }
+  .v4-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .v4-tile { padding: 20px; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-1); display: grid; gap: 6px; align-content: start; }
+  .v4-tile .lbl { font-size: 13px; color: var(--ink-2); display: flex; gap: 8px; align-items: center; }
+  .v4-tile .val { font-size: 30px; font-weight: 650; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.15; }
+  .v4-tile .val s { font-size: 16px; color: var(--ink-3); font-weight: 500; text-decoration-thickness: 1px; margin-right: 6px; }
+  .v4-tile.main { background: var(--ink); color: var(--bg); box-shadow: none; }
+  .v4-tile.main .lbl { color: color-mix(in oklch, var(--bg) 70%, transparent); }
+  .v4-tile.main .val s { color: color-mix(in oklch, var(--bg) 55%, transparent); }
+  @media (max-width: 960px) {
+    .v4-weeks { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
+    .v4-ref-in { grid-template-columns: 1fr; gap: 16px; }
+  }
+  @media (max-width: 560px) {
+    .p4 { padding: 32px 16px 0; }
+    .v4-weeks { grid-template-columns: 1fr; }
+    .v4-ref-btn { grid-template-columns: auto 1fr auto; padding: 14px 16px; }
+    .v4-ref-n { display: none; }
+    .v4-ref-in { padding: 4px 16px 20px; }
+    .v4-tile { padding: 16px; }
+    .v4-tile .val { font-size: 24px; }
+  }
+  @media (max-width: 560px) { .p4 { padding: 32px 16px 0; } .p4-head { margin-bottom: 28px; } }
+</style>
+</head>
+<body>
+<main id="stage"></main>
+<script src="shared/data.js"></script>
+<script src="shared/harness.js"></script>
+<script>
+(function () {
+  const A = window.ATLAS, P = A.product, laws = A.laws;
+  const { cover, fmt } = AtlasUI;
+
+  // 拾光 mock covers, one per law
+  const MOCK = {
+    L1: { cover: '这是我？<br>拾光胶片写真', pal: 0, person: true, type: '图文', likes: 0 },
+    L2: { cover: '¥19.9<br>vs 影楼 ¥699', pal: 3, person: true, type: '图文', likes: 0 },
+    L3: { cover: '第一次<br>拍写真', pal: 4, person: true, type: '图文', likes: 0 },
+  };
+  const compName = (id) => A.competitors.find((c) => c.id === id)?.name ?? '';
+  const steps = (s) => s.split(/\s*(?:→|\+|，)\s*/).filter(Boolean);
+  const splitKpi = (k) => { const m = k.match(/^(.*?)\s*([≥≤].*)$/); return m ? [m[1], m[2]] : [k, '']; };
+  const chev = '<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const arrow = '<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-4.5-4.5L16 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  const head = () => `
+    <header class="p4-head rise">
+      <p class="eyebrow">第 4 步 · 规律与落地</p>
+      <h1>${laws.length} 条规律，落到${P.name}</h1>
+      <p><b>${P.name}</b>：${P.oneLine}。目标：${P.goal}。</p>
+    </header>`;
+
+  const ev = (l) => `
+    <div class="ev" role="img" aria-label="${l.evidence.hits} / ${l.evidence.of} 条爆款符合">
+      <span class="ev-label"><b>${l.evidence.hits}</b> / ${l.evidence.of} 条爆款符合</span>
+      <span class="ev-track"><span class="ev-fill" style="width:${(l.evidence.hits / l.evidence.of) * 100}%"></span></span>
+    </div>`;
+
+  const ex = (id, cls = 'ex', opts) => {
+    const n = A.notes[id];
+    return `<a class="${cls}" href="p3-teardown.html?f=${n.format}" title="${n.title}">
+      ${cover(n, opts)}
+      <span class="ex-cap"><b>${n.account}</b> · ${compName(n.competitor)}</span>
+    </a>`;
+  };
+  const mock = (l, cls = 'mock') => `<div class="${cls}" role="img" aria-label="拾光版本封面，待制作">${cover(MOCK[l.id], { tag: false })}</div>`;
+  const badge = '<span class="mock-badge">拾光版本 · 待制作</span>';
+
+  // simple accordion toggling for V3 / V4
+  function accordion(stage, rowSel, btnSel) {
+    stage.querySelectorAll(btnSel).forEach((b) => b.addEventListener('click', () => {
+      const row = b.closest(rowSel);
+      const open = !row.hasAttribute('data-open');
+      row.toggleAttribute('data-open', open);
+      b.setAttribute('aria-expanded', String(open));
+      row.querySelector('[data-more]')?.toggleAttribute('inert', !open);
+    }));
+  }
+
+  /* ---------------- V1 规律卡 ---------------- */
+  const v1 = () => `<div class="p4">${head()}
+    <div class="v1-list">
+      ${laws.map((l, i) => `
+      <section class="v1-law rise" style="--i:${i + 1}" data-law="${l.id}">
+        <div class="v1-top">
+          <span class="v1-num">${String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h2 class="v1-name"><span class="lawdot"></span>${l.name}</h2>
+            <p class="v1-claim">${l.claim}</p>
+          </div>
+          ${ev(l)}
+        </div>
+        <div class="v1-body">
+          <div>
+            <div class="v1-col-h">竞品怎么做 · 3 个例子</div>
+            <div class="v1-exs">${l.examples.map((id) => ex(id)).join('')}</div>
+          </div>
+          <div class="v1-arrow">${arrow}</div>
+          <div>
+            <div class="v1-col-h">拾光怎么做 ${badge}</div>
+            <div class="v1-me">
+              ${mock(l)}
+              <div>
+                <h3>${l.apply.title}</h3>
+                <dl class="kv">
+                  <dt>封面</dt><dd>${l.apply.cover}</dd>
+                  <dt>脚本</dt><dd>${l.apply.script}</dd>
+                  <dt>KPI</dt><dd><span class="kpi-chip">${l.apply.kpi}</span></dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>`).join('')}
+    </div></div>`;
+
+  /* ---------------- V2 映射 ---------------- */
+  const v2Panel = (l) => `
+    <div class="v2-claim">
+      <h2>${l.claim}</h2>
+      ${ev(l)}
+    </div>
+    <div class="v2-panes">
+      <div class="v2-pane">
+        <h3>竞品怎么做 <span class="num">${l.examples.length} 个例子</span></h3>
+        ${l.examples.map((id) => { const n = A.notes[id]; return `
+          <a class="v2-row" href="p3-teardown.html?f=${n.format}">
+            ${cover(n, { tag: false })}
+            <span><span class="v2-row-t">${n.title}</span><span class="v2-row-m">${n.account} · ${compName(n.competitor)} · ${n.type}</span></span>
+            <span class="v2-row-n">♥ ${fmt(n.likes)}</span>
+          </a>`; }).join('')}
+      </div>
+      <div class="v2-pane">
+        <h3>拾光怎么做 ${badge}</h3>
+        <div class="v2-me">
+          ${mock(l)}
+          <div>
+            <h4>${l.apply.title}</h4>
+            <p class="sub">封面：${l.apply.cover}</p>
+            <ol class="steps-list">${steps(l.apply.script).map((s) => `<li>${s}</li>`).join('')}</ol>
+            <p style="margin-top:16px"><span class="kpi-chip">KPI ${l.apply.kpi}</span></p>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  const v2 = () => `<div class="p4">${head()}
+    <div class="rise" style="--i:1">
+      <div class="seg" role="tablist" aria-label="选择规律">
+        <span class="seg-hl" aria-hidden="true"></span>
+        ${laws.map((l, i) => `<button role="tab" data-law="${l.id}" aria-selected="${i === 0}" aria-controls="v2-panel"><span class="lawdot"></span>${l.name}</button>`).join('')}
+      </div>
+      <div class="v2-panel" id="v2-panel" role="tabpanel" data-law="${laws[0].id}">${v2Panel(laws[0])}</div>
+    </div></div>`;
+  function v2mount(stage) {
+    const seg = stage.querySelector('.seg'), hl = seg.querySelector('.seg-hl'), panel = stage.querySelector('.v2-panel');
+    const btns = [...seg.querySelectorAll('button')];
+    const place = (i) => { const b = btns[i]; hl.style.width = b.offsetWidth + 'px'; hl.style.transform = `translateX(${b.offsetLeft - 4}px)`; };
+    requestAnimationFrame(() => place(0));
+    const ro = new ResizeObserver(() => place(btns.findIndex((b) => b.getAttribute('aria-selected') === 'true')));
+    ro.observe(seg);
+    btns.forEach((b, i) => b.addEventListener('click', () => {
+      if (b.getAttribute('aria-selected') === 'true') return;
+      btns.forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+      place(i);
+      panel.dataset.law = laws[i].id;
+      panel.innerHTML = v2Panel(laws[i]);
+      panel.classList.remove('swap'); void panel.offsetWidth; panel.classList.add('swap');
+    }));
+  }
+
+  /* ---------------- V3 矩阵 ---------------- */
+  const v3 = () => `<div class="p4">${head()}
+    <div class="v3-table rise" style="--i:1">
+      <div class="v3-grid v3-hd" aria-hidden="true"><span>规律</span><span>例子 1</span><span>例子 2</span><span>例子 3</span><span>→</span><span>拾光落地</span><span>KPI</span><span></span></div>
+      ${laws.map((l, i) => `
+      <div class="v3-row" data-law="${l.id}">
+        <div class="v3-grid v3-btn">
+          <div class="v3-cell-law">
+            <button class="v3-name" aria-expanded="false"><span class="lawdot"></span>${l.name}<small>L${i + 1}</small></button>
+            <div class="v3-ev">${ev(l)}</div>
+          </div>
+          ${l.examples.map((id) => { const n = A.notes[id]; return `<a class="ex v3-thumb" href="p3-teardown.html?f=${n.format}" title="${n.title} · ${n.account} · ♥ ${fmt(n.likes)}" data-stop>${cover(n, { tag: false })}</a>`; }).join('')}
+          <span class="v3-arrow" aria-hidden="true">→</span>
+          <div class="v3-apply" style="display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center">
+            ${mock(l, 'mock v3-thumb')}
+            <span><b>${l.apply.title}</b><span>${l.apply.cover}</span></span>
+          </div>
+          <span class="v3-kpi"><span class="kpi-chip">${l.apply.kpi}</span></span>
+          <span class="v3-chev">${chev}</span>
+        </div>
+        <div class="v3-more" data-more inert><div><div class="v3-more-in">
+          <div><h4>规律</h4><p>${l.claim}</p></div>
+          <div><h4>拾光脚本</h4><ol class="steps-list" style="margin:0">${steps(l.apply.script).map((s) => `<li>${s}</li>`).join('')}</ol></div>
+        </div></div></div>
+      </div>`).join('')}
+    </div>
+    <div class="v3-legend rise" style="--i:2"><span><i></i>拾光版本 · 待制作</span><span>点缩略图看拆解 · 点行展开脚本</span></div>
+  </div>`;
+  function v3mount(stage) {
+    stage.querySelectorAll('[data-stop]').forEach((a) => a.addEventListener('click', (e) => e.stopPropagation()));
+    // whole row is a mouse target; the law-name <button> is the keyboard/AT control
+    stage.querySelectorAll('.v3-btn').forEach((b) => {
+      const btn = b.querySelector('.v3-name');
+      b.addEventListener('click', () => {
+        const row = b.closest('.v3-row'), open = !row.hasAttribute('data-open');
+        row.toggleAttribute('data-open', open);
+        btn.setAttribute('aria-expanded', String(open));
+        row.querySelector('[data-more]').toggleAttribute('inert', !open);
+      });
+    });
+  }
+
+  /* ---------------- V4 行动表 ---------------- */
+  const L = Object.fromEntries(laws.map((l) => [l.id, l]));
+  const PLAN = [
+    { w: '第 1 周', d: '10/20 – 10/26', acts: [
+      { law: 'L3', t: `招募 20 位 KOC，启动${L.L3.apply.title}`, s: '统一评论区口令，方便归因' },
+      { law: 'L2', t: '聚光搜索词建组：写真 便宜 / 职业照 / 证件照', s: '先小预算测词' },
+    ] },
+    { w: '第 2 周', d: '10/27 – 11/02', acts: [
+      { law: 'L1', t: `上线${L.L1.apply.title}首批 6 篇`, s: L.L1.apply.script },
+      { law: 'L3', t: '首批 10 篇 KOC 笔记发布', s: '真人 + 一句自述封面' },
+    ] },
+    { w: '第 3 周', d: '11/03 – 11/09', acts: [
+      { law: 'L2', t: `上线${L.L2.apply.title}，挂首单入口`, s: L.L2.apply.script },
+      { law: 'L1', t: '留封面点击率前 2 的风格，追投聚光', s: '其余停投' },
+    ] },
+    { w: '第 4 周', d: '11/10 – 11/16', acts: [
+      { law: 'L3', t: '剩余 10 篇 KOC 发布', s: '复用第 2 周表现最好的自述' },
+      { review: true, t: '复盘：3 条规律各自的 KPI 与 CPA', s: '决定下月预算分配' },
+    ] },
+  ];
+  const cpa = P.goal.match(/¥(\d+).*?¥(\d+)/);
+  const v4 = () => `<div class="p4">${head()}
+    <section class="rise" style="--i:1">
+      <div class="v4-weeks">
+        ${PLAN.map((wk, wi) => `
+        <div class="v4-week">
+          <div class="v4-wh"><b>${wk.w}</b><span>${wk.d}</span></div>
+          ${wk.acts.map((a, ai) => a.review ? `
+            <div class="v4-act review rise" style="--i:${wi * 2 + ai + 2}"><span class="v4-tag"><b>复盘</b></span><p>${a.t}</p><small>${a.s}</small></div>` : `
+            <div class="v4-act rise" style="--i:${wi * 2 + ai + 2}" data-law="${a.law}">
+              <span class="v4-tag"><span class="lawdot"></span><b>${a.law}</b>${L[a.law].name}</span>
+              <p>${a.t}</p><small>${a.s}</small>
+            </div>`).join('')}
+        </div>`).join('')}
+      </div>
+    </section>
+
+    <section class="v4-sec rise" style="--i:4">
+      <h2>规律依据</h2>
+      <div class="v4-refs">
+        ${laws.map((l) => `
+        <div class="v4-ref" data-law="${l.id}">
+          <button class="v4-ref-btn" aria-expanded="false">
+            <span class="lawdot"></span>
+            <span class="v4-ref-name"><span>${l.id}</span>${l.name}</span>
+            <span class="v4-ref-n">${l.evidence.hits} / ${l.evidence.of} 条爆款</span>
+            <span class="v4-ref-chev">${chev}</span>
+          </button>
+          <div class="v4-ref-more" data-more inert><div><div class="v4-ref-in">
+            <div><p>${l.claim}</p>${ev(l)}</div>
+            <div class="v4-ref-exs">${l.examples.map((id) => ex(id)).join('')}</div>
+          </div></div></div>
+        </div>`).join('')}
+      </div>
+    </section>
+
+    <section class="v4-sec rise" style="--i:5">
+      <h2>30 天目标</h2>
+      <div class="v4-tiles">
+        <div class="v4-tile main"><span class="lbl">聚光 CPA</span><span class="val"><s>¥${cpa ? cpa[1] : 38}</s>¥${cpa ? cpa[2] : 25}</span></div>
+        ${laws.filter((l) => !/CPA/.test(l.apply.kpi)).map((l) => { const [k, v] = splitKpi(l.apply.kpi); return `
+        <div class="v4-tile" data-law="${l.id}"><span class="lbl"><span class="lawdot"></span>${l.id} · ${k}</span><span class="val">${v}</span></div>`; }).join('')}
+      </div>
+    </section>
+  </div>`;
+
+  AtlasUI.topBar(4);
+  AtlasUI.picker([
+    { name: '规律卡', render: v1 },
+    { name: '映射', render: v2, mount: v2mount },
+    { name: '矩阵', render: v3, mount: v3mount },
+    { name: '行动表', render: v4, mount: (s) => accordion(s, '.v4-ref', '.v4-ref-btn') },
+  ]);
+})();
+</script>
+</body>
+</html>
