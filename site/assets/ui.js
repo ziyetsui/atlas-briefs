@@ -108,7 +108,9 @@ function cover(n, { tag = true, play = true } = {}) {
         ? `<button type="button" class="cover-playbtn" data-view="${n.id}" aria-label="${isV ? '播放视频' : hasPost(n) ? '看图文' : '放大封面'}（${viewLabel(n)}）：${attr(n.title)}"><span class="pb-dot${isV ? '' : ' pb-dot-img'}" aria-hidden="true">${isV ? '▶' : hasPost(n) ? GALLERY_ICON : ZOOM_ICON}</span><span class="pb-dur num">${viewLabel(n)}</span></button>`
         : `<span class="cover-play cover-play-live" aria-label="${isV ? '可播放视频' : '可看图文'}">${isV ? '▶' : GALLERY_ICON}</span>`)
       : (n.type === '视频' ? '<span class="cover-play" aria-label="视频">▶</span>' : '');
-    return `<div class="cover-wrap"><div class="cover cover-photo">
+    // The whole cover opens the viewer, not just the corner button.
+    const open = viewable(n) && play ? ` data-view="${n.id}"` : '';
+    return `<div class="cover-wrap"><div class="cover cover-photo${open ? ' cover-open' : ''}"${open}>
       <img src="${n.img}" alt="${attr(n.title)}" loading="lazy" decoding="async">
       ${badge}
       ${tag && label ? `<span class="cover-tag num">${label}</span>` : ''}

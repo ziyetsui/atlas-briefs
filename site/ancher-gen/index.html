@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try { const t = localStorage.getItem('atlas-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch {}</script>
 <title>Atlas Brief</title>
-<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/base.css?v=d4b5a95c">
 <style>
 
   /* one-page brief frame */
@@ -606,7 +606,7 @@
 </main>
 <footer class="brief-foot"><div><span id="foot-src"></span><a href="#product">回到顶部 ↑</a></div></footer>
 <script src="./data.js"></script>
-<script src="../assets/ui.js"></script>
+<script src="../assets/ui.js?v=aecd60b6"></script>
 <script>document.title = `${window.ATLAS.product.name} Brief`;</script>
 <script>
 // In-page cross-links: <a data-go="hits|teardown|playbook" data-c|data-f|data-law> → switch that section, then scroll to it.
@@ -921,7 +921,7 @@ v1Mount(stage);
       <div><dt>平均百分位</dt><dd>${f.avgPct}</dd></div></dl>`;
 
   const nc = (n, fid, i = 0) => `<article class="nc enter" style="--i:${i}">
-      <a href="#teardown" data-go="teardown" data-f="${fid}" class="cv" aria-label="看拆解：${n.title}">${U.cover(n, { play: false })}</a>
+      <div class="nc-cv">${U.cover(n)}</div>
       <div style="display:grid;gap:6px">
         <p class="nc-t">${n.title}</p>
         <p class="nc-m"><span class="acct">${n.account}</span><span>${n.date}</span></p>
@@ -1357,7 +1357,7 @@ v1Mount(stage);
         <h3>竞品怎么做 <span class="num">${l.examples.length} 个例子</span></h3>
         ${l.examples.map((id) => { const n = A.notes[id]; return `
           <div class="v2-row">
-            <a class="v2-row-cov" href="#teardown" data-go="teardown" data-f="${n.format}" tabindex="-1" aria-hidden="true">${cover(n, { tag: false, play: false })}</a>
+            <div class="v2-row-cov">${cover(n, { tag: false })}</div>
             <span>
               <a class="v2-row-t" href="#teardown" data-go="teardown" data-f="${n.format}">${n.title}</a>
               <span class="v2-row-m">${n.account} · ${compName(n.competitor)} · ${n.type}</span>

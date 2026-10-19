@@ -1287,22 +1287,26 @@ window.ATLAS = {
        "format": "pw-2"
       },
       {
-       "id": "6a8ffac1000000002a0325bb",
-       "title": "管理层必修课：ai生成ppt，把时间还给思考",
+       "id": "69bd29df000000002200f3af",
+       "title": "手把手教你快速用AI做PPT ！真的简单 ！",
        "tags": [],
-       "img": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/lib/2b98f14622c9.webp",
-       "aspect": 0.75,
-       "account": "Happy C.",
-       "type": "图文",
-       "pct": 90.1,
-       "featured": false,
-       "url": "https://www.xiaohongshu.com/explore/6a8ffac1000000002a0325bb",
-       "list": "小红书热门·AI技能培训·互动率·近7日（内容类目筛选）",
-       "rank": 11,
-       "total": 102,
-       "objective": "自然热门",
-       "date": "2026-08-27",
-       "video": null,
+       "img": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/lib/3b7328085333.webp",
+       "aspect": 0.7494,
+       "account": "田西西Upup",
+       "type": "视频",
+       "pct": 91.8,
+       "featured": true,
+       "url": "https://www.xiaohongshu.com/explore/69bd29df000000002200f3af",
+       "list": "应用推广·应用下载·AI办公·付费率(下载)·近30日",
+       "rank": 8,
+       "total": 86,
+       "objective": "应用下载",
+       "date": "2026-03-20",
+       "video": {
+        "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/e9e864e5bbbe.mp4",
+        "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/42b1fa1060ca.webp",
+        "durationSec": 111
+       },
        "competitor": "pptweb",
        "format": "pw-2"
       }
@@ -3359,7 +3363,7 @@ window.ATLAS = {
     "title": "手把手教你快速用AI做PPT ！真的简单 ！",
     "account": "田西西Upup",
     "date": "2026-03-20",
-    "example": false
+    "example": true
    },
    {
     "id": "69c516c6000000001a034904",
@@ -3491,7 +3495,7 @@ window.ATLAS = {
     "title": "管理层必修课：ai生成ppt，把时间还给思考",
     "account": "Happy C.",
     "date": "2026-08-27",
-    "example": true
+    "example": false
    },
    {
     "id": "6a9148cb000000002a03f62a",
@@ -4369,23 +4373,27 @@ window.ATLAS = {
    "competitor": "pptweb",
    "format": "pw-2"
   },
-  "6a8ffac1000000002a0325bb": {
-   "id": "6a8ffac1000000002a0325bb",
-   "title": "管理层必修课：ai生成ppt，把时间还给思考",
+  "69bd29df000000002200f3af": {
+   "id": "69bd29df000000002200f3af",
+   "title": "手把手教你快速用AI做PPT ！真的简单 ！",
    "tags": [],
-   "img": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/lib/2b98f14622c9.webp",
-   "aspect": 0.75,
-   "account": "Happy C.",
-   "type": "图文",
-   "pct": 90.1,
-   "featured": false,
-   "url": "https://www.xiaohongshu.com/explore/6a8ffac1000000002a0325bb",
-   "list": "小红书热门·AI技能培训·互动率·近7日（内容类目筛选）",
-   "rank": 11,
-   "total": 102,
-   "objective": "自然热门",
-   "date": "2026-08-27",
-   "video": null,
+   "img": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/lib/3b7328085333.webp",
+   "aspect": 0.7494,
+   "account": "田西西Upup",
+   "type": "视频",
+   "pct": 91.8,
+   "featured": true,
+   "url": "https://www.xiaohongshu.com/explore/69bd29df000000002200f3af",
+   "list": "应用推广·应用下载·AI办公·付费率(下载)·近30日",
+   "rank": 8,
+   "total": 86,
+   "objective": "应用下载",
+   "date": "2026-03-20",
+   "video": {
+    "src": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/e9e864e5bbbe.mp4",
+    "poster": "https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev/atlas/ad-creative/video/42b1fa1060ca.webp",
+    "durationSec": 111
+   },
    "competitor": "pptweb",
    "format": "pw-2"
   },
