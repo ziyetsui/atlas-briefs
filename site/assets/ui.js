@@ -92,9 +92,12 @@ function summary(rows, label = '筛选逻辑') {
       <div class="sum-v">${r.v}</div></li>`).join('')}</ol>`;
 }
 
-// Is there anything to open in the page? video file, or the post's images.
-const viewable = (n) => !!(n.video || (n.images && n.images.length));
-const viewLabel = (n) => n.video ? dur(n.video.durationSec) : `${n.images.length} 图`;
+// Is there anything to open in the page? video file, the post's images, or — when the note itself
+// can't be fetched any more (deleted / private) — at least its cover, enlarged.
+const hasPost = (n) => !!(n.video || (n.images && n.images.length));
+const viewable = (n) => !!(hasPost(n) || n.img);
+const viewLabel = (n) => n.video ? dur(n.video.durationSec) : hasPost(n) ? `${n.images.length} 图` : '封面';
+const pages = (n) => hasPost(n) ? n.images : [{ src: n.img }];
 
 function cover(n, { tag = true, play = true } = {}) {
   if (n.img) {
@@ -102,7 +105,7 @@ function cover(n, { tag = true, play = true } = {}) {
     const isV = !!n.video;
     const badge = viewable(n)
       ? (play
-        ? `<button type="button" class="cover-playbtn" data-view="${n.id}" aria-label="${isV ? '播放视频' : '看图文'}（${viewLabel(n)}）：${attr(n.title)}"><span class="pb-dot${isV ? '' : ' pb-dot-img'}" aria-hidden="true">${isV ? '▶' : GALLERY_ICON}</span><span class="pb-dur num">${viewLabel(n)}</span></button>`
+        ? `<button type="button" class="cover-playbtn" data-view="${n.id}" aria-label="${isV ? '播放视频' : hasPost(n) ? '看图文' : '放大封面'}（${viewLabel(n)}）：${attr(n.title)}"><span class="pb-dot${isV ? '' : ' pb-dot-img'}" aria-hidden="true">${isV ? '▶' : hasPost(n) ? GALLERY_ICON : ZOOM_ICON}</span><span class="pb-dur num">${viewLabel(n)}</span></button>`
         : `<span class="cover-play cover-play-live" aria-label="${isV ? '可播放视频' : '可看图文'}">${isV ? '▶' : GALLERY_ICON}</span>`)
       : (n.type === '视频' ? '<span class="cover-play" aria-label="视频">▶</span>' : '');
     return `<div class="cover-wrap"><div class="cover cover-photo">
@@ -119,12 +122,13 @@ function cover(n, { tag = true, play = true } = {}) {
     ${tag ? `<span class="cover-tag num">♥ ${fmt(n.likes)}</span>` : ''}
   </div></div>`;
 }
+const ZOOM_ICON = '<svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M9.5 2.5h4v4M6.5 13.5h-4v-4M13.5 2.5 9 7M2.5 13.5 7 9"/></svg>';
 const GALLERY_ICON = '<svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="2"/><path d="m2.5 11 3.5-3.5 3 3 2-2 2.5 2.5"/></svg>';
 
 // Inline open link for rows where the cover itself sits inside another link.
 function playLink(n) {
   if (!viewable(n)) return '';
-  return `<button type="button" class="play-link" data-view="${n.id}">${n.video ? '▶ 播放' : '看图文'} <span class="num">${viewLabel(n)}</span></button>`;
+  return `<button type="button" class="play-link" data-view="${n.id}">${n.video ? '▶ 播放' : hasPost(n) ? '看图文' : '放大封面'} <span class="num">${viewLabel(n)}</span></button>`;
 }
 
 const stats = (n) => [['赞', n.likes], ['藏', n.collects], ['评', n.comments]].filter(([, v]) => v != null).map(([k, v]) => `${k} <span class="num">${fmt(v)}</span>`).join(' · ');
@@ -150,17 +154,18 @@ function openViewer(n) {
   shell();
   lastFocus = document.activeElement;
   const isV = !!n.video;
-  dlg.setAttribute('aria-label', `${isV ? '视频' : '图文'}：${n.title}`);
+  const imgs = isV ? [] : pages(n), coverOnly = !isV && !hasPost(n);
+  dlg.setAttribute('aria-label', `${isV ? '视频' : coverOnly ? '封面' : '图文'}：${n.title}`);
   const media = isV
     ? `<video src="${n.video.src}" poster="${n.video.poster || n.img}" controls playsinline autoplay preload="metadata"></video>`
     : `<div class="ag">
-        <div class="ag-track" tabindex="0" aria-label="图片，左右滑动或用方向键翻页">${n.images.map((im, i) => `<figure class="ag-slide"><img src="${im.src}" alt="第 ${i + 1} 张，共 ${n.images.length} 张" ${i > 1 ? 'loading="lazy"' : ''} decoding="async" width="${im.w}" height="${im.h}"></figure>`).join('')}</div>
-        ${n.images.length > 1 ? `<button type="button" class="ag-nav ag-prev" aria-label="上一张">‹</button><button type="button" class="ag-nav ag-next" aria-label="下一张">›</button><span class="ag-count num" aria-live="polite">1 / ${n.images.length}</span>` : ''}
+        <div class="ag-track" tabindex="0" aria-label="图片，左右滑动或用方向键翻页">${imgs.map((im, i) => `<figure class="ag-slide"><img src="${im.src}" alt="${coverOnly ? '封面' : `第 ${i + 1} 张，共 ${imgs.length} 张`}" ${i > 1 ? 'loading="lazy"' : ''} decoding="async"${im.w ? ` width="${im.w}" height="${im.h}"` : ''}></figure>`).join('')}</div>
+        ${imgs.length > 1 ? `<button type="button" class="ag-nav ag-prev" aria-label="上一张">‹</button><button type="button" class="ag-nav ag-next" aria-label="下一张">›</button><span class="ag-count num" aria-live="polite">1 / ${imgs.length}</span>` : ''}
       </div>`;
   dlg.innerHTML = `<div class="ap-box">
       ${media}
       <div class="ap-bar">
-        <div class="ap-meta"><p class="ap-t">${attr(n.title)}</p><p class="ap-m">${attr(n.account)}${isV ? ` · <span class="num">${dur(n.video.durationSec)}</span>` : ''}${stats(n) ? ` · ${stats(n)}` : ''}</p></div>
+        <div class="ap-meta"><p class="ap-t">${attr(n.title)}</p><p class="ap-m">${attr(n.account)}${isV ? ` · <span class="num">${dur(n.video.durationSec)}</span>` : ''}${stats(n) ? ` · ${stats(n)}` : ''}${coverOnly ? ' · 原笔记已抓不到，只有封面' : ''}</p></div>
         <a class="ap-ext" href="${n.url}" target="_blank" rel="noopener">看原文 ↗</a>
         <button type="button" class="ap-close" aria-label="关闭">✕</button>
       </div>
@@ -177,13 +182,15 @@ function openViewer(n) {
     fit(n.aspect || 0.5625);
     v.addEventListener('loadedmetadata', () => v.videoWidth && fit(v.videoWidth / v.videoHeight), { once: true });
   } else {
-    fit(n.images[0].w / n.images[0].h);
+    const first = imgs[0];
+    if (first.w) fit(first.w / first.h);
+    else { fit(0.75); const im = dlg.querySelector('.ag-slide img'); const f = () => im.naturalWidth && fit(im.naturalWidth / im.naturalHeight); im.complete ? f() : im.addEventListener('load', f, { once: true }); }
     const track = dlg.querySelector('.ag-track'), count = dlg.querySelector('.ag-count');
     const go = (d) => track.scrollBy({ left: d * track.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     dlg.querySelector('.ag-prev')?.addEventListener('click', () => go(-1));
     dlg.querySelector('.ag-next')?.addEventListener('click', () => go(1));
     track.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') { e.preventDefault(); go(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); } });
-    track.addEventListener('scroll', () => { if (count) count.textContent = `${Math.round(track.scrollLeft / track.clientWidth) + 1} / ${n.images.length}`; }, { passive: true });
+    track.addEventListener('scroll', () => { if (count) count.textContent = `${Math.round(track.scrollLeft / track.clientWidth) + 1} / ${imgs.length}`; }, { passive: true });
   }
   dlg.showModal();
   (dlg.querySelector('.ag-track') || dlg.querySelector('.ap-close')).focus({ preventScroll: true });

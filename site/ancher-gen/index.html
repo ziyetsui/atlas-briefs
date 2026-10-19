@@ -1197,7 +1197,7 @@ v1Mount(stage);
   const sibs = (x) => {
     const rest = x.f.notes.filter((n) => n.id !== x.hero.id).slice(0, 2);
     if (!rest.length) return '';
-    return `<div class="sibs-h">同形式的另外 ${rest.length} 条</div><div class="sibs">${rest.map((n) => `<a href="${esc(n.url)}" target="_blank" rel="noopener" title="${esc(n.title)}"${n.video || n.images?.length ? ` data-view="${n.id}"` : ''}>${cover(n, { play: false })}<span>${esc(n.title)}</span></a>`).join('')}</div>`;
+    return `<div class="sibs-h">同形式的另外 ${rest.length} 条</div><div class="sibs">${rest.map((n) => `<a href="${esc(n.url)}" target="_blank" rel="noopener" title="${esc(n.title)}"${n.video || n.images?.length || n.img ? ` data-view="${n.id}"` : ''}>${cover(n, { play: false })}<span>${esc(n.title)}</span></a>`).join('')}</div>`;
   };
 
   const MAG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></svg>';
