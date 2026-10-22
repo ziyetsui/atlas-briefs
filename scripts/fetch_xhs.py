@@ -5,6 +5,7 @@
 #   python3 scripts/fetch_xhs.py resolve [--limit N]   # fills data/fetch/signed.json
 #   python3 scripts/fetch_xhs.py retry                 # second pass on misses: deeper profiles, fuzzy author match
 #   python3 scripts/fetch_xhs.py download              # media → data/fetch/media/<id>/
+#   python3 scripts/fetch_xhs.py grab                  # same, read from the page in a browser session (when download is rejected)
 #   python3 scripts/fetch_xhs.py upload                # → R2 atlas-media/atlas/briefs/media/<id>/, writes data/fetch/media.json
 import json, os, re, subprocess, sys, time
 from PIL import Image
@@ -78,7 +79,46 @@ def download():
         print(f"{t['id'][:8]} files={len(os.listdir(out))}", flush=True)
         time.sleep(PAUSE)
 
-R2_ACCOUNT = '15bb2d33e765847ba3b774014e024dc5'   # the account whose atlas-media bucket already hosts the covers
+# `opencli xiaohongshu download/note` can fail with "Navigation rejected" while the page itself opens fine
+# in a browser session. grab() opens the signed link there and reads the note straight from the page state.
+STATE_JS = """(()=>{const m=window.__INITIAL_STATE__?.note?.noteDetailMap;const k=m&&Object.keys(m).find(x=>m[x].note&&m[x].note.noteId);
+const n=k&&m[k].note;if(!n)return JSON.stringify({err:location.href});const v=n.video?.media?.stream;
+const vs=v?[...(v.h264||[]),...(v.h265||[])]:[];
+return JSON.stringify({desc:n.desc||'',likes:n.interactInfo?.likedCount,collects:n.interactInfo?.collectedCount,comments:n.interactInfo?.commentCount,
+imgs:n.type==='video'?[]:(n.imageList||[]).map(i=>i.urlDefault||i.url),video:vs.length?vs[0].masterUrl:null,poster:(n.imageList||[])[0]?.urlDefault||null})})()"""
+
+def browser(*args, timeout=120):
+    r = subprocess.run(['opencli', 'browser', 'atlas', *args], capture_output=True, text=True, timeout=timeout)
+    return r.stdout
+
+def grab():
+    for t in TARGETS:
+        s = signed.get(t['id'])
+        out = os.path.join(FETCH, 'media', t['id'])
+        if not s or not s['url'] or (os.path.isdir(out) and [f for f in os.listdir(out) if f != 'note.json' and not os.path.isdir(os.path.join(out, f))]): continue
+        os.makedirs(out, exist_ok=True)
+        browser('open', s['url']); time.sleep(PAUSE)
+        raw = browser('eval', STATE_JS)
+        try:
+            st = json.JSONDecoder().raw_decode(raw[raw.find('{'):])[0]
+        except ValueError:
+            st = {'err': raw[:200]}
+        if st.get('err'):
+            print(f"{t['id'][:8]} no note state ({st['err'][:60]})", flush=True); continue
+        num = lambda v: str(v or '').replace(',', '')
+        json.dump([{'field': 'content', 'value': st['desc']}, {'field': 'likes', 'value': num(st['likes'])},
+                   {'field': 'collects', 'value': num(st['collects'])}, {'field': 'comments', 'value': num(st['comments'])}],
+                  open(os.path.join(out, 'note.json'), 'w'), ensure_ascii=False)
+        get = lambda u, f: subprocess.run(['curl', '-sfL', '--max-time', '300', '-H', 'Referer: https://www.xiaohongshu.com/', '-A', 'Mozilla/5.0', '-o', os.path.join(out, f), u.replace('http://', 'https://')])
+        if st['video']:
+            get(st['video'], f"{t['id']}.mp4")
+            if st['poster']: get(st['poster'], f"{t['id']}_poster.jpg")
+        for k, u in enumerate(st['imgs']):
+            get(u, f'{k + 1:02d}.webp' if 'webp' in u else f'{k + 1:02d}.jpg')
+        print(f"{t['id'][:8]} {'video' if st['video'] else str(len(st['imgs'])) + ' images'}", flush=True)
+        time.sleep(PAUSE)
+
+R2_ACCOUNT ='15bb2d33e765847ba3b774014e024dc5'   # the account whose atlas-media bucket already hosts the covers
 R2_BUCKET = 'atlas-media'
 R2_PUBLIC = 'https://pub-7f941743d5f647de9b5b927cda49ff7d.r2.dev'
 R2_PREFIX = 'atlas/briefs/media'
@@ -136,4 +176,4 @@ def upload():
 if __name__ == '__main__':
     cmd = sys.argv[1]
     limit = int(sys.argv[sys.argv.index('--limit') + 1]) if '--limit' in sys.argv else None
-    {'resolve': lambda: resolve(limit), 'retry': lambda: resolve(limit, retry=True), 'download': download, 'upload': upload}[cmd]()
+    {'resolve': lambda: resolve(limit), 'retry': lambda: resolve(limit, retry=True), 'download': download, 'grab': grab, 'upload': upload}[cmd]()
